@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(['middleware' => 'locale'], function() {
     Route::prefix('/home')->group(function(){
         Route::get('/', 'App\Http\Controllers\Web\HomeController@home');
@@ -19,6 +20,7 @@ Route::group(['middleware' => 'locale'], function() {
     Route::get('change-language/{language}', 'App\Http\Controllers\Web\HomeController@changeLanguage')
         ->name('user.change-language');
 });
+
 Route::prefix('admin')->group(function () {
     Route::prefix('product')->group(function () {
         Route::get('/', function () {
@@ -38,3 +40,4 @@ Route::prefix('admin')->group(function () {
     });
 
 });
+

@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\Category;
+use App\Models\DetailOrder;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\User;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;

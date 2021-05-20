@@ -3,3 +3,5 @@
     {{Session::get('fail')}}
   </div>
 @endif 
+<br>
+

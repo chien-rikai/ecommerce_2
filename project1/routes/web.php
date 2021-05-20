@@ -19,15 +19,6 @@ Route::group(['middleware' => 'locale'], function() {
     });
     Route::get('change-language/{language}', 'App\Http\Controllers\Web\HomeController@changeLanguage')
         ->name('user.change-language');
-
-
-
-
-
-
-
-
-
     Route::prefix('admin')->group(function () {
         Route::prefix('product')->group(function () {
             Route::get('/', function () {
@@ -47,8 +38,12 @@ Route::group(['middleware' => 'locale'], function() {
             Route::patch('/:{id}', 'App\Http\Controllers\Admins\CategoryController@updateCategory')->name('category.update');
             Route::delete('/:{id}', 'App\Http\Controllers\Admins\CategoryController@deleteCategory')->name('category.delete');
         });
+        Route::prefix('user')->group(function () {
+            Route::get('/{block?}', 'App\Http\Controllers\Admins\UserController@index')->name('user.view');
+            Route::put('/block','App\Http\Controllers\Admins\UserController@block')->name('user.block');
+            Route::put('/unblock','App\Http\Controllers\Admins\UserController@unblock')->name('user.unblock');
+        });
     });
 });
-
 
 

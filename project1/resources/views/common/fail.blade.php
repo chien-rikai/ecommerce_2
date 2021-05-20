@@ -1,6 +1,7 @@
 @if(Session::has('fail'))
   <div class="alert alert-danger">
-    {{Session::get('falil')}}
+    {{Session::get('fail')}}
   </div>
-@endif
+@endif 
 <br>
+

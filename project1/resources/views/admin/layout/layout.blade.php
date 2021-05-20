@@ -24,6 +24,16 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.html">Ecommerce</a>
+                <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">
+                  {{ __('lang.Langauge')}}
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu pull-right">
+                  <li><a href="{!! route('user.change-language', ['vi']) !!}">VietNam</a></li>
+                  <li><a href="{!! route('user.change-language', ['en']) !!}">English</a></li>
+                </ul>
+              </div>
             </div>
         </nav>
         <!-- /. NAV TOP  -->
@@ -31,35 +41,35 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        <a class="active-menu" href=""><i class="fa fa-dashboard "></i>Trang chủ</a>
+                        <a class="active-menu" href=""><i class="fa fa-dashboard "></i>{{ __('lang.Home')}}</a>
                     </li>
                     <li>
-                        <a  href=""><i class="fa fa-line-chart"></i>Thống kê</a>
+                        <a  href=""><i class="fa fa-line-chart"></i>{{ __('lang.statis')}}</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-desktop "></i>Quản lý <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-desktop "></i>{{ __('lang.manage')}}<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{route('category.view')}}"><i class="fa fa-thumb-tack"></i>Danh mục</a>
+                                <a href="{{route('category.view')}}"><i class="fa fa-thumb-tack"></i>{{ __('lang.cate')}}</a>
                             </li>
                             <li>
-                                <a href="{{route('product.view')}}"><i class="fa fa-product-hunt"></i>Sản phẩm</a>
+                                <a href="{{route('product.view')}}"><i class="fa fa-product-hunt"></i>{{ __('lang.product')}}</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-cart-arrow-down"></i>Đơn hàng <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-cart-arrow-down"></i>{{ __('lang.order')}}<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href=""><i class="fa fa-coffee"></i>Invoice</a>
+                                <a href=""><i class="fa fa-coffee"></i>{{ __('lang.invoice')}}Invoice</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-user-o"></i>Người dùng</a>
+                        <a href=""><i class="fa fa-user-o"></i>{{ __('lang.user')}}</a>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-sign-in "></i>Đăng xuất</a>
+                        <a href=""><i class="fa fa-sign-in "></i>{{ __('lang.logout')}}</a>
                     </li>
                 </ul>
             </div>

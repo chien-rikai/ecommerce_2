@@ -19,25 +19,29 @@ Route::group(['middleware' => 'locale'], function() {
     });
     Route::get('change-language/{language}', 'App\Http\Controllers\Web\HomeController@changeLanguage')
         ->name('user.change-language');
+    Route::prefix('admin')->group(function () {
+        Route::prefix('product')->group(function () {
+            Route::get('/', function () {
+                return view('admin/products_view');
+            })->name('product.view');
+            Route::get('/create', function () {
+                return view('admin/product_created');
+            })->name('product.create');
+        });
+        Route::prefix('category')->group(function () {
+            Route::get('/', function () {
+                return view('admin/category_view');
+            })->name('category.view');
+            Route::get('/create', function () {
+                return view('admin/category_created');
+            })->name('category.create');
+        });
+        Route::prefix('user')->group(function () {
+            Route::get('/{block?}', 'App\Http\Controllers\Admins\UserController@index')->name('user.view');
+            Route::put('/block','App\Http\Controllers\Admins\UserController@block')->name('user.block');
+            Route::put('/unblock','App\Http\Controllers\Admins\UserController@unblock')->name('user.unblock');
+        });
+    });
 });
 
-Route::prefix('admin')->group(function () {
-    Route::prefix('product')->group(function () {
-        Route::get('/', function () {
-            return view('admin/products_view');
-        })->name('product.view');
-        Route::get('/create', function () {
-            return view('admin/product_created');
-        })->name('product.create');
-    });
-    Route::prefix('category')->group(function () {
-        Route::get('/', function () {
-            return view('admin/category_view');
-        })->name('category.view');
-        Route::get('/create', function () {
-            return view('admin/category_created');
-        })->name('category.create');
-    });
-
-});
 

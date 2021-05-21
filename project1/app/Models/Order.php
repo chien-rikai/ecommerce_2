@@ -16,4 +16,9 @@ class Order extends Model
     public function detailOrders(){
         return $this->hasMany(DetailOrder::class);
     }
+    public function status(){
+        return $this->hasOne(StatusOrder::class,'id','status_id');
+    }
+    public function getTotalCostAttribute(){
+    }
 }

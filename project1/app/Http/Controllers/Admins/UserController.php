@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admins;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -24,46 +23,32 @@ class UserController extends Controller
             
         return view('admin\users_view',compact(["users"]));
     }
+    public function show($block){
+        
+        $users = User::where('block',$block)->get();
+            
+        return view('admin\users_view',compact(["users"]));
+    }
     /**
      * Block /unblock user.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function block(Request $request){
-
+    public function update(Request $request){
         //find user by id for blocking
         $user = $this->find($request->id);
+        $message = (int)$request->block==0?'blocking':'unblocking';
 
         if(blank($user)){
-            return redirect()->back()->with('fail',trans('lang.blocking_fail'));
+            return redirect()->back()->with('fail',trans('"lang.'.$message.'_fail"'));
         } 
-        $user->block = true;
+        $user->block = !$user->block;
         $update= $user->save();
         if($update){
-            return back()->with('success', trans('lang.blocking_success'));
+            return back()->with('success', trans('"lang.'.$message.'_success"'));
         }else{
-            return back()->with('fail', trans('lang.blocking_fail'));
-        }
-    }
-    /**
-     * Unblock user.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function unblock(Request $request){
-        $user = User::find($request->id);
-        
-        if(blank($user)){
-            return redirect()->back()->with('fail',trans('lang.unblocking_fail'));
-        }
-        $user->block = false;
-        $update= $user->save();
-        if($update){
-            return back()->with('success', trans('lang.unblocking_success'));
-        }else{
-            return back()->with('fail', trans('lang.unblocking_fail'));
+            return back()->with('fail', trans('"lang.'.$message.'_fail"'));
         }
     }
     public function find($id){

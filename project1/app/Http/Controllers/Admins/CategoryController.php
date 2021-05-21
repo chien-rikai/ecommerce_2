@@ -9,7 +9,12 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-
+    /**
+     * function get category by id.
+     *
+     * @param   $id
+     * @return $category
+     */
     public function find($id){
         $category = Category::find($id);
         if(blank($category)){
@@ -18,14 +23,30 @@ class CategoryController extends Controller
             return $category;
         }
     }
-
-
+    /**
+     * Show form create new category
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(){
+        return view('admin/category_created');
+    }
+    /**
+     * Get all categories
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(){
         $categories = Category::get();
         return view('admin.category_view',['categories' => $categories]);
     }
-
-    public function addCategory(CategoryRequest $request){
+    /**
+     * Save a category
+     *
+     * @param  CategoryRequest $id
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CategoryRequest $request){
         $category = new Category;
 
         $category->name = $request->category;
@@ -36,8 +57,13 @@ class CategoryController extends Controller
             return back()->with('fail', __('lang.add-fail'));
         }
     }
-
-    public function deleteCategory(Request $request){
+    /**
+     * Delete order by id.
+     *
+     * @param   Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request){
         $category = $this->find($request->id);
         $delete = $category->delete();
         if($delete){
@@ -46,14 +72,24 @@ class CategoryController extends Controller
             return redirect()->back()->with('fail',__('lang.delete-fail'));
         }
     }
-
-    public function editCategory($id){
+    /**
+     * Show edit form with order by id.
+     *
+     * @param   int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id){
         $category = $this->find($id);
 
         return view('admin.category_edit',['category'=> $category]);
     }
-
-    public function updateCategory(CategoryRequest $request){
+    /**
+     * Update a category
+     *
+     * @param  CategoryRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(CategoryRequest $request){
         $category = $this->find($request->id);
 
         $category->name = $request->category;

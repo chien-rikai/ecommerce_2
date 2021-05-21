@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admins\CategoryController;
+use App\Http\Controllers\Admins\OrderController;
+use App\Http\Controllers\Admins\ProductController;
+use App\Http\Controllers\Admins\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,32 +21,58 @@ Route::group(['middleware' => 'locale'], function() {
     Route::prefix('/home')->group(function(){
         Route::get('/', 'App\Http\Controllers\Web\HomeController@home');
     });
+    /*
+     * Change language for website 
+     * */
     Route::get('change-language/{language}', 'App\Http\Controllers\Web\HomeController@changeLanguage')
         ->name('user.change-language');
+    /*
+     *  Route for admin page
+     *  */    
     Route::prefix('admin')->group(function () {
-        Route::prefix('product')->group(function () {
-            Route::get('/', function () {
-                return view('admin/products_view');
-            })->name('product.view');
-            Route::get('/create', function () {
-                return view('admin/product_created');
-            })->name('product.create');
-        });
-        Route::prefix('category')->group(function () {
-            Route::get('/', 'App\Http\Controllers\Admins\CategoryController@index')->name('category.view');
-            Route::get('/new', function () {
-                return view('admin/category_created');
-            })->name('category.create');
-            Route::post('/', 'App\Http\Controllers\Admins\CategoryController@addCategory')->name('category.add');
-            Route::get('/:{id}/edit', 'App\Http\Controllers\Admins\CategoryController@editCategory')->name('category.edit');
-            Route::patch('/:{id}', 'App\Http\Controllers\Admins\CategoryController@updateCategory')->name('category.update');
-            Route::delete('/:{id}', 'App\Http\Controllers\Admins\CategoryController@deleteCategory')->name('category.delete');
-        });
-        Route::prefix('user')->group(function () {
-            Route::get('/{block?}', 'App\Http\Controllers\Admins\UserController@index')->name('user.view');
-            Route::put('/block','App\Http\Controllers\Admins\UserController@block')->name('user.block');
-            Route::put('/unblock','App\Http\Controllers\Admins\UserController@unblock')->name('user.unblock');
-        });
+        /**
+         * Manage all products:
+         * include: show list products,
+         * create new, edit and destroy
+         */
+        Route::resource('product', ProductController::class,[
+            'names'=>[
+                'index' => 'product.view'
+            ]
+        ]);
+        /**
+         * Manage all category:
+         * include: show list categories,
+         * create new, update and destroy
+         */
+        Route::resource('category',CategoryController::class,
+            [
+            'names'=>[
+                'index' => 'category.view',
+                'store' => 'category.add',
+                'destroy'=>'category.delete'
+                ]
+            ]
+        );
+        /**
+         * Manage all users:
+         *  show list users,
+         *  filter user blocked/non block,
+         *  block/unblock a user
+         */
+        Route::resource('user', UserController::class,[
+            'names'=>[
+                'index' => 'user.view'
+            ]
+        ]);
+        /**
+         * Manage all order
+         */
+        Route::resource('order', OrderController::class,[
+            'show' => 'order.detail',
+            'update' => 'order.updateStatus',
+            'destroy' => 'order.delete'
+        ]);
     });
 });
 

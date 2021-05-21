@@ -1,11 +1,5 @@
 @extends('admin.layout.layout')
 @section('content')
-<!-- @if(Session::has('message'))
-<div class="alert alert-success text-center" role="alert">
-    <strong></strong> {{Session::get('message')}}
-</div>
-@endif -->
-
 <body>
   @include('common.success')
   @include('common.fail')
@@ -38,9 +32,8 @@
           <td>
             {{$row->name}}
           </td>
-
           <td>
-            <a class="btn-default btn-xs" href="/admin/category/:{{$row->id}}/edit/">
+            <a class="btn-default btn-xs" href="/admin/category/{{$row->id}}/edit">
               <i class="glyphicon glyphicon-pencil"></i>{{__('lang.edit')}}</a>
               
             <form action="{!! route('category.delete',['{{$row->id}}']) !!}" method="POST">

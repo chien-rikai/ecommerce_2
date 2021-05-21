@@ -20,7 +20,7 @@ class CreateDetailOrdersTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
             $table->integer('price_base',false,false);
-            $table->integer('quanty',false,false);
+            $table->integer('quantity',false,false);
             $table->timestamps();
         });
     }

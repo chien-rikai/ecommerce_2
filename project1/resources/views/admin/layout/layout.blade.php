@@ -26,7 +26,7 @@
                 <a class="navbar-brand" href="index.html">Ecommerce</a>
                 <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">
-                  {{ __('lang.Langauge')}}
+                  {{ __('lang.Language')}}
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu pull-right">
@@ -58,12 +58,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-cart-arrow-down"></i>{{ __('lang.order')}}<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href=""><i class="fa fa-coffee"></i>{{ __('lang.invoice')}}Invoice</a>
-                            </li>
-                        </ul>
+                        <a href="{{route('order.index')}}"><i class="fa fa-cart-arrow-down"></i>{{ __('lang.order')}}</a>
                     </li>
                     <li>
                         <a href="{{route('user.view')}}"><i class="fa fa-user-o"></i>{{ __('lang.user')}}</a>

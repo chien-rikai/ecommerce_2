@@ -35,5 +35,18 @@ return [
     'edit-success' => 'Sửa thành công',
     'edit-fail' => 'Sửa không thành công',
     'page-failed' => 'Chuyển trang không thành công',
+    'customer-name'=>'Tên khách hàng',
+    'phone'=>'Số điện thoại',
+    'email'=>'Email',
+    'orders-address'=>'Địa chỉ nhận hàng',
+    'orders-status'=>'Trạng thái đơn hàng',
+    'cancel'=>'Hủy bỏ',
+    'no-data'=>'Không có dữ liệu',
+    'processing'=>'Đang xử lý',
+    'shipping'=>'Đang giao hàng',
+    'cancelled'=>'Đã hủy đơn',
+    'completed'=>'Hoàn thành',
+    'user-status'=>'Trạng thái',
+    'address'=>'Địa chỉ'
 ]
 ?>

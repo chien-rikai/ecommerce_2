@@ -4,6 +4,8 @@ return [
     'Language' => 'Ngôn ngữ',
     'cart' => 'Giỏ hàng',
     'login' => 'Đăng nhập',
+
+     //I18n layout admin categories
     'bloking_success'=> 'Khóa người dùng thành công',
     'bloking_fail'=> 'Khóa người dùng không thành công',
     'unbloking_success'=> 'Mở khóa người dùng thành công',
@@ -27,14 +29,41 @@ return [
     'edit-cate' => 'Sửa danh mục',
     'feature' => 'Chức năng',
     'delete' => 'Xóa',
-    'delete-cate' => 'bạn có chắc xóa danh mục này không?',
+    'delete-cate' => 'bạn có chắc xóa danh mục này không?
+                        Nếu xóa danh mục này các sản phẩm liên quan cũng bị xóa.',
+
+    
+     //I18n layout status
     'add-success' => 'Thêm thành công',
     'add-fail' => 'Thêm không thành công',
     'delete-success' => 'Xóa thành Công',
     'delete-fail' => 'Xóa không thành công',
-    'edit-success' => 'Sửa thành công',
-    'edit-fail' => 'Sửa không thành công',
+    'edit-success' => 'Cập nhật thành công',
+    'edit-fail' => 'Cập nhật không thành công',
     'page-failed' => 'Chuyển trang không thành công',
+
+     //I18n layout admin product   
+    'add-product' => 'Thêm sản phẩm',
+    'img' => 'Ảnh',
+    'add-img' => 'Chọn ảnh',
+    'name-product' => 'Tên sản phẩm' ,
+    'enter-name-pro' => 'Nhập tên sản phẩm' ,
+    'description' => 'Mô tả',
+    'enter-description' => 'Nhập mô tả',
+    'price' => 'Giá cả (đ)',
+    'enter-price' => 'Nhập giá cả',
+    'sale' => 'Giảm giá (%)', 
+    'product-list' => 'Danh sách sản phẩm',
+    'product-type' => 'Loại sản phẩm',
+    'view' => 'Số lượng xem',
+    'delete-product' => 'Bạn có chắc xóa sản phẩm này không?',
+    'edit-product' => 'Sửa sản phẩm',
+    'sale-price' => 'Giá giảm giá (đ) :',
+    'vnd' => 'đ',
+    'star-rating' => 'Đánh giá :',
+    'status' => 'Trạng thái :',
+    'in-stock' => 'Còn hàng',
+    'out-stock' => 'Hết hàng',
     'customer-name'=>'Tên khách hàng',
     'phone'=>'Số điện thoại',
     'email'=>'Email',

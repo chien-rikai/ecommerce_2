@@ -265,3 +265,13 @@
     .table-view{
         width: 85%;
     }
+
+    .admin-product-img{
+        width: 70px;
+        height: 100px;
+    }
+
+    .admin-product-edit-img{
+        width:200px; 
+        height:300px;
+    }

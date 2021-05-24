@@ -4,6 +4,8 @@ return [
     'Language' => 'Language',
     'cart' => 'Cart',
     'login' => 'login',
+
+    //I18n layout admin categories
     'bloking_success'=> 'Block user successfully',
     'bloking_fail'=> 'Block user fail',
     'unbloking_success'=> 'Unblock user successfully',
@@ -27,14 +29,44 @@ return [
     'edit-cate' => 'Edit category',
     'feature' => 'Feature',
     'delete' => 'Delete',
-    'delete-cate' => 'Are you sure to delete this category?',
+    'delete-cate' => 'Are you sure to delete this category?
+                        If you delete this category, the related products will also be deleted.',
+    
+    //I18n layout staus
     'add-success' => 'Add success',
     'add-fail' => 'Add failed',
     'delete-success' => 'Delete success',
     'delete-fail' => 'Delete failed',
-    'edit-success' => 'Edit success',
-    'edit-fail' => 'Edit failed',
+    'edit-success' => 'Update success',
+    'edit-fail' => 'Update failed',
     'page-failed' => 'Page transfer failed',
+
+
+    //I18n layout admin product
+    'add-product' => 'Add product',
+    'img' => 'Image',
+    'add-img' => 'Choose photo',
+    'name-product' => 'Product name' ,
+    'enter-name-pro' => 'Enter product name' ,
+    'description' => 'Description',
+    'enter-description' => 'Enter description',
+    'price' => 'Price (VND)',
+    'enter-price' => 'Enter price',
+    'sale' => 'Sale (%)', 
+    'product-list' => 'Products list',
+    'product-type' => 'Product type',
+    'view' => 'View',
+    'delete-product' => 'Are you sure to delete this product?',
+    'edit-product' => 'Product edit',
+    'sale-price' => 'Sale price (VND) :',
+    'vnd' => 'VND',
+    'star-rating' => 'Star rating :',
+    'status' => 'Status :',
+    'in-stock' => 'In stock',
+    'out-stock' => 'Out of stock',
+
+    
+
     'customer-name'=>'Name',
     'phone'=>'Phone',
     'email'=>'Email',

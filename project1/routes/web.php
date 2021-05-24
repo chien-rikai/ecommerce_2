@@ -35,25 +35,21 @@ Route::group(['middleware' => 'locale'], function() {
          * include: show list products,
          * create new, edit and destroy
          */
+        Route::get('product/getProductData', 'App\Http\Controllers\Admins\ProductController@getProductData')->name('product.getdata');
         Route::resource('product', ProductController::class,[
-            'names'=>[
-                'index' => 'product.view'
-            ]
+            'except' => ['show']
         ]);
         /**
          * Manage all category:
          * include: show list categories,
          * create new, update and destroy
          */
-        Route::resource('category',CategoryController::class,
-            [
+        Route::resource('category', CategoryController::class,[
             'names'=>[
-                'index' => 'category.view',
                 'store' => 'category.add',
                 'destroy'=>'category.delete'
                 ]
-            ]
-        );
+        ]);
         /**
          * Manage all users:
          *  show list users,
@@ -73,6 +69,7 @@ Route::group(['middleware' => 'locale'], function() {
             'update' => 'order.updateStatus',
             'destroy' => 'order.delete'
         ]);
+       
     });
 });
 

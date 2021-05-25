@@ -64,6 +64,13 @@ return [
     'status' => 'Trạng thái :',
     'in-stock' => 'Còn hàng',
     'out-stock' => 'Hết hàng',
+    'stop, :name' => 'Tạm dừng tại, :name',
+    'product-import-csv' => 'Thêm sản phẩm bằng tệp CSV,Excel',
+    'choose-file' => 'Chọn tệp CSV',
+    'import' => 'nhập',
+
+
+
     'customer-name'=>'Tên khách hàng',
     'phone'=>'Số điện thoại',
     'email'=>'Email',
@@ -76,6 +83,12 @@ return [
     'cancelled'=>'Đã hủy đơn',
     'completed'=>'Hoàn thành',
     'user-status'=>'Trạng thái',
-    'address'=>'Địa chỉ'
+    'address'=>'Địa chỉ',
+    'order-not-found'=>'Không tìm thấy đơn đặt hàng',
+    'back'=>'Quay lại',
+    'total'=>'Tổng chi phí',
+    'delete_order_confirmation'=>'Bạn có muốn xóa đơn đặt hàng này?',
+    'id-order'=>'Mã đơn hàng',
+    'search'=>'Tìm kiếm'
 ]
 ?>

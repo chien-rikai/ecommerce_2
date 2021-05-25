@@ -16,10 +16,10 @@ class StatusOrderSeeder extends Seeder
     {
         DB::table('status_orders')->insert(
             [
-                ['status' => 'shipping'],
-                ['status' => 'cancelled'],
                 ['status' => 'processing'],
-                ['status' => 'completed']
+                ['status' => 'shipping'],
+                ['status' => 'completed'],
+                ['status' => 'cancelled'],
             ]
             );
     }

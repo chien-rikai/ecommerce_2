@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admins;
 use App\Enums\ProductStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCreateRequest;
+use App\Http\Requests\ProductImportRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
@@ -71,6 +72,22 @@ class ProductController extends Controller
         }else{
             return back()->with('fail', __('lang.add-fail'));
         }
+    }
+
+    public function productImport(ProductImportRequest $request){
+        $file = file($request->file->getRealPath());
+        $data = array_slice($file, 1);
+
+        $parts = (array_chunk($data, 50));
+
+        foreach($parts as $index=>$part){
+            $fileName = resource_path('file/'.date('y-m-d-H-i-s').$index.'.csv');
+            
+            file_put_contents($fileName, $part);
+        }
+        $import =(new Product())->productImport();
+
+        return back()->with('success',__('lang.add-success'));
     }
 
 

@@ -35,7 +35,8 @@ Route::group(['middleware' => 'locale'], function() {
          * include: show list products,
          * create new, edit and destroy
          */
-        Route::get('product/getProductData', 'App\Http\Controllers\Admins\ProductController@getProductData')->name('product.getdata');
+        Route::get('product/getProductData', [ProductController::class, 'getProductData'])->name('product.getdata');
+        Route::post('product/productImport', [ProductController::class, 'productImport'])->name('product.import');
         Route::resource('product', ProductController::class,[
             'except' => ['show']
         ]);
@@ -63,14 +64,12 @@ Route::group(['middleware' => 'locale'], function() {
         ]);
         /**
          * Manage all order
+         * show, update, destroy
          */
-        Route::resource('order', OrderController::class,[
-            'show' => 'order.detail',
-            'update' => 'order.updateStatus',
-            'destroy' => 'order.delete'
-        ]);
-       
+        Route::resource('order', OrderController::class)->except('filter');
+        /**
+         * Filter order by status of order
+         */
+        Route::get('order/filter/{status}',[OrderController::class,'filter'])->name('order.filter');
     });
 });
-
-

@@ -17,4 +17,7 @@ class DetailOrder extends Model
     public function product(){
         return $this->belongsTo(Product::class);
     }
+    public function getPriceAttribute(){
+        return $this->price_base*$this->quantity;
+    }
 }

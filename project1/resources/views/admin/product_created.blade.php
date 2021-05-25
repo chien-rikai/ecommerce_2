@@ -9,5 +9,10 @@
     <h2>{{__('lang.add-product')}}</h2>
     @include('admin.form.product_create')
   </div>
+  <br><br>
+  <div>
+  <label for="">{{__('lang.product-import-csv')}}</label>
+    @include('admin.form.product_import')
+  </div>
 </body>
 @endsection

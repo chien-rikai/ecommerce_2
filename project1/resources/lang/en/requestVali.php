@@ -15,6 +15,8 @@ return [
     'images-dimensions' => 'The :attribute has invalid image dimensions.',
     'required-status' => 'Product status not selected',
     'enum-status' => 'Incorrect product status value',
+    'required-import' => 'You have not selected CSV,Excel file',
+    'mimes-import' => 'not CSV,Excel files',
     
 ]
 ?>

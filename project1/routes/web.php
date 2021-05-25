@@ -35,7 +35,8 @@ Route::group(['middleware' => 'locale'], function() {
          * include: show list products,
          * create new, edit and destroy
          */
-        Route::get('product/getProductData', 'App\Http\Controllers\Admins\ProductController@getProductData')->name('product.getdata');
+        Route::get('product/getProductData', [ProductController::class, 'getProductData'])->name('product.getdata');
+        Route::post('product/productImport', [ProductController::class, 'productImport'])->name('product.import');
         Route::resource('product', ProductController::class,[
             'except' => ['show']
         ]);

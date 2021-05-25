@@ -64,6 +64,13 @@ return [
     'status' => 'Trạng thái :',
     'in-stock' => 'Còn hàng',
     'out-stock' => 'Hết hàng',
+    'stop, :name' => 'Tạm dừng tại, :name',
+    'product-import-csv' => 'Thêm sản phẩm bằng tệp CSV,Excel',
+    'choose-file' => 'Chọn tệp CSV',
+    'import' => 'nhập',
+
+
+
     'customer-name'=>'Tên khách hàng',
     'phone'=>'Số điện thoại',
     'email'=>'Email',

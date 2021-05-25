@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Jobs\ProductCsvUpload;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +10,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','describe','url_img','price','category_id','discount','status','view','star_rating'];
+    protected $guarded =[];
 
     public function category(){
         return $this->belongsTo(Category::class);
@@ -17,5 +18,16 @@ class Product extends Model
 
     public function detailOrders(){
         return $this->hasMany(DetailOrder::class);
+    }
+
+    public function productImport(){
+        $path = resource_path('file/*.csv');
+
+        $files = glob($path);
+
+        foreach($files as $file){
+        
+            ProductCsvUpload::dispatch($file);
+        }
     }
 }

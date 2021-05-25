@@ -15,6 +15,8 @@ return [
     'images-dimensions' => 'Kích thước hình ảnh không hợp lệ',
     'required-status' => 'Chưa chọn trạng thái sản phẩm',
     'enum-status' => 'Giá trị trạng thái sản phẩm không chính xác',
+    'required-import' => 'Bạn chưa chọn tệp CSV,Excel',
+    'mimes-import' => 'không phải tệp CSV,Excel',
     
 ]
 ?>

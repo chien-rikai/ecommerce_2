@@ -64,6 +64,10 @@ return [
     'status' => 'Status :',
     'in-stock' => 'In stock',
     'out-stock' => 'Out of stock',
+    'stop, :name' => 'Stop, :name',
+    'product-import-csv' => 'Add products using CSV,Excel files',
+    'choose-file' => 'Choose file CSV,Excel',
+    'import' => 'Import',
 
     
 

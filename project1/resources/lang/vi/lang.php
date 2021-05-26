@@ -89,6 +89,14 @@ return [
     'total'=>'Tổng chi phí',
     'delete_order_confirmation'=>'Bạn có muốn xóa đơn đặt hàng này?',
     'id-order'=>'Mã đơn hàng',
-    'search'=>'Tìm kiếm'
+    'search'=>'Tìm kiếm',
+
+    //I18n layout Login register
+    'login' => 'Đăng nhập',
+    'username' => 'Tên tài khoản',
+    'enter-username' => 'Mời nhập tên tài khoản',
+    'password' => 'Mật khẩu',
+    'enter-password' => 'Mời nhập mật khẩu',
+    'login-fail' => 'Tên đăng nhập hoặc mật khẩu không chính xác',
 ]
 ?>

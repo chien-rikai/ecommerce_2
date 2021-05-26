@@ -17,6 +17,10 @@ return [
     'enum-status' => 'Giá trị trạng thái sản phẩm không chính xác',
     'required-import' => 'Bạn chưa chọn tệp CSV,Excel',
     'mimes-import' => 'không phải tệp CSV,Excel',
+    'required-username' => 'Bạn chưa nhập tên tài khoản',
+    'max-username' => 'Tên tài khoản không quá 50 ký tự',
+    'required-password' => 'Bạn chưa nhập mật khẩu',
+    'max-username' => 'mật khẩu không quá 100 ký tự',
     
 ]
 ?>

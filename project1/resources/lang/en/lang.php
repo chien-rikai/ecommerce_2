@@ -90,6 +90,15 @@ return [
     'total'=>'Total price',
     'delete_order_confirmation'=>'Are you sure to delete this order?',
     'id-order'=>'ID',
-    'search'=>'Search'
-]   
+    'search'=>'Search',
+  
+
+    //I18n layout Login register
+    'login' => 'Login',
+    'username' => 'User name',
+    'enter-username' => 'Enter user name',
+    'password' => 'Password',
+    'enter-password' => 'Enter passowrd',
+    'login-fail' => 'Login name or password is incorrect',
+]  
 ?>

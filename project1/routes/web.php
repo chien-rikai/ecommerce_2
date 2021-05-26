@@ -29,6 +29,10 @@ Route::group(['middleware' => 'locale'], function() {
     });
    
     /*
+     *  Route for home page
+     *  */  
+    Route::resource('home', HomeController::class);
+    /*
      * Change language for website 
      * */
     Route::get('change-language/{language}', 'App\Http\Controllers\Web\HomeController@changeLanguage')

@@ -15,12 +15,27 @@ use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
-    public function home(Request $request)
-    {
-        $request->session()->put('title', 'Home');
-        return view('web.home.index');
+    /**
+     * Home page redirect.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(){
+        return view('web\home\index');
     }
+    /**
+     * Show products by category.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($category){
 
+    }
+    /**
+     * Change language.
+     * @param $language
+     * @return \Illuminate\Http\Response
+     */
     public function changeLanguage($language)
     {
         App::setlocale($language);

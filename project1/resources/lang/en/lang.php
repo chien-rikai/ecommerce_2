@@ -4,6 +4,7 @@ return [
     'Language' => 'Language',
     'cart' => 'Cart',
     'login' => 'login',
+    'contact'=>'Contact',
 
     //I18n layout admin categories
     'bloking_success'=> 'Block user successfully',
@@ -100,5 +101,14 @@ return [
     'password' => 'Password',
     'enter-password' => 'Enter passowrd',
     'login-fail' => 'Login name or password is incorrect',
-]  
+
+
+    //I18n layout home page
+    'checkout'=>'Checkout',
+    'sort-by'=>'Sort by',
+    'trending'=>'Trending',
+    'new'=>'New',
+    'add-to-cart'=>'Add to Cart',
+    'detail'=>'Detail'
+]   
 ?>

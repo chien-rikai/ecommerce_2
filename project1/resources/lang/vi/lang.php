@@ -4,6 +4,7 @@ return [
     'Language' => 'Ngôn ngữ',
     'cart' => 'Giỏ hàng',
     'login' => 'Đăng nhập',
+    'contact'=>'Liên hệ',
 
      //I18n layout admin categories
     'bloking_success'=> 'Khóa người dùng thành công',
@@ -98,5 +99,12 @@ return [
     'password' => 'Mật khẩu',
     'enter-password' => 'Mời nhập mật khẩu',
     'login-fail' => 'Tên đăng nhập hoặc mật khẩu không chính xác',
+    //I18n layout home page
+    'checkout'=>'Đặt',
+    'sort-by'=>'Sắp xếp bởi',
+    'trending'=>'Thịnh hành',
+    'new'=>'Mới',
+    'add-to-cart'=>'Thêm vào giỏ',
+    'detail'=>'Chi tiết'
 ]
 ?>

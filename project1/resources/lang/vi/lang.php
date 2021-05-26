@@ -7,10 +7,10 @@ return [
     'contact'=>'Liên hệ',
 
      //I18n layout admin categories
-    'bloking_success'=> 'Khóa người dùng thành công',
-    'bloking_fail'=> 'Khóa người dùng không thành công',
-    'unbloking_success'=> 'Mở khóa người dùng thành công',
-    'unbloking_fail'=> 'Mở khóa người dùng không thành công',
+    'blocking_success'=> 'Khóa người dùng thành công',
+    'blocking_fail'=> 'Khóa người dùng không thành công',
+    'unblocking_success'=> 'Mở khóa người dùng thành công',
+    'unblocking_fail'=> 'Mở khóa người dùng không thành công',
     'block_confirmation'=>"Bạn có chắc muốn khóa người dùng này?",
     'unblock_confirmation'=>"Bạn có chắc muốn mở khóa cho người dùng này?",
     'name-cate' => 'Tên danh mục',
@@ -99,12 +99,21 @@ return [
     'password' => 'Mật khẩu',
     'enter-password' => 'Mời nhập mật khẩu',
     'login-fail' => 'Tên đăng nhập hoặc mật khẩu không chính xác',
+
     //I18n layout home page
     'checkout'=>'Đặt',
     'sort-by'=>'Sắp xếp bởi',
     'trending'=>'Thịnh hành',
     'new'=>'Mới',
     'add-to-cart'=>'Thêm vào giỏ',
-    'detail'=>'Chi tiết'
+    'detail'=>'Chi tiết',
+    'register' => 'Đăng ký',
+    'email'=> 'Email',
+    'enter-email' => 'Nhập email',
+    'confirm-password' => 'Nhập lại mật khẩu',
+    'enter-confirm-password' => 'Mời nhập lại mật khẩu',
+    'create-user-success' => 'Tạo tài khoản mới thành công',
+    'create-user-fail' => 'Tạo tài khoản mơi không thành công',
+    
 ]
 ?>

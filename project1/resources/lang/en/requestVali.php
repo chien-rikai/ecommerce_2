@@ -20,7 +20,15 @@ return [
     'required-username' => 'You have not entered your account name',
     'max-username' => 'Account name must not exceed 50 characters',
     'required-password' => 'You have not entered your password',
-    'max-username' => 'password no more than 100 characters',
+    'max-username' => 'password no more than 50 characters',
+    'max-password' => 'password no more than 100 characters',
+    'min-username' => 'Account name at least 6 characters',
+    'unique-username' => 'This account has already existed',
+    'required-email' => 'Email cannot be blank',
+    'email-email' => 'Email is incorrect',
+    'min-password' => 'Password must not be less than 6 characters',
+    'required-confirm-password' => 'Password re-enter field cannot be left blank',
+    'same-confirm-password' => 'password incorrect',
     
 ]
 ?>

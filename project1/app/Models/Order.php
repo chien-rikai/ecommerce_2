@@ -20,5 +20,6 @@ class Order extends Model
         return $this->hasOne(StatusOrder::class,'id','status_id');
     }
     public function getTotalCostAttribute(){
+        return $this->detailOrders->sum('price');
     }
 }

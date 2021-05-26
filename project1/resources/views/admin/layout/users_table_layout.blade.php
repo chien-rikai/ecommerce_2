@@ -1,8 +1,6 @@
 @extends('admin.layout.layout')
 @section('content')
 <body>
-    @include('common.success')
-    @include('common.fail')
     <div class="container">
         <div class="row">
             <div class="col-sm-6">

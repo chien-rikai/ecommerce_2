@@ -84,6 +84,12 @@ return [
     'cancelled'=>'Cancelled',
     'completed'=>'Completed',
     'user-status'=>'Status',
-    'address'=>'Address'
-]  
+    'address'=>'Address',
+    'order-not-found'=>'Order Not Found',
+    'back'=>'Back',
+    'total'=>'Total price',
+    'delete_order_confirmation'=>'Are you sure to delete this order?',
+    'id-order'=>'ID',
+    'search'=>'Search'
+]   
 ?>

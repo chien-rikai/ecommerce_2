@@ -64,14 +64,12 @@ Route::group(['middleware' => 'locale'], function() {
         ]);
         /**
          * Manage all order
+         * show, update, destroy
          */
-        Route::resource('order', OrderController::class,[
-            'show' => 'order.detail',
-            'update' => 'order.updateStatus',
-            'destroy' => 'order.delete'
-        ]);
-       
+        Route::resource('order', OrderController::class)->except('filter');
+        /**
+         * Filter order by status of order
+         */
+        Route::get('order/filter/{status}',[OrderController::class,'filter'])->name('order.filter');
     });
 });
-
-

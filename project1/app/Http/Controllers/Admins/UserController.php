@@ -41,14 +41,14 @@ class UserController extends Controller
         $message = (int)$request->block==0?'blocking':'unblocking';
 
         if(blank($user)){
-            return redirect()->back()->with('fail',trans('"lang.'.$message.'_fail"'));
+            return redirect()->back()->with('fail',trans('lang.'.$message.'_fail'));
         } 
         $user->block = !$user->block;
         $update= $user->save();
         if($update){
-            return back()->with('success', trans('"lang.'.$message.'_success"'));
+            return back()->with('success', trans('lang.'.$message.'_success'));
         }else{
-            return back()->with('fail', trans('"lang.'.$message.'_fail"'));
+            return back()->with('fail', trans('lang.'.$message.'_fail'));
         }
     }
     public function find($id){

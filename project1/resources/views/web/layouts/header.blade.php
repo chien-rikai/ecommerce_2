@@ -15,11 +15,12 @@
               <!-- Begin Setting Area -->
               @if(Auth::check())
               <li>
-                <span class="language-selector-wrapper">{{Auth::user()->username}}</span>
+              <span class="language-selector-wrapper">{{Auth::user()->username}}</span>
                 <div class="ht-language-trigger"><span></span></div>
                 <div class="language ht-language">
                   <ul class="ht-setting-list">
                     <li><a href="{!! route('member.index') !!}">{{__('lang.profile')}}</a></li>
+                    <li><a href="{!! route('change.password') !!}">{{__('lang.change-password')}}</a></li>
                     <li><a href="{!! route('logout') !!}">{{__('lang.logout')}}</a></li>
                   </ul>
                 </div>

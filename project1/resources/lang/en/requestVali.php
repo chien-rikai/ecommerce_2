@@ -34,6 +34,7 @@ return [
     'number-phone' => 'Phone number must be a 10 digit number',
     'date-birthday' => 'Incorrect date of birth',
     'enum-value-gender' => 'Gender value is incorrect',
+    'required-password-old' => 'You have not entered your password old',
     
 ]
 ?>

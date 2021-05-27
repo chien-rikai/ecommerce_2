@@ -7,11 +7,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\ChangePassword;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class MemberController extends Controller
 {
-
     public function __construct() {
         $this->middleware('auth');
     }
@@ -40,6 +42,27 @@ class MemberController extends Controller
             return back()->with('success', __('lang.update-profile-success'));
         }else{
             return back()->with('fail', __('lang.update-profile-fail'));
+        }    
+    }
+
+    public function changePassword(){
+        return view('web.users.change_password');
+    }
+
+    public function postChangePassword(ChangePassword $request,$id){
+        if((Hash::check($request->old_password, Auth::user()->password))){
+            Session::put('url-back',url()->previous());
+            $user = $this->find($id);
+            $params['password']= Hash::make($request->password);
+            $update = $user->update($params);
+    
+            if($update){
+                return back()->with('success', __('lang.change-password-success'));
+            }else{
+                return back()->with('fail', __('lang.change-password-fail'));
+            }
+        }else{
+            return back()->with('fail', __('lang.password-fail'));
         }
     }
 }

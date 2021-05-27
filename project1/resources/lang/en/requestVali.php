@@ -17,6 +17,10 @@ return [
     'enum-status' => 'Incorrect product status value',
     'required-import' => 'You have not selected CSV,Excel file',
     'mimes-import' => 'not CSV,Excel files',
+    'required-username' => 'You have not entered your account name',
+    'max-username' => 'Account name must not exceed 50 characters',
+    'required-password' => 'You have not entered your password',
+    'max-username' => 'password no more than 100 characters',
     
 ]
 ?>

@@ -7,10 +7,10 @@ return [
     'contact'=>'Contact',
 
     //I18n layout admin categories
-    'bloking_success'=> 'Block user successfully',
-    'bloking_fail'=> 'Block user fail',
-    'unbloking_success'=> 'Unblock user successfully',
-    'unbloking_fail'=> 'Unblock user fail',
+    'blocking_success'=> 'Block user successfully',
+    'blocking_fail'=> 'Block user fail',
+    'unblocking_success'=> 'Unblock user successfully',
+    'unblocking_fail'=> 'Unblock user fail',
     'block_confirmation'=>"Are you sure to block this user?",
     'unblock_confirmation'=>"Are you sure to unblock this user?",
     'name-cate' => 'Name category',
@@ -92,7 +92,6 @@ return [
     'delete_order_confirmation'=>'Are you sure to delete this order?',
     'id-order'=>'ID',
     'search'=>'Search',
-  
 
     //I18n layout Login register
     'login' => 'Login',
@@ -109,6 +108,14 @@ return [
     'trending'=>'Trending',
     'new'=>'New',
     'add-to-cart'=>'Add to Cart',
-    'detail'=>'Detail'
-]   
+    'detail'=>'Detail', 
+    'register' => 'Register',
+    'email'=> 'Email',
+    'enter-email' => 'Enter email',
+    'confirm-password' => 'Re-enter password',
+    'enter-confirm-password' => 'Re-enter password',
+    'create-user-success' => 'Successfully created new account',
+    'create-user-fail' => 'New account creation failed',
+
+]  
 ?>

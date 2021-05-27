@@ -20,7 +20,15 @@ return [
     'required-username' => 'Bạn chưa nhập tên tài khoản',
     'max-username' => 'Tên tài khoản không quá 50 ký tự',
     'required-password' => 'Bạn chưa nhập mật khẩu',
-    'max-username' => 'mật khẩu không quá 100 ký tự',
+    'max-username' => 'mật khẩu không quá 50 ký tự',
+    'max-password' => 'mật khẩu không quá 100 ký tự',
+    'min-username' => 'Tên tài khoản ít nhất 6 ký tự',
+    'unique-username' => 'Tên tài khoản đã tồn tại',
+    'required-email' => 'Email không được để trống',
+    'email-email' => 'Email không chính xác',
+    'min-password' => 'Mật khẩu không được ít hơn 6 ký tự',
+    'required-confirm-password' => 'Trường nhập lại mật khẩu không được để trống',
+    'same-confirm-password' => 'Mật khẩu không khớp',
     
 ]
 ?>

@@ -31,6 +31,9 @@ Route::group(['middleware' => 'locale'], function() {
     Route::post('login', [LoginController::class, 'postLogin'])->name('login.post');
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     Route::post('register', [RegisterController::class, 'store'])->name('register');
+
+    Route::get('member/change-password', [MemberController::class, 'changePassword'])->name('change.password');
+    Route::post('member/change-passowrd/{id}',[MemberController::class, 'postChangePassword'])->name('post.change.password');
     /*
      *  Route for home page
      *  */  

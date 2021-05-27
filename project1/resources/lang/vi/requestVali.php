@@ -34,6 +34,7 @@ return [
     'number-phone' => 'Số điện thoại phải là số có 10 chữ số',
     'date-birthday' => 'Ngày sinh không chính xác',
     'enum-value-gender' => 'Giá trị giới tính không chính xác',
+    'required-password-old' => 'Bạn chưa nhập mật khẩu cũ',
     
 ]
 ?>

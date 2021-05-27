@@ -1277,6 +1277,10 @@ textarea:focus {
 .modal-body .product-social-sharing {
 	padding-bottom: 43px;
 }
+.thumbnail-img{
+	height: 200px;
+	width: 200px;
+}
 /*----------------------------------------*/
 /* 1.14 Scroll Up
 /*----------------------------------------*/

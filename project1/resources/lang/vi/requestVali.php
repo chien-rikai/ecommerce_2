@@ -29,6 +29,11 @@ return [
     'min-password' => 'Mật khẩu không được ít hơn 6 ký tự',
     'required-confirm-password' => 'Trường nhập lại mật khẩu không được để trống',
     'same-confirm-password' => 'Mật khẩu không khớp',
+    'max-first-name' => 'Tên không được quá 40 ký tự',
+    'max-last-name' => 'Họ không được quá 40 ký tự',
+    'number-phone' => 'Số điện thoại phải là số có 10 chữ số',
+    'date-birthday' => 'Ngày sinh không chính xác',
+    'enum-value-gender' => 'Giá trị giới tính không chính xác',
     
 ]
 ?>

@@ -15,7 +15,14 @@
               <!-- Begin Setting Area -->
               @if(Auth::check())
               <li>
-                <div class=""><span><a href="{{route('logout')}}">{{__('lang.logout')}}</a></span></div>
+                <span class="language-selector-wrapper">{{Auth::user()->username}}</span>
+                <div class="ht-language-trigger"><span></span></div>
+                <div class="language ht-language">
+                  <ul class="ht-setting-list">
+                    <li><a href="{!! route('member.index') !!}">{{__('lang.profile')}}</a></li>
+                    <li><a href="{!! route('logout') !!}">{{__('lang.logout')}}</a></li>
+                  </ul>
+                </div>
               </li>
               @else
               <li>
@@ -28,7 +35,7 @@
                 <div class="ht-language-trigger"><span>{{__('lang.Language')}}</span></div>
                 <div class="language ht-language">
                   <ul class="ht-setting-list">
-                    <li class="active"><a href="{!! route('user.change-language', ['en']) !!}">English</a></li>
+                    <li><a href="{!! route('user.change-language', ['en']) !!}">English</a></li>
                     <li><a href="{!! route('user.change-language', ['vi']) !!}">Vietnamese</a></li>
                   </ul>
                 </div>

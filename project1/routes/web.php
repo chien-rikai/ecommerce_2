@@ -6,6 +6,7 @@ use App\Http\Controllers\Admins\ProductController;
 use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\LoginController;
+use App\Http\Controllers\Web\MemberController;
 use App\Http\Controllers\Web\RegisterController;
 use App\Http\Controllers\Web\PaymentController;
 use App\Http\Controllers\Web\ProductController as WebProductController;
@@ -45,6 +46,11 @@ Route::group(['middleware' => 'locale'], function() {
     /*
      * Change language for website 
      * */
+    
+    Route::resource('member', MemberController::class,[
+        'only' => ['index','update']
+    ]);
+
     Route::get('change-language/{language}', 'App\Http\Controllers\Web\HomeController@changeLanguage')
         ->name('user.change-language');
     /*

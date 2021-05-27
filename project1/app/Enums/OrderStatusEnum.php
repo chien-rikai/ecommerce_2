@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-use Spatie\Enum\Laravel\Enum;
+use BenSampo\Enum\Enum;
 /**
  * @method static self shipping()
  * @method static self cancelled()

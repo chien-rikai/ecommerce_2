@@ -117,5 +117,15 @@ return [
     'create-user-success' => 'Successfully created new account',
     'create-user-fail' => 'New account creation failed',
 
-]  
+    'detail'=>'Detail',
+    //I18n layout cart page
+    'remove'=>'Remove',
+    'image' =>'Image',
+    'product'=>'Product',
+    'unit-price'=>'Unit Price',
+    'quantity'=>'Quantity',
+    'billing-detail'=>'Billing Detail',
+    'note'=>'Note',
+    'your-order'=>'Your order'
+]   
 ?>

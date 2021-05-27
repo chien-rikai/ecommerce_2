@@ -25,8 +25,7 @@
               <!-- Setting Area End Here -->
               <!-- Begin Language Area -->
               <li>
-                <span class="language-selector-wrapper">{{__('lang.Language')}} :</span>
-                <div class="ht-language-trigger"><span>English</span></div>
+                <div class="ht-language-trigger"><span>{{__('lang.Language')}}</span></div>
                 <div class="language ht-language">
                   <ul class="ht-setting-list">
                     <li class="active"><a href="{!! route('user.change-language', ['en']) !!}">English</a></li>

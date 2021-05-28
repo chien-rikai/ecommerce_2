@@ -111,8 +111,8 @@ return [
     'gender' => 'Gender',
     'update-profile-success' => 'Successfully updated personal information',
     'update-profile-fail' => 'Personal information update failed',
-    'boy' => 'Boy',
-    'girl' => 'Girl', 
+    'male' => 'Male',
+    'female' => 'Female', 
     'next-page-fail' => 'Next page failed',
 
 

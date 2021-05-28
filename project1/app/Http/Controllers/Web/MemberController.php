@@ -26,7 +26,7 @@ class MemberController extends Controller
     }
 
     public function index(){
-        $gender = ['girl' => UserGender::girl , 'boy' => UserGender::boy];
+        $gender = ['female' => UserGender::female , 'male' => UserGender::male];
         return view('web.users.index',compact('gender'));
     }
 

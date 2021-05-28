@@ -110,8 +110,8 @@ return [
     'gender' => 'Giới tính',
     'update-profile-success' => 'Cập nhật thông tin cá nhân thành công',
     'update-profile-fail' => 'Cập nhật thông tin cá nhân thất bại',
-    'boy' => 'Nam',
-    'girl' => 'Nữ', 
+    'male' => 'Nam',
+    'female' => 'Nữ', 
     'next-page-fail' => 'Chuyển trang thất bại',
 
 

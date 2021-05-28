@@ -33,26 +33,26 @@
       <div class="col-md-3">
         <label>{{__('lang.gender')}}</label>
       </div>  
-        @if(Auth::user()->gender === $gender['boy'])      
+        @if(Auth::user()->gender === $gender['male'])      
         <div class="col-md-1">
-                <input class="mb-1" name="gender" value="{{$gender['boy']}}" type="radio" checked>{{__('lang.boy')}}
+                <input class="mb-1" name="gender" value="{{$gender['male']}}" type="radio" checked>{{__('lang.male')}}
             </div>
             <div class="col-md-1">
-                <input class="mb-0" name="gender" value="{{$gender['girl']}}" type="radio">{{__('lang.girl')}}
+                <input class="mb-0" name="gender" value="{{$gender['female']}}" type="radio">{{__('lang.female')}}
             </div>
-        @elseif(Auth::user()->gender === $gender['girl'])
+        @elseif(Auth::user()->gender === $gender['female'])
         <div class="col-md-1">
-                <input class="mb-1" name="gender" value="{{$gender['boy']}}" type="radio">{{__('lang.boy')}}
+                <input class="mb-1" name="gender" value="{{$gender['male']}}" type="radio">{{__('lang.male')}}
             </div>
             <div class="col-md-1">
-                <input class="mb-0" name="gender" value="{{$gender['girl']}}" type="radio" checked>{{__('lang.girl')}}
+                <input class="mb-0" name="gender" value="{{$gender['female']}}" type="radio" checked>{{__('lang.female')}}
             </div>
         @else
             <div class="col-md-1">
-                <input class="mb-1" name="gender" value="{{$gender['boy']}}" type="radio">{{__('lang.boy')}}
+                <input class="mb-1" name="gender" value="{{$gender['male']}}" type="radio">{{__('lang.male')}}
             </div>
             <div class="col-md-1">
-                <input class="mb-0" name="gender" value="{{$gender['girl']}}" type="radio">{{__('lang.girl')}}
+                <input class="mb-0" name="gender" value="{{$gender['female']}}" type="radio">{{__('lang.female')}}
             </div>
         @endif
       <div class="col-12">

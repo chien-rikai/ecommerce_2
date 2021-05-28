@@ -115,5 +115,14 @@ return [
     'create-user-success' => 'Tạo tài khoản mới thành công',
     'create-user-fail' => 'Tạo tài khoản mơi không thành công',
     
+
+    'remove'=>'Xóa',
+    'image' =>'Ảnh',
+    'product'=>'Tên sản phẩm',
+    'unit-price'=>'Đơn giá',
+    'quantity'=>'Số lượng',
+    'billing-detail'=>'Chi tiết hóa đơn',
+    'note'=>'Ghi chú',
+    'your-order'=>'Đơn hàng của bạn'
 ]
 ?>

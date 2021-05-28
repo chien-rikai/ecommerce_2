@@ -7,6 +7,8 @@ use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\LoginController;
 use App\Http\Controllers\Web\RegisterController;
+use App\Http\Controllers\Web\PaymentController;
+use App\Http\Controllers\Web\ProductController as WebProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +33,15 @@ Route::group(['middleware' => 'locale'], function() {
      *  Route for home page
      *  */  
     Route::resource('home', HomeController::class);
+    /*
+     *  Route for product page
+     *  */  
+    Route::resource('product', WebProductController::class,['as'=>'web']);
+    /*
+    /*
+     *  Route for payment page
+     *  */  
+    Route::resource('payment', PaymentController::class);
     /*
      * Change language for website 
      * */

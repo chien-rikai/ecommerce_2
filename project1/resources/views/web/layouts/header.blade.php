@@ -91,8 +91,13 @@
               <li class="hm-minicart">
                 <div class="hm-minicart-trigger">
                   <span class="item-icon"></span>
-                  <span class="item-text">£80.00
-                    <span class="cart-item-count">2</span>
+                  <span class="item-text">
+                  @if($cart!=null)
+                      {{$cart['total']}}
+                      <span class="cart-item-count">2</span>
+                  @else
+                     0 (VND)
+                  @endif
                   </span>
                 </div>
                 <span></span>

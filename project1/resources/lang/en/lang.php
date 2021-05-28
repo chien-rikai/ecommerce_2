@@ -140,6 +140,9 @@ return [
     'quantity'=>'Quantity',
     'billing-detail'=>'Billing Detail',
     'note'=>'Note',
-    'your-order'=>'Your order'
+    'your-order'=>'Your order',
+
+    'must-login-to-add'=>'Must login to add to cart!',
+    'add-to-cart-success'=>'Add product to cart successfully!'
 ]   
 ?>

@@ -14,7 +14,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('web\page\product_detail');
+        
+        return view('web.page.product_detail');
     }
     /**
      * Show product detail by id.
@@ -23,13 +24,12 @@ class ProductController extends Controller
      */
     public function show($id){
         $product = $this->find($id);
-        return view('web\page\product_detail',compact(['product']));
+        return view('web.page.product_detail',compact(['product']));
     }
     /**
      * function find product
-     * @return array 
      */
-    public function find($id){
+    public static function find($id){
         $product = Product::find($id);
         if(blank($product)){
             return back()->with('fail', __('lang.product-not-found'));

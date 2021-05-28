@@ -19,7 +19,9 @@ class Product extends Model
     public function detailOrders(){
         return $this->hasMany(DetailOrder::class);
     }
-
+    public function getNewPriceAttribute(){
+        return ceil($this->price*(1-$this->discount*0.01));
+    }
     public function productImport(){
         $path = resource_path('file/*.csv');
 

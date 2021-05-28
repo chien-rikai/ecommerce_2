@@ -771,6 +771,7 @@ textarea:focus {
 }
 .product-active:hover {
 	overflow: visible;
+	z-index: 5;
 }
 .product-area .owl-carousel .owl-item {
 	padding: 25px 0;
@@ -1071,7 +1072,10 @@ textarea:focus {
 .product-details-thumbs .sm-image {
   cursor: pointer;
 }
-
+.product-img-home{
+	width: 180px;
+	height: 250px;
+}
 .product-details-view-content .product-info h2 {
   font-size: 18px;
   letter-spacing: -.025em;

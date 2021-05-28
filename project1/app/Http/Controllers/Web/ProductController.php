@@ -16,7 +16,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('web\page\product_detail');
+        
+        return view('web.page.product_detail');
     }
     /**
      * Show product detail by id.
@@ -49,9 +50,8 @@ class ProductController extends Controller
 
     /**
      * function find product
-     * @return array 
      */
-    public function find($id){
+    public static function find($id){
         $product = Product::find($id);
         $salePrice = $product->price * ((100 - $product->discount)/100);
         $product->setAttribute('sale_price',$salePrice);

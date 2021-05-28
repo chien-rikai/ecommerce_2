@@ -158,5 +158,7 @@ return [
     'review-success' => 'Review successful',
     'review-fail' => 'Review failed',
 
+    'must-login-to-add'=>'Must login to add to cart!',
+    'add-to-cart-success'=>'Add product to cart successfully!'
 ]   
 ?>

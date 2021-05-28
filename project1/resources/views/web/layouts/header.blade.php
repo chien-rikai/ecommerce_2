@@ -81,19 +81,18 @@
           <div class="header-middle-right">
             <ul class="hm-menu">
               <!-- Begin Header Middle Wishlist Area -->
-              <li class="hm-wishlist">
-                <a href="">
-                  <span class="cart-item-count wishlist-item-count">0</span>
-                  <i class="fa fa-heart-o"></i>
-                </a>
-              </li>
               <!-- Header Middle Wishlist Area End Here -->
               <!-- Begin Header Mini Cart Area -->
               <li class="hm-minicart">
                 <div class="hm-minicart-trigger">
                   <span class="item-icon"></span>
-                  <span class="item-text">£80.00
-                    <span class="cart-item-count">2</span>
+                  <span class="item-text">
+                  @if($cart!=null)
+                      {{number_format($cart['total'],0,'','.')}}(VND)
+                      <span class="cart-item-count">2</span>
+                  @else
+                     0 (VND)
+                  @endif
                   </span>
                 </div>
                 <span></span>

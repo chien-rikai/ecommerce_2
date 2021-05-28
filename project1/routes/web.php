@@ -4,6 +4,7 @@ use App\Http\Controllers\Admins\CategoryController;
 use App\Http\Controllers\Admins\OrderController;
 use App\Http\Controllers\Admins\ProductController;
 use App\Http\Controllers\Admins\UserController;
+use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\LoginController;
 use App\Http\Controllers\Web\MemberController;
@@ -43,6 +44,10 @@ Route::group(['middleware' => 'locale'], function() {
     Route::resource('product', WebProductController::class,['as'=>'web']);
     Route::post('review/{id}', [WebProductController::class, 'review'])->name('review')->middleware('auth');
     Route::get('review/{star}', [WebProductController::class, 'reviewStar'])->name('review.star');
+    /*
+     *  Route for cart page
+     *  */  
+    Route::resource('cart', CartController::class);
     /*
     /*
      *  Route for payment page

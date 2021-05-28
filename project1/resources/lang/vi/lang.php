@@ -56,7 +56,7 @@ return [
     'sale' => 'Giảm giá (%)', 
     'product-list' => 'Danh sách sản phẩm',
     'product-type' => 'Loại sản phẩm',
-    'view' => 'Số lượng xem',
+    'view' => 'Lượt xem',
     'delete-product' => 'Bạn có chắc xóa sản phẩm này không?',
     'edit-product' => 'Sửa sản phẩm',
     'sale-price' => 'Giá giảm giá (đ) :',
@@ -156,5 +156,7 @@ return [
     'review' => 'Đánh giá',
     'review-success' => 'Đánh giá thành công',
     'review-fail' => 'Đánh giá thất bại',
+    'must-login-to-add'=>'Cần đăng nhập để thêm sản phẩm vào giỏ hàng',
+    'add-to-cart-success'=>'Thêm sản phẩm vào giỏ hàng thành công!'
 ]
 ?>

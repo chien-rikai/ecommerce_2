@@ -3,6 +3,11 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-9 order-1 order-lg-2">
+            <div class="single-banner shop-page-banner">
+                <a href="#">
+                    <img src="images/banner.jpg" alt="Banner">
+                </a>
+            </div>
             <!-- shop-top-bar start -->
             <div class="shop-top-bar mt-30">
                 <div class="shop-bar-inner">
@@ -36,9 +41,14 @@
                 <div class="tab-content">
                     <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
                         <div class="product-area shop-product-area">
-                                <!--CODE -->
+                            <!--CODE -->
+                            @include('common.error')
+                            @include('common.success')
+                            @include('common.fail')
+                            @if(!blank($products))
                                 @include('web.shared.product_element')
-                                <!--CODE -->
+                            @endif
+                            <!--CODE -->
                         </div>
                     </div>
                     <!--Pagination start-->

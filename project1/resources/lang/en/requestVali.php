@@ -29,6 +29,11 @@ return [
     'min-password' => 'Password must not be less than 6 characters',
     'required-confirm-password' => 'Password re-enter field cannot be left blank',
     'same-confirm-password' => 'password incorrect',
+    'max-first-name' => 'First name cannot exceed 40 characters',
+    'max-last-name' => 'Last name cannot exceed 40 characters',
+    'number-phone' => 'Phone number must be a 10 digit number',
+    'date-birthday' => 'Incorrect date of birth',
+    'enum-value-gender' => 'Gender value is incorrect',
     
 ]
 ?>

@@ -99,6 +99,21 @@ return [
     'password' => 'Mật khẩu',
     'enter-password' => 'Mời nhập mật khẩu',
     'login-fail' => 'Tên đăng nhập hoặc mật khẩu không chính xác',
+    'profile' => 'Thông tin cá nhân',
+    'first-name' => 'Tên',
+    'last-name' => 'Họ',
+    'enter-first-name' => 'Mời nhập tên',
+    'enter-last-name' => 'Mời nhập họ',
+    'enter-number-phone' => 'Mời nhập số điện thoại',
+    'enter-address' => 'Mời nhập địa chỉ',
+    'birthday' => 'Ngày sinh',
+    'gender' => 'Giới tính',
+    'update-profile-success' => 'Cập nhật thông tin cá nhân thành công',
+    'update-profile-fail' => 'Cập nhật thông tin cá nhân thất bại',
+    'male' => 'Nam',
+    'female' => 'Nữ', 
+    'next-page-fail' => 'Chuyển trang thất bại',
+
 
     //I18n layout home page
     'checkout'=>'Đặt',

@@ -1094,6 +1094,12 @@ textarea:focus {
   line-height: 27px;
   color: #e80f0f;
 }
+.product-details-view-content .product-info .price-box .new-price-1 {
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 27px;
+	color: #756d6d;
+  }
 .product-details-view-content .content-center .product-variants {
   display: -webkit-box;
   display: -ms-flexbox;

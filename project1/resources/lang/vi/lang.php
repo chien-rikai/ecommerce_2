@@ -157,6 +157,8 @@ return [
     'review-success' => 'Đánh giá thành công',
     'review-fail' => 'Đánh giá thất bại',
     'must-login-to-add'=>'Cần đăng nhập để thêm sản phẩm vào giỏ hàng',
-    'add-to-cart-success'=>'Thêm sản phẩm vào giỏ hàng thành công!'
+    'add-to-cart-success'=>'Thêm sản phẩm vào giỏ hàng thành công!',
+     'share' => 'Chia sẻ',
+     'comment' => 'Bình luận',
 ]
 ?>

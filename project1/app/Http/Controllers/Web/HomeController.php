@@ -21,7 +21,8 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('web\home\index');
+        $products = Product::all();
+        return view('web.home.index',compact(['products']));
     }
     /**
      * Show products by category.

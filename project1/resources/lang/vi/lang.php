@@ -114,6 +114,18 @@ return [
     'female' => 'Nữ', 
     'next-page-fail' => 'Chuyển trang thất bại',
 
+    'change-password' => 'Đổi mật khẩu',
+    'change' => 'Thay đổi',
+    'password-old' => 'Mật khẩu cũ',
+    'enter-password-old' => 'Mời nhập mật khẩu cũ',
+    'password-new' => 'Mật khẩu mới',
+    'enter-password-new' => 'Mời nhập mật khẩu mới',
+    'confirm-password-new' => 'nhập lại mật khẩu',
+    'enter-confirm-password-new' => 'Mời nhập lại mật khẩu',
+    'change-password-success' => 'Thay đổi mật khẩu thành công',
+    'change-password-fail' => 'Thay đổi mật khẩu thất bại',
+    'password-fail' => 'Mật khẩu cũ không chính xác',
+
 
     //I18n layout home page
     'checkout'=>'Đặt',

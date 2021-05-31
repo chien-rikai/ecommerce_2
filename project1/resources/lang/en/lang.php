@@ -114,6 +114,16 @@ return [
     'male' => 'Male',
     'female' => 'Female', 
     'next-page-fail' => 'Next page failed',
+    'change-password' => 'Change password',
+    'change' => 'Change',
+    'password-old' => 'Password old',
+    'enter-password-old' => 'Enter password old',
+    'password-new' => 'Password new',
+    'enter-password-new' => 'Enter password new',
+    'change-password-success' => 'Change password successfully',
+    'change-password-fail' => 'Password change failed',
+    'password-fail' => 'Password old is incorrect',
+  
 
 
     //I18n layout home page
@@ -130,6 +140,7 @@ return [
     'enter-confirm-password' => 'Re-enter password',
     'create-user-success' => 'Successfully created new account',
     'create-user-fail' => 'New account creation failed',
+    
 
     'detail'=>'Detail',
     //I18n layout cart page

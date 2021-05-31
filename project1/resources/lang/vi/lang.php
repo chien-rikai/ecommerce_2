@@ -150,6 +150,11 @@ return [
     'quantity'=>'Số lượng',
     'billing-detail'=>'Chi tiết hóa đơn',
     'note'=>'Ghi chú',
-    'your-order'=>'Đơn hàng của bạn'
+    'your-order'=>'Đơn hàng của bạn',
+
+    //I18n layout product detail
+    'review' => 'Đánh giá',
+    'review-success' => 'Đánh giá thành công',
+    'review-fail' => 'Đánh giá thất bại',
 ]
 ?>

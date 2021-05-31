@@ -151,6 +151,12 @@ return [
     'quantity'=>'Quantity',
     'billing-detail'=>'Billing Detail',
     'note'=>'Note',
-    'your-order'=>'Your order'
+    'your-order'=>'Your order',
+
+    //I18n layout product detail
+    'review' => 'Review',
+    'review-success' => 'Review successful',
+    'review-fail' => 'Review failed',
+
 ]   
 ?>

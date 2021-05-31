@@ -41,6 +41,8 @@ Route::group(['middleware' => 'locale'], function() {
      *  Route for product page
      *  */  
     Route::resource('product', WebProductController::class,['as'=>'web']);
+    Route::post('review/{id}', [WebProductController::class, 'review'])->name('review')->middleware('auth');
+    Route::get('review/{star}', [WebProductController::class, 'reviewStar'])->name('review.star');
     /*
     /*
      *  Route for payment page

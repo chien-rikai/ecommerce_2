@@ -21,9 +21,10 @@ class CreateProductsTable extends Migration
             $table->string('url_img');
             $table->boolean('status')->unsigned()->default(ProductStatus::InStock);
             $table->integer('view',false,false)->default(0);
+            $table->integer('review',false,false)->default(0);
             $table->integer('price',false,false);
             $table->tinyInteger('discount');
-            $table->tinyInteger('star_rating')->default(0);
+            $table->float('star_rating')->default(0);
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();

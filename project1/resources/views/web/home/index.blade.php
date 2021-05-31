@@ -5,7 +5,7 @@
         <div class="col-lg-9 order-1 order-lg-2">
             <div class="single-banner shop-page-banner">
                 <a href="#">
-                    <img src="images/banner.jpg" alt="Banner">
+                    <img src="/images/banner.jpg" alt="Banner">
                 </a>
             </div>
             <!-- shop-top-bar start -->

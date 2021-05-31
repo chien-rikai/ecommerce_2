@@ -46,6 +46,7 @@ class ProductController extends Controller
     public function reviewStar($star){
         Session::put('Star', $star);
         return view('web.table.review_star');
+        return view('web.page.product_detail',compact(['product']));
     }
 
     /**

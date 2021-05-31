@@ -162,5 +162,11 @@ return [
     'add-to-cart-success'=>'Add product to cart successfully!',
     'share' => 'Share',
     'comment' => 'Comments',
+    'must-login-to-add'=>'Must login to add to cart!',
+    'add-to-cart-success'=>'Add product to cart successfully!',
+    'view-full-cart'=>'View full cart',
+    'update-cart-success'=>'Update cart successfully!',
+    'product-not-exists'=>'Product does not exists!',
+    'product-remove-success'=>'Remove product successfully!'
 ]   
 ?>

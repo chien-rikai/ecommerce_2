@@ -9,7 +9,7 @@
       <div class="product-details-left">
         <div class="product-details-images slider-navigation-1">
           <div class="lg-image">
-            <img src="/images/{{$product->url_img}}" alt="product image">
+           <img src="/images/{{$product->url_img}}" alt="product image">
           </div>
         </div>
       </div>
@@ -44,8 +44,7 @@
           <div class="product-additional-info">
             <div class="product-social-sharing">
               <ul>
-                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
-                <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
+                <div class="fb-share-button" data-href="http://web.com/product/{{$product->id}}" data-layout="button_count" data-size="small">{{__('lang.share')}}</div>
               </ul>
             </div>
           </div>
@@ -58,6 +57,10 @@
         </div>
       </div>
     </div>
+  </div>
+  <div id="facebook-comments" class="col-md-6">
+    <h3 id="reply-title">{{__('lang.comment')}}</h3>
+    <fb:comments href="http://web.com/product/{{$product->id}}" num_posts="5" width="100%"></fb:comments>
   </div>
 </div>
 

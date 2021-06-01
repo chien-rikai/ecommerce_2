@@ -24,21 +24,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'locale'], function() {
-    Route::resource('login', LoginController::class, [
-        'only' => ['index']
-    ]);
-    Route::post('login', [LoginController::class, 'postLogin'])->name('login.post');
-    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-    Route::post('register', [RegisterController::class, 'store'])->name('register');
+Route::group(['middleware' => 'locale'], function () {
+    Route::prefix('web.com')->group(function () {
+        Route::resource('login', LoginController::class, [
+            'only' => ['index']
+        ]);
+        Route::post('login', [LoginController::class, 'postLogin'])->name('login.post');
+        Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+        Route::post('register', [RegisterController::class, 'store'])->name('register');
 
-    Route::get('member/change-password', [MemberController::class, 'changePassword'])->name('change.password');
-    Route::post('member/change-passowrd/{id}',[MemberController::class, 'postChangePassword'])->name('post.change.password');
-    /*
+        Route::get('member/change-password', [MemberController::class, 'changePassword'])->name('change.password');
+        Route::post('member/change-passowrd/{id}', [MemberController::class, 'postChangePassword'])->name('post.change.password');
+        /*
      *  Route for home page
-     *  */  
-    Route::resource('home', HomeController::class);
-    /*
+     *  */
+        Route::resource('home', HomeController::class);
+        /*
      *  Route for product page
      *  */  
     Route::resource('product', WebProductController::class,['as'=>'web']);
@@ -51,21 +52,22 @@ Route::group(['middleware' => 'locale'], function() {
     /*
     /*
      *  Route for payment page
-     *  */  
-    Route::resource('payment', PaymentController::class);
-    /*
+     *  */
+        Route::resource('payment', PaymentController::class);
+        /*
      * Change language for website 
      * */
-    
-    Route::resource('member', MemberController::class,[
-        'only' => ['index','update']
-    ]);
+        Route::resource('member', MemberController::class, [
+            'only' => ['index', 'update']
+        ]);
 
-    Route::get('change-language/{language}', 'App\Http\Controllers\Web\HomeController@changeLanguage')
-        ->name('user.change-language');
+        Route::get('change-language/{language}', 'App\Http\Controllers\Web\HomeController@changeLanguage')
+            ->name('user.change-language');
+    });
+
     /*
      *  Route for admin page
-     *  */    
+     *  */
     Route::prefix('admin')->group(function () {
         /**
          * Manage all products:
@@ -74,7 +76,7 @@ Route::group(['middleware' => 'locale'], function() {
          */
         Route::get('product/getProductData', [ProductController::class, 'getProductData'])->name('product.getdata');
         Route::post('product/productImport', [ProductController::class, 'productImport'])->name('product.import');
-        Route::resource('product', ProductController::class,[
+        Route::resource('product', ProductController::class, [
             'except' => ['show']
         ]);
         /**
@@ -82,11 +84,11 @@ Route::group(['middleware' => 'locale'], function() {
          * include: show list categories,
          * create new, update and destroy
          */
-        Route::resource('category', CategoryController::class,[
-            'names'=>[
+        Route::resource('category', CategoryController::class, [
+            'names' => [
                 'store' => 'category.add',
-                'destroy'=>'category.delete'
-                ]
+                'destroy' => 'category.delete'
+            ]
         ]);
         /**
          * Manage all users:
@@ -94,8 +96,8 @@ Route::group(['middleware' => 'locale'], function() {
          *  filter user blocked/non block,
          *  block/unblock a user
          */
-        Route::resource('user', UserController::class,[
-            'names'=>[
+        Route::resource('user', UserController::class, [
+            'names' => [
                 'index' => 'user.view'
             ]
         ]);
@@ -107,6 +109,6 @@ Route::group(['middleware' => 'locale'], function() {
         /**
          * Filter order by status of order
          */
-        Route::get('order/filter/{status}',[OrderController::class,'filter'])->name('order.filter');
+        Route::get('order/filter/{status}', [OrderController::class, 'filter'])->name('order.filter');
     });
 });

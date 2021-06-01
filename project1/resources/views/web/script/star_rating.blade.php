@@ -25,7 +25,7 @@ $(document).ready(function(){
     function Review(star){
       console.log(star);
       $.ajax({
-        url: "/review/"+star,
+        url: "/web.com/review/"+star,
         type: "GET",
       }).done(function(response){
         $("#review-star").empty();

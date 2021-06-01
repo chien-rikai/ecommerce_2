@@ -8,7 +8,7 @@
         <div class="single-product-wrap">
             <div class="product-image">
                 <a href="">
-                    <img class='product-img-home' src="images/{{$product->url_img}}" alt="Product Image">
+                    <img class='product-img-home' src="/images/{{$product->url_img}}" alt="Product Image">
                 </a>
                 <span class="sticker">{{__('lang.new')}}</span>
             </div>

@@ -11,7 +11,7 @@
                                 <th class="li-product-remove">{{__('lang.remove')}}</th>
                                 <th class="li-product-thumbnail">{{__('lang.image')}}</th>
                                 <th class="cart-product-name">{{__('lang.product')}}</th>
-                                <th class="li-product-price">{{__('lang.unit-price')}}</th>
+                                <th class="li-product-price">{{__('lang.unit-price')}}(VND)</th>
                                 <th class="li-product-quantity">{{__('lang.quantity')}}</th>
                                 <th class="li-product-subtotal">{{__('lang.total')}}</th>
                             </tr>
@@ -36,9 +36,9 @@
                         <div class="cart-page-total">
                             <h2>{{__('lang.total')}}</h2>
                             <ul>
-                                <li>{__('lang.total')}} <span>$130.00</span></li>
+                             <li>{{__('lang.total')}} <span id="totals">{{$cart['total']}}</span></li>
                             </ul>
-                            <a href="#">{__('lang.checkout')}}</a>
+                            <a href="#">{{__('lang.checkout')}}</a>
                         </div>
                     </div>
                 </div>

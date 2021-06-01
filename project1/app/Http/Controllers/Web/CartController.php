@@ -18,11 +18,11 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $user = $this->findUser();
+        $user = $this->loadUser();
         if(blank($user)){
             abort(404);
         }
-        $cart = $this->find($user);
+        $cart = $this->findCart();
         return view('web.page.cart',compact(['cart']));
     }
     /**
@@ -30,22 +30,53 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id){
-        $user = $this->findUser();
+    public function store(Request $request){
+        $user = $this->loadUser();
         if(blank($user)){
             return redirect()->back()->with('fail',__('lang.must-login-to-add'));
         }
-        $product = Product::find($id);
+        $product = Product::find($request->id);
         if($product->status==ProductStatus::OutOfStock){
             return redirect()->back()->with('fail',__('lang.out-stock'));
         }
-        $cart = $this->find($user);
-
+        $cart = $this->findCart();
         $cart = $this->addToCart($cart,$product);
+        Session::put('cart_'.Auth::user()->id,$cart);
+        return redirect()->back()->with('success', __('lang.add-to-cart-success'));
+    }
+    /**
+     * Add product to cart.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,$id){
+        $cart = $this->findCart();
+        $product = Product::find($id);
+        if($product->status==ProductStatus::OutOfStock){
+            return response()->json(['hasUpdate'=>false,'message'=>__('lang.out-stock')]);
+        }
+        
+        $cart = $this->updateCart($cart,$product,$request->quantity);
 
         Session::put('cart_'.Auth::user()->id,$cart);
-        
-        return redirect()->back()->with('success', __('lang.add-to-cart-success'));
+
+        return response()->json(['cart'=>$cart,'hasUpdate'=>true,'message'=>__('lang.update-cart-success')]);
+    }
+    /*
+    * function remove product from cart
+    */
+    public function destroy($id){
+        $cart= $this->findCart();
+        if(blank($cart[$id])){
+            return response()->json(['message'=>__('lang.product-not-exists'),'hasRemove'=>false]);
+        }
+        else{
+            unset($cart[$id]);
+            $cart['total'] = $this->getTotalPrice($cart);
+            Session::put('cart_'.Auth::user()->id,$cart);
+            return response()->json(['cart'=>$cart,'message'=>__('lang.product-remove-success'),'hasRemove'=>true]);
+        }
+
     }
     /*
     * function add to cart
@@ -79,13 +110,23 @@ class CartController extends Controller
         }
         $cart['total'] = $this->getTotalPrice($cart);
         return $cart;
-    }
+    }   
+
+    /*
+    * function update cart by product
+    */
+    public function updateCart($cart,$product,$quantity){
+        $cart[$product->id]['quantity'] =$quantity;
+        $cart[$product->id]['total']= $cart[$product->id]['base_price'] * $cart[$product->id]['quantity'];
+        $cart['total'] = $this->getTotalPrice($cart);
+        return $cart;
+    } 
     /**
      * Get user.
      *
      * @return $user
      */
-    public function findUser(){
+    public function loadUser(){
         return Auth::user();
     }
     /**
@@ -93,7 +134,11 @@ class CartController extends Controller
      *
      * @return $cart
      */
-    public function find($user){
+    public function findCart(){
+        $user = $this->loadUser();
+        if(blank($user)){
+            return response()->json(["message"=>__('lang.must-login-to-add')], 403);
+        }
         return Session::get('cart_'.$user->id);
     }
     /**

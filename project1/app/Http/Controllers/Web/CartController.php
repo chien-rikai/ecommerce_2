@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth')->except('store');
+    }
     /**
      * Get cart of user.
      *
@@ -126,7 +129,7 @@ class CartController extends Controller
      *
      * @return $user
      */
-    public function loadUser(){
+    public static function loadUser(){
         return Auth::user();
     }
     /**
@@ -134,8 +137,8 @@ class CartController extends Controller
      *
      * @return $cart
      */
-    public function findCart(){
-        $user = $this->loadUser();
+    public static function findCart(){
+        $user = CartController::loadUser();
         if(blank($user)){
             return response()->json(["message"=>__('lang.must-login-to-add')], 403);
         }

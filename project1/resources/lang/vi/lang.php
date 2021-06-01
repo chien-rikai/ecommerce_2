@@ -165,6 +165,9 @@ return [
     'view-full-cart'=>'Chi tiết giỏ hàng',
     'update-cart-success'=>'Cập nhật giỏ hàng thành công!',
     'product-not-exists'=>'Sản phẩm không tồn tại trong giỏ hàng!',
-    'product-remove-success'=>'Xóa sản phẩm khỏi giỏ hàng thành công!'
+    'product-remove-success'=>'Xóa sản phẩm khỏi giỏ hàng thành công!',
+    'cart-empty'=>'Giỏ hàng trống',
+    'order-fail'=>'Đặt hàng thất bại',
+    'order-success'=>'Đặt hàng thành công'
 ]
 ?>

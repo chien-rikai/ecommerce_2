@@ -46,10 +46,10 @@
                 <div class="add-actions">
                     <ul class="add-actions-link">
                         <li class="add-cart active">
-                            <form action="{{route('cart.update',[$product->id])}}" method="POST">
+                            <form action="{{route('cart.store',[$product->id])}}" method="POST">
                                 @csrf
-                                @Method('PUT')
-                                <input type="hidden" value="{{$product->id}}">
+                                @Method('POST')
+                                <input type="hidden" name="id" value="{{$product->id}}">
                                 <input type="submit" value="{{__('lang.add-to-cart')}}">
                             </form>
                         </li>

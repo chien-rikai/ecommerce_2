@@ -11,6 +11,10 @@ use BenSampo\Enum\Enum;
  */
 final class OrderStatusEnum extends Enum
 {
+    const processing =   1;
+    const shipping =   2;
+    const completed =   3;
+    const cancelled =   4;
     /**
      * Return a array with all status as key and value
      */

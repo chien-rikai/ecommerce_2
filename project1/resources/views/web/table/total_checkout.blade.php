@@ -2,25 +2,26 @@
     <thead>
         <tr>
             <th class="cart-product-name">{{__('lang.product')}}</th>
-            <th class="cart-product-total">{{__('lang.total')}}</th>
+            <th class="cart-product-total">{{__('lang.total')}}(VND)</th>
         </tr>
     </thead>
     <tbody>
+      @if(!blank($cart))
+      @foreach($cart as $key=>$value)
+      @if($key!='total')
         <tr class="cart_item">
-            <td class="cart-product-name"> Vestibulum suscipit<strong class="product-quantity"> ×
-                    1</strong></td>
-            <td class="cart-product-total"><span class="amount">£165.00</span></td>
+            <td class="cart-product-name">{{$value['name']}}<strong class="product-quantity"> ×
+                    {{$value['quantity']}}</strong></td>
+            <td class="cart-product-total"><span class="amount">{{number_format($value['total'],0,''.',')}}</span></td>
         </tr>
-        <tr class="cart_item">
-            <td class="cart-product-name"> Vestibulum suscipit<strong class="product-quantity"> ×
-                    1</strong></td>
-            <td class="cart-product-total"><span class="amount">£165.00</span></td>
-        </tr>
+      @endif
+      @endforeach
+      @endif     
     </tbody>
     <tfoot>
         <tr class="order-total">
             <th>{{__('lang.total')}}</th>
-            <td><strong><span class="amount">£215.00</span></strong></td>
+            <td><strong><span class="amount">{{number_format($cart['total'],0,''.',')}}</span></strong></td>
         </tr>
     </tfoot>
 </table>

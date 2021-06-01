@@ -36,27 +36,27 @@ Route::group(['middleware' => 'locale'], function () {
         Route::get('member/change-password', [MemberController::class, 'changePassword'])->name('change.password');
         Route::post('member/change-passowrd/{id}', [MemberController::class, 'postChangePassword'])->name('post.change.password');
         /*
-     *  Route for home page
-     *  */
+        *  Route for home page
+        *  */
         Route::resource('home', HomeController::class);
         /*
-     *  Route for product page
-     *  */  
-    Route::resource('product', WebProductController::class,['as'=>'web']);
-    Route::post('review/{id}', [WebProductController::class, 'review'])->name('review')->middleware('auth');
-    Route::get('review/{star}', [WebProductController::class, 'reviewStar'])->name('review.star');
-    /*
-     *  Route for cart page
-     *  */  
-    Route::resource('cart', CartController::class);
-    /*
-    /*
-     *  Route for payment page
-     *  */
+        *  Route for product page
+        *  */  
+        Route::resource('product', WebProductController::class,['as'=>'web']);
+        Route::post('review/{id}', [WebProductController::class, 'review'])->name('review')->middleware('auth');
+        Route::get('review/{star}', [WebProductController::class, 'reviewStar'])->name('review.star');
+        /*
+         *  Route for cart page
+         *  */  
+        Route::resource('cart', CartController::class);
+        /*
+        /*
+         *  Route for payment page
+         *  */
         Route::resource('payment', PaymentController::class);
         /*
-     * Change language for website 
-     * */
+        * Change language for website 
+        * */
         Route::resource('member', MemberController::class, [
             'only' => ['index', 'update']
         ]);

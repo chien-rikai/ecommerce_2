@@ -1,38 +1,34 @@
-<form action="#">
+@include('common.error')
+@include('common.success')
+@include('common.fail')
+<form action="{{route('payment.store')}}" method="POST" id="checkout-form">
+   @csrf
+    <input type="hidden" name="user_id" value="{{$user->id}}">
     <div class="checkbox-form">
         <h3>{{__('lang.billing-detail')}}</h3>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-9">
                 <div class="checkout-form-list">
                     <label>{{__('lang.customer-name')}} <span class="required">*</span></label>
-                    <input placeholder="" type="text">
+                    <input placeholder="" type="text" name="name" value="{{$user->full_name}}">
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <div class="checkout-form-list">
                     <label>{{__('lang.address')}} <span class="required">*</span></label>
-                    <input placeholder="Street address" type="text">
+                    <input placeholder="Street address" name="address" type="text" value="{{$user->address}}">
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <div class="checkout-form-list">
                     <label>{{__('lang.email')}} <span class="required">*</span></label>
-                    <input placeholder="" type="email">
+                    <input placeholder="" name="email" type="email" value="{{$user->email}}">
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-9">
                 <div class="checkout-form-list">
                     <label>{{__('lang.phone')}} <span class="required">*</span></label>
-                    <input type="text">
-                </div>
-            </div>
-        </div>
-        <div class="different-address">
-            <div class="order-notes">
-                <div class="checkout-form-list">
-                    <label>{{__('lang.note')}}</label>
-                    <textarea id="checkout-mess" cols="30" rows="10"
-                        placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                    <input type="text" name="phone" value="{{$user->phone}}">
                 </div>
             </div>
         </div>

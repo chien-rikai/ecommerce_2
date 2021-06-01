@@ -35,6 +35,8 @@ return [
     'date-birthday' => 'Incorrect date of birth',
     'enum-value-gender' => 'Gender value is incorrect',
     'required-password-old' => 'You have not entered your password old',
-    
+    'max-name' => 'Name no more than 100 characters',
+    'required-address'=>'Please enter receiver\'s address',
+    'max-address'=>'Receiver\'s address no more than 500 character'
 ]
 ?>

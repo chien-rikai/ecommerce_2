@@ -9,11 +9,15 @@
             <div class="your-order">
                 <h3>{{__('lang.your-order')}}</h3>
                 <div class="your-order-table table-responsive">
+                    @if(!blank($cart))
                     @include('web.table.total_checkout')
+                    @else
+                    <p>{{__('lang.cart-empty')}}</p>
+                    @endif
                 </div>
                 <div class="payment-method">
                         <div class="order-button-payment">
-                            <input value="Place order" type="submit">
+                            <input value="Order" type="submit" form="checkout-form">
                         </div>
                     </div>
                 </div>

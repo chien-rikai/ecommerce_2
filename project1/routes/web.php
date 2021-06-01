@@ -11,6 +11,7 @@ use App\Http\Controllers\Web\MemberController;
 use App\Http\Controllers\Web\RegisterController;
 use App\Http\Controllers\Web\PaymentController;
 use App\Http\Controllers\Web\ProductController as WebProductController;
+use App\Http\Controllers\Web\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,19 +41,20 @@ Route::group(['middleware' => 'locale'], function () {
         *  */
         Route::resource('home', HomeController::class);
         /*
-        *  Route for product page
-        *  */  
-        Route::resource('product', WebProductController::class,['as'=>'web']);
-        Route::post('review/{id}', [WebProductController::class, 'review'])->name('review')->middleware('auth');
-        Route::get('review/{star}', [WebProductController::class, 'reviewStar'])->name('review.star');
-        /*
-         *  Route for cart page
-         *  */  
-        Route::resource('cart', CartController::class);
-        /*
-        /*
-         *  Route for payment page
-         *  */
+     *  Route for product page
+     *  */  
+    Route::resource('product', WebProductController::class,['as'=>'web']);
+    Route::post('review/{id}', [WebProductController::class, 'review'])->name('review')->middleware('auth');
+    Route::get('review/{star}', [WebProductController::class, 'reviewStar'])->name('review.star');
+    Route::get('search',[SearchController::class, 'search'])->name('search');
+    /*
+     *  Route for cart page
+     *  */  
+    Route::resource('cart', CartController::class);
+    /*
+    /*
+     *  Route for payment page
+     *  */
         Route::resource('payment', PaymentController::class);
         /*
         * Change language for website 

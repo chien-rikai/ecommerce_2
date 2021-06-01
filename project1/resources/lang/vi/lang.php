@@ -158,8 +158,7 @@ return [
     'review-fail' => 'Đánh giá thất bại',
     'must-login-to-add'=>'Cần đăng nhập để thêm sản phẩm vào giỏ hàng',
     'add-to-cart-success'=>'Thêm sản phẩm vào giỏ hàng thành công!',
-    'share' => 'Chia sẻ',
-    'comment' => 'Bình luận',
+
     'must-login-to-add'=>'Cần đăng nhập để thêm sản phẩm vào giỏ hàng',
     'add-to-cart-success'=>'Thêm sản phẩm vào giỏ hàng thành công!',
     'view-full-cart'=>'Chi tiết giỏ hàng',
@@ -168,6 +167,10 @@ return [
     'product-remove-success'=>'Xóa sản phẩm khỏi giỏ hàng thành công!',
     'cart-empty'=>'Giỏ hàng trống',
     'order-fail'=>'Đặt hàng thất bại',
-    'order-success'=>'Đặt hàng thành công'
+    'order-success'=>'Đặt hàng thành công',
+    'share' => 'Chia sẻ',
+    'comment' => 'Bình luận',
+    'enter-search' => 'Mời nhập từ tìm kiếm',
+    'search-result' => 'Kết quả tìm kiếm',
 ]
 ?>

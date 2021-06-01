@@ -170,6 +170,8 @@ return [
     'product-remove-success'=>'Remove product successfully!',
     'cart-empty'=>'Cart is empty',
     'order-fail'=>'Order fail',
-    'order-success'=>'Order successfully'
+    'order-success'=>'Order successfully',
+    'enter-search' => 'Please enter a search',
+    'search-result' => 'Search results',
 ]   
 ?>

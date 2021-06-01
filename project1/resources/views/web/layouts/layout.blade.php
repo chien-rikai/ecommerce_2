@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/profile.css">
     <!-- CSS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
     <!-- Default theme -->

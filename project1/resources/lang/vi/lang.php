@@ -172,5 +172,7 @@ return [
     'comment' => 'Bình luận',
     'enter-search' => 'Mời nhập từ tìm kiếm',
     'search-result' => 'Kết quả tìm kiếm',
+    'past-order'=>'Đơn hàng đã đặt',
+    'account'=>'Tài khoản',
 ]
 ?>

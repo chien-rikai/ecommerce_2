@@ -22,4 +22,13 @@ class Order extends Model
     public function getTotalCostAttribute(){
         return $this->detailOrders->sum('price');
     }
+    public function getSummaryAttribute(){
+        $details=$this->detailOrders;
+        $result='';
+        foreach($details as $detail){
+            $result= $result.' '.$detail->product->name.' x'.$detail->quantity.',';
+        }
+        return $result;
+    }
+
 }

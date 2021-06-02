@@ -12,6 +12,7 @@ use App\Http\Controllers\Web\RegisterController;
 use App\Http\Controllers\Web\PaymentController;
 use App\Http\Controllers\Web\ProductController as WebProductController;
 use App\Http\Controllers\Web\SearchController;
+use App\Http\Controllers\Web\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,6 +57,10 @@ Route::group(['middleware' => 'locale'], function () {
      *  Route for payment page
      *  */
         Route::resource('payment', PaymentController::class);
+        /*
+         *  Route for profile page
+         *  */
+        Route::resource('profile', ProfileController::class);
         /*
         * Change language for website 
         * */

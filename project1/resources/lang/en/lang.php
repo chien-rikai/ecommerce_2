@@ -173,5 +173,7 @@ return [
     'order-success'=>'Order successfully',
     'enter-search' => 'Please enter a search',
     'search-result' => 'Search results',
+    'past-order'=>'Past orders',
+    'account'=>'Account'
 ]   
 ?>

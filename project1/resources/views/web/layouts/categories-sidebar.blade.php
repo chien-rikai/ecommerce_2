@@ -5,12 +5,9 @@
     <!-- category-sub-menu start -->
     <div class="category-sub-menu">
         <ul>
-            <li class="has-sub"><a href="# ">{{__('lang.cate')}}</a>
-              <!--Code below-->
-                <ul>
-                    <li><a href="#"></a></li>
-                </ul>
-            </li>
+            @foreach($categories as $category)
+            <li><a href="# ">{{$category->name}}</a></li>
+            @endforeach
         </ul>
     </div>
     <!-- category-sub-menu end -->

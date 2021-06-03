@@ -174,5 +174,8 @@ return [
     'search-result' => 'Kết quả tìm kiếm',
     'past-order'=>'Đơn hàng đã đặt',
     'account'=>'Tài khoản',
+    'popular'=>'Phổ biến',
+    'history'=>'Đã xem',
+    'all'=>'Tất cả'
 ]
 ?>

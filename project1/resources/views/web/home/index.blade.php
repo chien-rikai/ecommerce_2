@@ -14,9 +14,15 @@
                     <div class="product-view-mode">
                         <!-- shop-item-filter-list start -->
                         <ul class="nav shop-item-filter-list" role="tablist">
-                            <li class="active" role="presentation"><a aria-selected="true" class="active show"
-                                    data-toggle="tab" role="tab" aria-controls="grid-view" href="#grid-view"><i
-                                        class="fa fa-th"></i></a></li>
+                            <li role="presentation"><a aria-selected="true" class="active show" 
+                                    aria-controls="grid-view" href="#" data-toggle="tab" id="all"><i
+                                        class="fa fa-th">{{ __('lang.all')}}</i></a></li>
+                            <li ><a aria-selected="true" class="show"
+                                    aria-controls="grid-view" href="#" data-toggle="tab" id="popular"><i
+                                        class="fa fa-fire">{{ __('lang.popular')}}</i></a></li>
+                            <li ><a aria-selected="true" class="show" data-toggle="tab"
+                                    aria-controls="grid-view" href="#" id="history"><i
+                                        class="fa fa-history">{{ __('lang.history')}}</i></a></li>
                         </ul>
                         <!-- shop-item-filter-list end -->
                     </div>
@@ -39,21 +45,7 @@
             <!-- shop-products-wrapper start -->
             <div class="shop-products-wrapper">
                 <div class="tab-content">
-                    <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
-                        <div class="product-area shop-product-area">
-                            <!--CODE -->
-                            @include('common.error')
-                            @include('common.success')
-                            @include('common.fail')
-                            @if(!blank($products))
-                                @include('web.shared.product_element')
-                            @endif
-                            <!--CODE -->
-                        </div>
-                    </div>
-                    <!--Pagination start-->
-
-                    <!--Pagination end  -->
+                    @include('web.shared.product_element')
                 </div>
             </div>
             <!-- shop-products-wrapper end -->
@@ -65,4 +57,5 @@
         </div>
     </div>
 </div>
+@include('web.script.change_view_type')
 @endsection

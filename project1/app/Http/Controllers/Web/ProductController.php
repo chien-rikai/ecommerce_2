@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Web;
 use App\Enums\ProductStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Services\HistoryService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
@@ -27,8 +29,12 @@ class ProductController extends Controller
     public function show($id){
         Session::put('url-back',url()->previous());
         $product = $this->find($id);
+        if(!Session::has('product_'.$id)){
+            $product->increment('view');
+            Session::put('product_'.$id,1);
+        }
+        HistoryService::saveHistoryView($product);
         $status = ['outofstock' => ProductStatus::OutOfStock, 'instock' => ProductStatus::InStock];
-
         return view('web\page\product_detail',compact(['product','status']));
     }
 
@@ -54,8 +60,6 @@ class ProductController extends Controller
      */
     public static function find($id){
         $product = Product::find($id);
-        $salePrice = $product->price * ((100 - $product->discount)/100);
-        $product->setAttribute('sale_price',$salePrice);
         if(blank($product)){
             return redirect(Session::get('url-back'))->with('fail', __('lang.product-not-found'));
         }

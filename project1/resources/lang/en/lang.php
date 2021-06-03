@@ -174,6 +174,9 @@ return [
     'enter-search' => 'Please enter a search',
     'search-result' => 'Search results',
     'past-order'=>'Past orders',
-    'account'=>'Account'
+    'account'=>'Account',
+    'popular'=>'Popular',
+    'history'=>'History',
+    'all'=>'All'
 ]   
 ?>

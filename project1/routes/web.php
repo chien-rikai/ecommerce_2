@@ -41,6 +41,7 @@ Route::group(['middleware' => 'locale'], function () {
         *  Route for home page
         *  */
         Route::resource('home', HomeController::class);
+        Route::get('home/fetch/{type}',[HomeController::class,'fetch'])->name('home.fetch');
         /*
      *  Route for product page
      *  */  

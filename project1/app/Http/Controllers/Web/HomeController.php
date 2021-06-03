@@ -9,8 +9,10 @@ use App\Models\Product;
 use App\Models\User;
 
 use App\Http\Controllers\Controller;
+use App\Services\HistoryService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -21,16 +23,28 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $products = Product::all();
-        return view('web.home.index',compact(['products']));
+        $products = Product::paginate(30);
+        $type='all';
+        return view('web.home.index',compact(['products','type']));
     }
     /**
      * Show products by category.
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($category){
-
+    public function fetch($type){
+        switch($type){
+            case 'all': 
+                $products = Product::paginate(30);
+                break;
+            case 'popular':
+                $products = Product::orderBy('view','desc')->paginate(30);
+                break;
+            case 'history': 
+                $products = HistoryService::getHistoryView();
+                break;
+        } 
+        return view('web.shared.product_element',compact(['products','type']));
     }
     /**
      * Change language.
@@ -43,4 +57,5 @@ class HomeController extends Controller
         Session::put('website_language', $language);
         return redirect()->back();
     }
+    
 }

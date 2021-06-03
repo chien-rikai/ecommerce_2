@@ -24,7 +24,7 @@
             </ul>
           </div>
           <div class="price-box pt-20">
-            <span class="new-price new-price-2">{{number_format($product->sale_price)}}{{__('lang.vnd')}}</span>
+            <span class="new-price new-price-2">{{number_format($product->new_price)}}{{__('lang.vnd')}}</span>
             <span class="new-price-1"><del>{{number_format($product->price)}}{{__('lang.vnd')}}</del></span>
           </div>
 

@@ -1,69 +1,73 @@
-<?php $column = 0?>
-@foreach($products as $product)
-@if($column % 3 ==0)
-<div class="row">
-    @endif
-    <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
-        <!-- single-product-wrap start -->
-        <div class="single-product-wrap">
-            <div class="product-image">
-                <a href="">
-                    <img class='product-img-home' src="/images/{{$product->url_img}}" alt="Product Image">
-                </a>
-                <span class="sticker">{{__('lang.new')}}</span>
-            </div>
-            <div class="product_desc">
-                <div class="product_desc_info">
-                    <div class="product-review">
-                        <h5 class="manufacturer">
-                            <a href="">{{__('lang.view')}}: {{$product->view}}</a>
-                        </h5>
-                        <div class="rating-box">
-                            <ul class="rating">
-                                <li><i class="fa fa-star-o"></i></li>
-                                <li><i class="fa fa-star-o"></i></li>
-                                <li><i class="fa fa-star-o"></i></li>
-                                <li class="no-star"><i class="fa fa-star-o"></i>
-                                </li>
-                                <li class="no-star"><i class="fa fa-star-o"></i>
+<input type="hidden" value="" name="page" id="page">
+<input type="hidden" value="{{$type}}" class="type_view" name="type" id="{{$type}}">
+<div id="grid-view" class="tab-pane fade active show" role="tabpanel">
+    <div class="product-area shop-product-area">
+        @if(!blank($products))
+        <div class="row">
+            @foreach($products as $product)
+            <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
+                <!-- single-product-wrap start -->
+                <div class="single-product-wrap">
+                    <div class="product-image">
+                        <a href="">
+                            <img class='product-img-home' src="/images/{{$product->url_img}}" alt="Product Image">
+                        </a>
+                        <span class="sticker">{{__('lang.new')}}</span>
+                    </div>
+                    <div class="product_desc">
+                        <div class="product_desc_info">
+                            <div class="product-review">
+                                <h5 class="manufacturer">
+                                    <a href="">{{__('lang.view')}}: {{$product->view}}</a>
+                                </h5>
+                                <div class="rating-box">
+                                    @include('web.form.rating_box')
+                                </div>
+                            </div>
+                            <h4><a class="product_name" href="{{route('web.product.show',[$product->id])}}">
+                                    {{$product->name}}
+                                </a>
+                            </h4>
+                            <div class="price-box">
+                                <!--product price-->
+                                <span
+                                    class="new-price new-price-2">{{number_format($product->new_price,0,'','.')}}(VND)</span>
+                                @if($product->discount!==0)
+                                <span class="old-price">{{number_format($product->price,0,'','.')}}</span>
+                                <span class="discount-percentage">-{{$product->discount}}%</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="add-actions">
+                            <ul class="add-actions-link">
+                                <li class="add-cart active">
+                                    <form action="{{route('cart.store',[$product->id])}}" method="POST">
+                                        @csrf
+                                        @Method('POST')
+                                        <input type="hidden" name="id" value="{{$product->id}}">
+                                        <input type="submit" value="{{__('lang.add-to-cart')}}">
+                                    </form>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <h4><a class="product_name" href="{{route('web.product.show',[$product->id])}}">
-                            {{$product->name}}
-                        </a>
-                    </h4>
-                    <div class="price-box">
-                        <!--product price-->
-                        <span class="new-price new-price-2">{{$product->new_price}} (vnd)</span>
-                        @if($product->discount!==0)
-                        <span class="old-price">{{$product->price}}</span>
-                        <span class="discount-percentage">{{$product->discount}}%</span>
-                        @endif
-                    </div>
                 </div>
-                <div class="add-actions">
-                    <ul class="add-actions-link">
-                        <li class="add-cart active">
-                            <form action="{{route('cart.store',[$product->id])}}" method="POST">
-                                @csrf
-                                @Method('POST')
-                                <input type="hidden" name="id" value="{{$product->id}}">
-                                <input type="submit" value="{{__('lang.add-to-cart')}}">
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+                <!-- single-product-wrap end -->
             </div>
-        </div>
-        <!-- single-product-wrap end -->
+        @endforeach
     </div>
-    @if($column%3==2)
+    @endif
+    </div>
+</div>
+@if(!blank($type)&&$type!=='history')
+<div class="paginatoin-area">
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+        </div>
+        <div class="col-lg-6 col-md-6">
+            @include('web.layouts.pagination',['paginator'=>$products])
+        </div>
+    </div>
 </div>
 @endif
-<?php $column++?>
-@endforeach
-@if($column%3!=2)
-</div>
-@endif
+

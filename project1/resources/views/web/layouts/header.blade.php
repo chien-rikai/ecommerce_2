@@ -125,7 +125,7 @@
               <ul>
                 <li><a href="{{ route('home.index')}}">{{__('lang.Home')}}</a></li>
                 @foreach($categories as $category)
-                <li><a href="">{{$category->name}}</a></li>
+                <li><a href="{{ route('web.category.show', [$category->id]) }}">{{$category->name}}</a></li>
                 @endforeach
                 <li><a href="">{{__('lang.contact')}}</a></li>
               </ul>

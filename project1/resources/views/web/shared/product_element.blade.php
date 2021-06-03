@@ -1,5 +1,4 @@
 <input type="hidden" value="" name="page" id="page">
-<input type="hidden" value="{{$type}}" class="type_view" name="type" id="{{$type}}">
 <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
     <div class="product-area shop-product-area">
         @if(!blank($products))
@@ -59,15 +58,8 @@
     @endif
     </div>
 </div>
-@if(!blank($type)&&$type!=='history')
-<div class="paginatoin-area">
-    <div class="row">
-        <div class="col-lg-6 col-md-6">
-        </div>
-        <div class="col-lg-6 col-md-6">
-            @include('web.layouts.pagination',['paginator'=>$products])
-        </div>
-    </div>
-</div>
+@if(Session::has('OrderBy') == null)
+<input type="hidden" value="asc" id="order_by_id">
+@else
+<input type="hidden" value="{{Session::get('OrderBy')}}" id="order_by_id">
 @endif
-

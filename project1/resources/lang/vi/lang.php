@@ -176,6 +176,7 @@ return [
     'account'=>'Tài khoản',
     'popular'=>'Phổ biến',
     'history'=>'Đã xem',
-    'all'=>'Tất cả'
+    'all'=>'Tất cả',
+    'created-at' => 'Ngày đăng',
 ]
 ?>

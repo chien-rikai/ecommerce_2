@@ -5,6 +5,7 @@ use App\Http\Controllers\Admins\OrderController;
 use App\Http\Controllers\Admins\ProductController;
 use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\Web\CartController;
+use App\Http\Controllers\Web\CategoryController as WebCategoryController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\LoginController;
 use App\Http\Controllers\Web\MemberController;
@@ -42,6 +43,11 @@ Route::group(['middleware' => 'locale'], function () {
         *  */
         Route::resource('home', HomeController::class);
         Route::get('home/fetch/{type}',[HomeController::class,'fetch'])->name('home.fetch');
+        Route::get('sort{sort}',[HomeController::class, 'sortBy'])->name('sort.by');
+        Route::resource('category', WebCategoryController::class, [
+            'as' => 'web',
+            'only' => ['show']
+        ]);
         /*
      *  Route for product page
      *  */  

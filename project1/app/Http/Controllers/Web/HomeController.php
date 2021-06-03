@@ -10,6 +10,7 @@ use App\Models\User;
 
 use App\Http\Controllers\Controller;
 use App\Services\HistoryService;
+use App\Services\SortByService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -57,5 +58,10 @@ class HomeController extends Controller
         Session::put('website_language', $language);
         return redirect()->back();
     }
-    
+
+    public function sortBy(Request $request, $sort){
+        $products = SortByService::sortBy($request->only('data')['data'],$sort);
+ 
+        return view('web.shared.product_element',compact('products'));
+    }
 }

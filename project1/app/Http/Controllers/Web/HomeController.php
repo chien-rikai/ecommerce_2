@@ -32,18 +32,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function fetch($type){
-        switch($type){
-            case 'all': 
-                $products = Product::paginate(30);
-                break;
-            case 'popular':
-                $products = Product::orderBy('view','desc')->paginate(30);
-                break;
-            case 'history': 
-                $products = HistoryService::getHistoryView();
-                break;
-        } 
+    public function fetch(Request $request,$type){
+        if($request->ajax()){
+            switch($type){
+                case 'all': 
+                    $products = Product::paginate(30);
+                    break;
+                case 'popular':
+                    $products = Product::orderBy('view','desc')->paginate(3);
+                    break;
+                case 'history': 
+                    $products = HistoryService::getHistoryView();
+                    break;
+            } 
+            return view('web.shared.product_element',compact(['products','type']))->render();
+        }
+        $products = Product::paginate(3);
         return view('web.shared.product_element',compact(['products','type']));
     }
     /**

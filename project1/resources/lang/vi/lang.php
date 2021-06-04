@@ -176,6 +176,9 @@ return [
     'account'=>'Tài khoản',
     'popular'=>'Phổ biến',
     'history'=>'Đã xem',
-    'all'=>'Tất cả'
+    'all'=>'Tất cả',
+    'user-remove-success'=>'Xóa người dùng thành công!',
+    'user-remove-fail'=>'Xóa người dùng thất bại!',
+    'delete-user'=>'Bạn có chắc muốn xóa vĩnh viễn người dùng này không?'
 ]
 ?>

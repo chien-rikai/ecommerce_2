@@ -1,9 +1,7 @@
-@extends('admin.layout.users_table_layout')
-@section('users-data')
 @if(!empty($users))
 <?php $stt = 1 ?>
 @foreach($users as $user)
-<tr>
+<tr id="user_{{$user->id}}">
     <td>
         <a class="btn btn-default btn-circle">{{$stt++}}</a>
     </td>
@@ -31,7 +29,7 @@
     </td>
     <td>
         @if((int)$user->block==0)
-        <form action="{{route('user.update',[$user->id])}}" method="post" onclick="block_confirmation()">
+        <form action="{{route('user.update',[$user->id])}}" method="post" onsubmit="return block_confirmation()">
             @csrf
             {{ method_field('PATCH') }}
             <input type="hidden" name="id" value="{{$user->id}}">
@@ -39,7 +37,7 @@
             <input type="submit" value="Block" class="glyphicon glyphicon-pencil"></input>
         </form>
         @else
-        <form action="{{route('user.update',[$user->id])}}" method="post" onclick='unblock_confirmation()'>
+        <form action="{{route('user.update',[$user->id])}}" method="post" onsubmit='return unblock_confirmation()'>
             @csrf
             {{ method_field('PATCH') }}
             <input type="hidden" name="id" value="{{$user->id}}">
@@ -48,12 +46,15 @@
         </form>
         </form>
         @endif
-        <a class="btn-default btn-xs" href="">
-            <i class="glyphicon glyphicon-trash"></i>Xóa</a>
+        <div class="delete-btn">
+            <a class="btn-default btn-xs" href="{{route('user.destroy',[$user->id])}}">
+            <i class="glyphicon glyphicon-trash"></i>{{__('lang.delete')}}</a>
+        </div>
     </td>
 </tr>
 @endforeach
 @else
-<h2>Không có dữ liệu</h2>
+<h2>{{__('lang.no-data')}}</h2>
 @endif
-@endsection
+{{$users->links()}}
+

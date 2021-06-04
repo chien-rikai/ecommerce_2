@@ -12,35 +12,36 @@
                     page: 1,
                 },
             }).done(function (res) {
-
             }).fail(function (res) {
                 $('.tab-content').html(res.responseText);
             });
 
         });
-        $('#paginate').on('click', function () {
-            console.log('he');
-            var page = $(this).name;
-            var type = $('.type_view').val();
-            console.log(page+" "+ type);
-            fetch_data(type, page);
+        $(document).on('click', '.pagination a', function(event) {
+          event.preventDefault();
+          var page = $(this).attr('href').split('page=')[1];
+          var type = $(this).attr('href').substring($(this).attr('href').lastIndexOf('/') + 1).split('?page=')[0];
+          console.log(type);
+          fetch_data(type,page);
         });
 
-        function fetch_data(type, page) {
-            $.ajax({
-                url: "/home/fetch/" + type,
-                data: {
+        function fetch_data(type,page) {
+        $.ajax({
+            url: "/web.com/home/fetch/" + type,
+            dataType: 'json',
+                cache: false,
+            data: {
                     page: page,
-                },
-                success: function (data) {
-                    $('.tab-content').html(res.responseText);
-                }
-            }).done(function (res) {
-
-            }).fail(function (res) {
-                //$('.tab-content').html(res.responseText);
-            });
-        }
+            },
+            success: function(data) {
+                $('.tab-content').html(data.responseText);
+            }
+        }).done(function(res){
+          console.log(res);
+        }).fail(function (res) {
+            $('.tab-content').html(res.responseText);
+         });
+    }
     });
 
 </script>

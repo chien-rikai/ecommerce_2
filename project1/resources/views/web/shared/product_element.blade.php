@@ -1,5 +1,3 @@
-<input type="hidden" value="" name="page" id="page">
-<input type="hidden" value="{{$type}}" class="type_view" name="type" id="{{$type}}">
 <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
     <div class="product-area shop-product-area">
         @if(!blank($products))
@@ -59,13 +57,14 @@
     @endif
     </div>
 </div>
-@if(!blank($type)&&$type!=='history')
+@if(isset($type)&&!blank($type)&&$type!=='history')
 <div class="paginatoin-area">
     <div class="row">
         <div class="col-lg-6 col-md-6">
         </div>
         <div class="col-lg-6 col-md-6">
-            @include('web.layouts.pagination',['paginator'=>$products])
+           <input type="hidden" value="{{isset($type)?$type:'all'}}" id='type_view'>
+            {{$products->links()}}
         </div>
     </div>
 </div>

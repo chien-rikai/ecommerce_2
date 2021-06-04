@@ -7,15 +7,20 @@
                 <h2>{{__('lang.user')}}</h2>
             </div>
             <div class="col-sm-6">
-                <div class="container">
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Tất cả
-                            <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{route('user.view')}}/1">Block</a></li>
-                            <li><a href="{{route('user.view')}}/0">Non-block</a></li>
-                        </ul>
-                    </div>
+                <label>Status</label>
+                <div>
+                    <label class="radio-inline">
+                        <input type="radio" class="status" value="all" checked="true">
+                        All
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" class="status" value="active" class="required" title="*">
+                        Active
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" class="status" value="block" class="required">
+                        Block
+                    </label>
                 </div>
             </div>
         </div>
@@ -32,18 +37,11 @@
                     <th>{{__('lang.feature')}}</th>
                 </tr>
             </thead>
-            <tbody>
-                @yield('users-data')
+            <tbody class="data-content">
+                @include('admin.users_view')
             </tbody>
         </table>
     </div>
 </body>
-<script>
-    function block_confirmation() {
-        confirm("{{__('lang.block_confirmation')}}");
-    }
-    function unblock_confirmation() {
-        confirm("{{__('lang.unblock_confirmation')}}");
-    }
-</script>
+@include('admin.script.user_script')
 @endsection

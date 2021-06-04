@@ -10,6 +10,7 @@ use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -32,13 +33,9 @@ class ProductController extends Controller
     }
 
     public function index(){
-        return view('admin.products_view');
-    }
+        $products = Product::with('category')->paginate(30);
 
-    public function getProductData(){
-        $products = Product::with('category')->get();
-
-        return json_encode(array('data'=>$products));
+        return view('admin.products_view',compact('products'));
     }
 
     public function show(){
@@ -150,11 +147,14 @@ class ProductController extends Controller
 
         $urlImg = $product->url_img;
         $delete = $product->delete();
+        $products = Product::with('category')->paginate(30);
         if($delete){
-            unlink(public_path(('images/'.$urlImg))); 
-            return response()->json(['success' => __('lang.delete-success'),'hasDelete' => $delete]);
+            //unlink(public_path(('images/'.$urlImg))); 
+            Session::put('success',__('lang.delete-success'));
+            return view('admin.table.products',compact('products'));
         }else{
-            return response()->json(['fail' => __('lang.delete-fail'), 'hasDelete' => $delete]);
+            Session::put('fail' , __('lang.delete-success'));
+            return view('admin.table.products',compact('products'));
         }
     }
 }

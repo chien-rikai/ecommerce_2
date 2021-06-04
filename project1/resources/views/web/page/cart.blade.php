@@ -38,7 +38,7 @@
                             <ul>
                              <li>{{__('lang.total')}} <span id="totals">{{$cart['total']}}</span></li>
                             </ul>
-                            <a href="#">{{__('lang.checkout')}}</a>
+                            <a href="{{route('payment.index')}}">{{__('lang.checkout')}}</a>
                         </div>
                     </div>
                 </div>

@@ -181,5 +181,8 @@ return [
     'user-remove-success'=>'Remove user success!',
     'user-remove-fail'=>'Remove user fail!',
     'delete-user'=>'Are you sure to delete this user?',
+    'dear' => 'Dear',
+    'thanks' => 'Thank you for your order from us.',
+    'links' =>'If you want to check your order please click the link here:',
 ]   
 ?>

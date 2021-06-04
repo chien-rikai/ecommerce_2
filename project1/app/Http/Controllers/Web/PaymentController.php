@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Enums\OrderStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
+use App\Jobs\SendMail;
 use App\Models\DetailOrder;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -46,10 +47,12 @@ class PaymentController extends Controller
         $cart = $this->covertCartToDetailOrder($cart);
 
         $result=$order->detailOrders()->saveMany($cart);
-
+ 
         if(!$result){
+            $order->delete();
             return back()->with('error',__('lang.order-fail'));
         }
+        $sendMail = SendMail::dispatch($params)->delay(now()->addMinute(1));
         $request->session()->forget('cart_'.$request->user_id);
         
         return back()->with('success',__('lang.order-success'));

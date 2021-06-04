@@ -98,7 +98,7 @@
                     <a href="{{route('cart.index')}}" class="li-button li-button-fullwidth li-button-dark">
                       <span>{{__('lang.view-full-cart')}}</span>
                     </a>
-                    <a href="" class="li-button li-button-fullwidth">
+                    <a href="{{route('payment.index')}}" class="li-button li-button-fullwidth">
                       <span>{{__('lang.checkout')}}</span>
                     </a>
                   </div>

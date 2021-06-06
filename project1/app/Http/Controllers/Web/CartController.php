@@ -36,16 +36,16 @@ class CartController extends Controller
     public function store(Request $request){
         $user = $this->loadUser();
         if(blank($user)){
-            return redirect()->back()->with('fail',__('lang.must-login-to-add'));
+            return response()->json(['hasAdd'=>false,'message'=>__('lang.must-login-to-add')]);
         }
         $product = Product::find($request->id);
         if($product->status==ProductStatus::OutOfStock){
-            return redirect()->back()->with('fail',__('lang.out-stock'));
+            return response()->json(['hasAdd'=>false,'message'=>__('lang.out-stock')]);
         }
         $cart = $this->findCart();
-        $cart = $this->addToCart($cart,$product);
+        $cart = $this->addToCart($cart,$product,$request->quantity);
         Session::put('cart_'.Auth::user()->id,$cart);
-        return redirect()->back()->with('success', __('lang.add-to-cart-success'));
+        return response()->json(['cart'=>$cart,'hasAdd'=>true,'message'=>__('lang.add-to-cart-success')]);
     }
     /**
      * Add product to cart.
@@ -85,12 +85,12 @@ class CartController extends Controller
     * function add to cart
     * @return $cart
     */
-    public function addToCart($cart,$product){
+    public function addToCart($cart,$product,$quantity){
         if(blank($cart)){
             $cart = [
                 $product->id=>[
                     "name" => $product->name,
-                    "quantity" => 1,
+                    "quantity" => $quantity,
                     "base_price" => $product->new_price,
                     "url_img" => $product->url_img,
                     "total" =>$product->new_price
@@ -99,13 +99,13 @@ class CartController extends Controller
             ];
         }
         elseif(isset($cart[$product->id])){
-            $cart[$product->id]['quantity'] ++;
+            $cart[$product->id]['quantity'] +=$quantity;
             $cart[$product->id]['total']= $cart[$product->id]['base_price'] * $cart[$product->id]['quantity'];
         }
         else{
             $cart[$product->id] =[
                 "name" => $product->name,
-                "quantity" => 1,
+                "quantity" => $quantity,
                 "base_price" => $product->new_price,
                 "url_img" => $product->url_img,
                 "total" =>$product->new_price

@@ -79,10 +79,10 @@
               <li class="hm-minicart">
                 <div class="hm-minicart-trigger">
                   <span class="item-icon"></span>
-                  <span class="item-text">
+                  <span class="item-text" id="cart-total">
                     @if($cart!=null)
-                    {{number_format($cart['total'],0,'','.')}}(VND)
-                    <span class="cart-item-count">2</span>
+                    {{number_format($cart['total'])}}(VND)
+                    <span class="cart-item-count">{{count($cart)-1}}</span>
                     @else
                     0 (VND)
                     @endif
@@ -98,7 +98,7 @@
                     <a href="{{route('cart.index')}}" class="li-button li-button-fullwidth li-button-dark">
                       <span>{{__('lang.view-full-cart')}}</span>
                     </a>
-                    <a href="" class="li-button li-button-fullwidth">
+                    <a href="{{route('payment.index')}}" class="li-button li-button-fullwidth">
                       <span>{{__('lang.checkout')}}</span>
                     </a>
                   </div>
@@ -127,7 +127,6 @@
                 @foreach($categories as $category)
                 <li><a href="">{{$category->name}}</a></li>
                 @endforeach
-                <li><a href="">{{__('lang.contact')}}</a></li>
               </ul>
             </nav>
           </div>

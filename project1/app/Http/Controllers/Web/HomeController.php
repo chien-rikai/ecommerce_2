@@ -23,7 +23,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $products = Product::paginate(30);
+        $products = Product::paginate(18);
         $type='all';
         return view('web.home.index',compact(['products','type']));
     }
@@ -39,15 +39,17 @@ class HomeController extends Controller
                     $products = Product::paginate(30);
                     break;
                 case 'popular':
-                    $products = Product::orderBy('view','desc')->paginate(3);
+                    $products = Product::orderBy('view','desc')->paginate(18);
                     break;
                 case 'history': 
                     $products = HistoryService::getHistoryView();
                     break;
+                default:
+                    $products = Product::paginate(18);
             } 
             return view('web.shared.product_element',compact(['products','type']))->render();
         }
-        $products = Product::paginate(3);
+        $products = Product::paginate(18);
         return view('web.shared.product_element',compact(['products','type']));
     }
     /**

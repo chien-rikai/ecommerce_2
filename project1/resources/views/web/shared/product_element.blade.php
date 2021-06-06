@@ -29,22 +29,18 @@
                             <div class="price-box">
                                 <!--product price-->
                                 <span
-                                    class="new-price new-price-2">{{number_format($product->new_price,0,'','.')}}(VND)</span>
+                                    class="new-price new-price-2">{{number_format($product->new_price)}}(VND)</span>
                                 @if($product->discount!==0)
-                                <span class="old-price">{{number_format($product->price,0,'','.')}}</span>
+                                <span class="old-price">{{number_format($product->price)}}</span>
                                 <span class="discount-percentage">-{{$product->discount}}%</span>
                                 @endif
                             </div>
                         </div>
                         <div class="add-actions">
                             <ul class="add-actions-link">
-                                <li class="add-cart active">
-                                    <form action="{{route('cart.store',[$product->id])}}" method="POST">
-                                        @csrf
-                                        @Method('POST')
-                                        <input type="hidden" name="id" value="{{$product->id}}">
-                                        <input type="submit" value="{{__('lang.add-to-cart')}}">
-                                    </form>
+                                <li class="add-cart active add-to-cart">
+                                  <input type="hidden" class="id_product" value="{{$product->id}}">
+                                  <a href="#" data-toggle="tab">{{__('lang.add-to-cart')}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -52,9 +48,9 @@
                 </div>
                 <!-- single-product-wrap end -->
             </div>
-        @endforeach
-    </div>
-    @endif
+            @endforeach
+        </div>
+        @endif
     </div>
 </div>
 @if(isset($type)&&!blank($type)&&$type!=='history')
@@ -69,4 +65,3 @@
     </div>
 </div>
 @endif
-

@@ -29,17 +29,18 @@
           </div>
 
           <div class="single-add-to-cart">
-            <form action="#" class="cart-quantity">
+            <div class="cart-quantity">
               <div class="quantity">
                 <label>{{__('lang.quantity')}}</label>
                 <div class="cart-plus-minus">
-                  <input class="cart-plus-minus-box" value="1" type="text">
+                 <input type="hidden" class="id" name="id" value="{{$product->id}}">
+                  <input class="cart-plus-minus-box" id="quantity" value="1" type="text">
                   <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                   <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                 </div>
+                <button class="add-to-cart">{{__('lang.add-to-cart')}}</button>
               </div>
-              <button class="add-to-cart" type="submit">{{__('lang.add-to-cart')}}</button>
-            </form>
+            </div>
           </div>
           <div class="product-additional-info">
             <div class="product-social-sharing">
@@ -63,7 +64,7 @@
     <fb:comments href="http://web.com/product/{{$product->id}}" num_posts="5" width="100%"></fb:comments>
   </div>
 </div>
-
+<script src="/js/add_to_cart.js"></script>
 @include('web.script.star_rating')
 @include('web.form.review_star')
 @endsection

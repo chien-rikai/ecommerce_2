@@ -57,5 +57,6 @@
         </div>
     </div>
 </div>
+<script src="/js/add_to_cart.js"></script>
 @include('web.script.change_view_type')
 @endsection

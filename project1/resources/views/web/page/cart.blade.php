@@ -23,22 +23,13 @@
                     </table>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <div class="coupon-all">
-                            <div class="coupon2">
-                                <input class="button" name="update_cart" value="Update cart" type="submit">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-md-5 ml-auto">
                         <div class="cart-page-total">
                             <h2>{{__('lang.total')}}</h2>
                             <ul>
                              <li>{{__('lang.total')}} <span id="totals">{{$cart['total']}}</span></li>
                             </ul>
-                            <a href="#">{{__('lang.checkout')}}</a>
+                            <a href="{{route('payment.index')}}">{{__('lang.checkout')}}</a>
                         </div>
                     </div>
                 </div>

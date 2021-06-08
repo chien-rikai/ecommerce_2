@@ -10,6 +10,7 @@ use App\Models\User;
 
 use App\Http\Controllers\Controller;
 use App\Services\HistoryService;
+use App\Services\SortService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -34,19 +35,7 @@ class HomeController extends Controller
      */
     public function fetch(Request $request,$type){
         if($request->ajax()){
-            switch($type){
-                case 'all': 
-                    $products = Product::paginate(30);
-                    break;
-                case 'popular':
-                    $products = Product::orderBy('view','desc')->paginate(18);
-                    break;
-                case 'history': 
-                    $products = HistoryService::getHistoryView();
-                    break;
-                default:
-                    $products = Product::paginate(18);
-            } 
+            $products = SortService::fetch($type,$request->sortBy,$request->orderBy);
             return view('web.shared.product_element',compact(['products','type']))->render();
         }
         $products = Product::paginate(18);

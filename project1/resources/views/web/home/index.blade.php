@@ -14,15 +14,14 @@
                     <div class="product-view-mode">
                         <!-- shop-item-filter-list start -->
                         <ul class="nav shop-item-filter-list" role="tablist">
-                            <li role="presentation"><a aria-selected="true" class="active show" 
+                            <li role="presentation"><a aria-selected="true" class="active show"
                                     aria-controls="grid-view" href="#" data-toggle="tab" id="all"><i
                                         class="fa fa-th">{{ __('lang.all')}}</i></a></li>
-                            <li ><a aria-selected="true" class="show"
-                                    aria-controls="grid-view" href="#" data-toggle="tab" id="popular"><i
-                                        class="fa fa-fire">{{ __('lang.popular')}}</i></a></li>
-                            <li ><a aria-selected="true" class="show" data-toggle="tab"
-                                    aria-controls="grid-view" href="#" id="history"><i
-                                        class="fa fa-history">{{ __('lang.history')}}</i></a></li>
+                            <li><a aria-selected="true" class="show" aria-controls="grid-view" href="#"
+                                    data-toggle="tab" id="popular"><i class="fa fa-fire">{{ __('lang.popular')}}</i></a>
+                            </li>
+                            <li><a aria-selected="true" class="show" data-toggle="tab" aria-controls="grid-view"
+                                    href="#" id="history"><i class="fa fa-history">{{ __('lang.history')}}</i></a></li>
                         </ul>
                         <!-- shop-item-filter-list end -->
                     </div>
@@ -31,13 +30,20 @@
                     </div> -->
                 </div>
                 <!-- product-select-box start -->
+                <input type="hidden" class="view-types" value="all">
                 <div class="product-select-box">
-                    <div class="product-short">
-                        <p>{{__('lang.sort-by')}}:</p>
-                        <select class="nice-select">
-                            <option value="trending">{{__('lang.trending')}}</option>
-                        </select>
-                    </div>
+                    <select class="nice-select sort-by">
+                        <option value="normal" selected>{{__('lang.normal')}}</option>
+                        <option value="name">{{__('lang.name')}}</option>
+                        <option value="price">{{__('lang.price')}}</option>
+                        <option value="star_rating">{{__('lang.rating')}}</option>
+                    </select>
+                </div>
+                <div class="product-select-box">
+                    <select class="nice-select order-by">
+                        <option value="asc" selected>{{__('lang.asc')}}</option>
+                        <option value="desc">{{__('lang.desc')}}</option>
+                    </select>
                 </div>
                 <!-- product-select-box end -->
             </div>
@@ -58,5 +64,6 @@
     </div>
 </div>
 <script src="/js/add_to_cart.js"></script>
-@include('web.script.change_view_type')
+<script src="/js/sort.js"></script>
+
 @endsection

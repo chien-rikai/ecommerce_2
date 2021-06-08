@@ -184,5 +184,12 @@ return [
     'dear' => 'Dear',
     'thanks' => 'Thank you for your order from us.',
     'links' =>'If you want to check your order please click the link here:',
+    'normal'=>'Normal',
+    'name'=>'Name product',
+    'price'=>'Price',
+    'rating'=>'Rating',
+    'view'=>'View',
+    'asc'=>'Ascending',
+    'desc'=>'Descending'
 ]   
 ?>

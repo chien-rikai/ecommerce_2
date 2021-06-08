@@ -23,7 +23,7 @@ class OrderController extends Controller
         
         $status = $this->getStatus();
 
-        return view('admin\orders_view',compact(['orders','status']));
+        return view('admin.layout.orders_table_layout',compact(['orders','status']));
     }
     /**
      * Get order by id.
@@ -34,7 +34,7 @@ class OrderController extends Controller
     public function show($id){
         $order = $this->find($id);
         $status = $this->getStatus();
-        return view('admin\order_detail',compact(['order','status']));
+        return view('admin.order_detail',compact(['order','status']));
     }
     /**
      * Update status for an order.
@@ -46,9 +46,9 @@ class OrderController extends Controller
         $order = $this->find($id);
         
         //parse status enum to value in db
-        $status = OrderStatusEnum::tryFrom($request->status);
+        $status_id = OrderStatusEnum::values()[$request->status];
         
-        $order->status_id=  $status->value;
+        $order->status_id=  $status_id;
 
         $update = $order->save();
         //check update action success
@@ -71,9 +71,9 @@ class OrderController extends Controller
         $delete = $order->delete();
         //check delete action success
         if($delete){
-            return back()->with('success', __('lang.delete-success'));
+            return response()->json(['message'=>__('lang.delete-success'),'hasRemove'=>true]);
         }else{
-            return back()->with('fail', __('lang.delete-fail'));
+            return response()->json(['message'=>__('lang.delete-fail'),'hasRemove'=>false]);
         }
     }
     /**
@@ -82,13 +82,17 @@ class OrderController extends Controller
      * @param   $id
      * @return \Illuminate\Http\Response
      */
-    public function filter($status){
-
-        $orders = Order::where('status_id',$status)->paginate(10);
-        
+    public function filter(Request $request,$status){
+        if($status=='all'){
+            $orders = Order::paginate(10);
+        }
+        else
+        $orders = Order::where('status_id',OrderStatusEnum::values()[$status])->paginate(10);
         $status = $this->getStatus();
-
-        return view('admin\orders_view',compact(['orders','status']));
+        if($request->ajax()){
+            return view('admin.orders_view',compact(['orders','status']))->render();
+        }
+        return view('admin.layout.orders_table_layout',compact(['orders','status']));
     }
     /**
      * Function find order by id

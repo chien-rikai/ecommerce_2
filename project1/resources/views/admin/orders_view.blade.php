@@ -1,9 +1,8 @@
-@extends('admin.layout.orders_table_layout')
-@section('orders-data')
+
 <?php $stt = 1 ?>
 @if(!empty($orders))
 @foreach($orders as $order)
-<tr>
+<tr id="order_{{$order->id}}">
     <td>
         <a class="btn btn-default btn-circle">{{$stt++}}</a>
     </td>
@@ -38,14 +37,10 @@
             </button>
         </form>
         @else
-        <form action="{{route('order.destroy',[$order->id])}}" method="POST" onclick='delete_confirmation()'>
-            <input type="hidden" name="id" value="{{$order->id}}">
-            @csrf
-            @Method('DELETE')
-            <button type="submit" class="btn-default btn-xs">
-                <i class="glyphicon glyphicon-trash"></i>{{__('lang.delete')}}
-            </button>
-        </form>
+        <div class="delete-order">
+            <a class="btn-default btn-xs" href="{{route('order.destroy',[$order->id])}}">
+            <i class="glyphicon glyphicon-trash"></i>{{__('lang.delete')}}</a>
+        </div>
         @endif
     <!--
        End action
@@ -61,9 +56,5 @@
 @else
     <h3>{{__('lang.no-data')}}</h3>
 @endif
-<script>
-    function delete_confirmation() {
-        confirm("{{__('lang.delete_order_confirmation')}}");
-    }
-</script>
-@endsection
+
+

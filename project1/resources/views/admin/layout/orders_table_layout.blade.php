@@ -5,19 +5,21 @@
     <div class="container">
         <form id="search-form">
             <div class="row">
-                <div class="col-sm-6">
-                    <div class="row no-gutters">
-                        <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Status
-                                <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                            @foreach($status as $key=>$st)
-                                <li><a href="{{route('order.filter',[$st])}}">{{__('lang.'.$key)}}</a></li>
-                            @endforeach
-                            </ul>
-                        </div>
-                    </div>
+                <div class="col-sm-12">
+                <label>Status</label>
+                <div>
+                    <label class="radio-inline">
+                        <input type="radio" class="status-order" value="all" checked="true">
+                        All
+                    </label>
+                    @foreach($status as $key=>$st)
+                    <label class="radio-inline">
+                        <input type="radio" class="status-order" value="{{$key}}" class="required" title="*">
+                        {{__('lang.'.$key)}}
+                    </label>
+                    @endforeach
                 </div>
+            </div>
             </div>
         </form>
         <div class="row">
@@ -36,11 +38,11 @@
                     <th>{{__('lang.feature')}}</th>
                 </tr>
             </thead>
-            <tbody>
-
-                @yield('orders-data')
+            <tbody class="data-content">
+              @include('admin.orders_view')
             </tbody>
         </table>
     </div>
 </body>
+@include('admin.script.order_script')
 @endsection

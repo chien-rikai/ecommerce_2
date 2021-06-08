@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-9 order-1 order-lg-2">
-            <div class="single-banner shop-page-banner">
+            <div class="shop-page-banner">
                 <a href="#">
                     <img src="/images/banner.jpg" alt="Banner">
                 </a>

@@ -177,6 +177,9 @@ return [
     'account'=>'Account',
     'popular'=>'Popular',
     'history'=>'History',
-    'all'=>'All'
+    'all'=>'All',
+    'user-remove-success'=>'Remove user success!',
+    'user-remove-fail'=>'Remove user fail!',
+    'delete-user'=>'Are you sure to delete this user?',
 ]   
 ?>

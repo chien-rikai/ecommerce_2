@@ -24,7 +24,7 @@ final class OrderStatusEnum extends Enum
             'processing' => 1,
             'shipping' => 2,
             'completed' => 3,
-            'cancelled' => 4
+            'cancelled' => 4,
         ];
     }
 }

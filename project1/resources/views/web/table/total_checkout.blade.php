@@ -12,7 +12,7 @@
         <tr class="cart_item">
             <td class="cart-product-name">{{$value['name']}}<strong class="product-quantity"> ×
                     {{$value['quantity']}}</strong></td>
-            <td class="cart-product-total"><span class="amount">{{number_format($value['total'],0,''.',')}}</span></td>
+            <td class="cart-product-total"><span class="amount">{{number_format($value['total'])}}</span></td>
         </tr>
       @endif
       @endforeach
@@ -21,7 +21,7 @@
     <tfoot>
         <tr class="order-total">
             <th>{{__('lang.total')}}</th>
-            <td><strong><span class="amount">{{number_format($cart['total'],0,''.',')}}</span></strong></td>
+            <td><strong><span class="amount">{{number_format($cart['total'])}}</span></strong></td>
         </tr>
     </tfoot>
 </table>

@@ -16,11 +16,8 @@
                 <p class="text-gray mb-3"><i class="fa fa-calendar"></i>{{ $order->created_at}}</p>
                 <p class="text-dark"><i class="fa fa-spinner">{{$order->summary}}</i>
                 </p>
-                <div class="float-right">
-                    <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>
-                </div>
                 <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total
-                        Paid:</span> {{number_format($order->total_cost,0,''.',')}}(vnd)
+                        Paid:</span> {{number_format($order->total_cost)}}(vnd)
                 </p>
             </div>
         </div>

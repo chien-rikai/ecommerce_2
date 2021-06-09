@@ -16,7 +16,7 @@ class ProfileController extends Controller
     }
     public function index(){
         $status= OrderStatusEnum::values();
-        $orders = Order::where('user_id',Auth::id())->get();
+        $orders = Order::where('user_id',Auth::id())->orderBy('created_at','desc')->get();
         return view('web.page.profile',compact(['status','orders']));
     }
     public function show($status){

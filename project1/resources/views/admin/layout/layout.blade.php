@@ -16,6 +16,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
     <script src="/js/jquery-1.12.4.js"></script>
+    <link href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css" rel="stylesheet" />
      @include('admin.layout.footer')
 </head>
 
@@ -30,7 +31,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.html">Ecommerce</a>
-                <div class="btn-group">
+            </div>
+            <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">
                         {{ __('lang.Language')}}
                         <span class="caret"></span>
@@ -40,7 +42,6 @@
                         <li><a href="{!! route('user.change-language', ['en']) !!}">English</a></li>
                     </ul>
                 </div>
-            </div>
         </nav>
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
@@ -48,9 +49,6 @@
                 <ul class="nav" id="main-menu">
                     <li>
                         <a class="active-menu" href=""><i class="fa fa-dashboard "></i>{{ __('lang.Home')}}</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="fa fa-line-chart"></i>{{ __('lang.statis')}}</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-desktop "></i>{{ __('lang.manage')}}<span
@@ -72,9 +70,6 @@
 
                     <li>
                         <a href="{{route('user.view')}}"><i class="fa fa-user-o"></i>{{ __('lang.user')}}</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="fa fa-sign-in "></i>{{ __('lang.logout')}}</a>
                     </li>
                 </ul>
             </div>

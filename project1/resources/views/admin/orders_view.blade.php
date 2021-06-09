@@ -1,4 +1,3 @@
-
 <?php $stt = 1 ?>
 @if(!empty($orders))
 @foreach($orders as $order)
@@ -16,17 +15,26 @@
         {{$order->address}}
     </td>
     <td>
-        {{trans('lang.'.$order->status->status)}}
+    <input type="hidden" class="id_order" value="{{$order->id}}">
+    <div class="switch-toggle switch-3 switch-candy">
+            @foreach($status as $key=>$st)
+            @if($st!=$status['cancelled'])
+                <input id='{{$order->id}}_{{$key}}' class="status_toggle" type="radio" @if($order->status->id==$st) checked @endif/>
+                <label for="{{$order->id}}_{{$key}}">{{$key}}</label>
+            @endif
+            @endforeach
+            <a></a>
+        </div>
     </td>
     <td>
-    <!--
+        <!--
         Action form
         Form button to cancel/ delete
         Delete button only show when order had been canncelled
     -->
         <a class="btn btn-xs" href="{{route('order.show',[$order->id])}}">
             <i class="fa fa-eye"></i></a>
-        @if($order->status_id!==$status['cancelled'])    
+        @if($order->status_id!==$status['cancelled'])
         <form action="{{route('order.update',[$order->id])}}" method="POST">
             <input type="hidden" name="id" value="{{$order->id}}">
             @csrf
@@ -39,12 +47,12 @@
         @else
         <div class="delete-order">
             <a class="btn-default btn-xs" href="{{route('order.destroy',[$order->id])}}">
-            <i class="glyphicon glyphicon-trash"></i>{{__('lang.delete')}}</a>
+                <i class="glyphicon glyphicon-trash"></i>{{__('lang.delete')}}</a>
         </div>
         @endif
-    <!--
+        <!--
        End action
-    -->    
+    -->
     </td>
 </tr>
 @endforeach
@@ -54,7 +62,5 @@
 
 <!--Pagination end-->
 @else
-    <h3>{{__('lang.no-data')}}</h3>
+<h3>{{__('lang.no-data')}}</h3>
 @endif
-
-

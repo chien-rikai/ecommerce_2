@@ -63,7 +63,6 @@
         </div>
     </div>
 </div>
-<script src="/js/add_to_cart.js"></script>
 <script src="/js/sort.js"></script>
 
 @endsection

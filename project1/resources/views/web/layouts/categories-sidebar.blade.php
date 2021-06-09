@@ -6,7 +6,7 @@
     <div class="category-sub-menu">
         <ul>
             @foreach($categories as $category)
-            <li><a href="# ">{{$category->name}}</a></li>
+            <li><a href="{{route('home.show',[$category->id])}}">{{$category->name}}</a></li>
             @endforeach
         </ul>
     </div>

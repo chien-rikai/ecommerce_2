@@ -3,7 +3,6 @@
             var $button = $(this);
             var oldValue = $button.parent().children("#quantity").val();
             var id = $button.parent().children('.id').val();
-            console.log('Hello');
             if ($button.hasClass('inc')) {
                 var newVal = parseFloat(oldValue) + 1;
             } else {
@@ -15,7 +14,6 @@
                 }
             }
             $button.parent().children("#quantity").val(newVal);
-            console.log(newVal);
         });
         $(".add-to-cart").on("click", function () {
             var $button = $(this);
@@ -24,12 +22,10 @@
             console.log(quantity + " " + id);
             addToCart(id, quantity);
         });
-
-        $(".add-to-cart a").on("click", function () {
+        $(document).on("click",'.add', function () {
             var $button = $(this);
-            var id = $button.parent().children('.id_product').val();
+            var id = $button.children('.id_product').val();
             addToCart(id, 1);
-            console.log(id);
         });
 
         function addToCart(id, quantity) {

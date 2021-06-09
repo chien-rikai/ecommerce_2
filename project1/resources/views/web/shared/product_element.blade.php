@@ -38,9 +38,10 @@
                         </div>
                         <div class="add-actions">
                             <ul class="add-actions-link">
-                                <li class="add-cart active add-to-cart">
+                                <li class="add-cart active add">
+                                  {{__('lang.add-to-cart')}}
                                   <input type="hidden" class="id_product" value="{{$product->id}}">
-                                  <a href="#" data-toggle="tab">{{__('lang.add-to-cart')}}</a>
+                                  <!-- <button class="add">{{__('lang.add-to-cart')}}</button> -->
                                 </li>
                             </ul>
                         </div>
@@ -65,3 +66,4 @@
     </div>
 </div>
 @endif
+<script src="/js/add_to_cart.js"></script>

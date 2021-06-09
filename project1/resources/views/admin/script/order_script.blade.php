@@ -4,7 +4,6 @@
             function () {
                 if (this.checked) {
                     var status = $(this).val();
-                    console.log(status);
                     load(status);
                     $('input:radio[class="status-order"]').each(function () {
                         $(this).prop('checked', false);
@@ -28,8 +27,7 @@
             event.preventDefault();
             //var page = $(this).attr('href').split('page=')[1];
             var id = $(this).attr('href').substring($(this).attr('href').lastIndexOf('/') + 1);
-            console.log(id);
-            if (confirm("{{__('lang.delete-order')}}")) {
+            if (confirm("{{__('lang.delete_order_confirmation')}}")) {
         $.ajax({
           url: "/admin/order/" + id,
           type: "DELETE",
@@ -40,9 +38,9 @@
         }).done(function(response) {
           if (response.hasDelete) {
             $("#order_" + id).remove();
-            alertify.success(response.success);
+            alertify.success(response.message);
           } else {
-            alertify.error(response.fail);
+            alertify.error(response.message);
             $("#order_" + id).remove();
           }
 
@@ -54,7 +52,6 @@
             event.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
             var status = $(this).attr('href').substring($(this).attr('href').lastIndexOf('/') + 1).split('?page=')[0];
-            console.log(status);
             fetch_data(status, page);
         });
 
@@ -70,10 +67,35 @@
                     $('.data-content').html(data.responseText);
                 }
             }).done(function (res) {
-                console.log(res);
             }).fail(function (res) {
                 $('.data-content').html(res.responseText);
             });
+        }
+        $(document).on('click','.status_toggle',function(){
+            var $button = $(this);
+            var id = $button.parent().prev('.id_order').val();
+            var status = $button.attr('id');
+            status = status.split('_')[1];
+            update(id,status);
+            $(this).parent().children('input:radio').each(function () {
+                        $(this).prop('checked', false);
+                    });
+            this.checked = true;
+        });
+        function update(id,status){
+            $.ajax({
+            url: '/admin/order/' + id,
+            type: 'PUT',
+            dataType : 'json',
+            cache: false,
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                status: status,
+            }
+        }).done(function (res) {
+            var msg = alertify.message(res.message);
+            msg.delay(1).setContent(res.message);
+        });
         }
     });
 </script>

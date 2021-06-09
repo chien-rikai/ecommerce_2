@@ -29,12 +29,14 @@ class HistoryService{
         }
         Session::put('history_view_'.$id,$viewed);
     }
-    public static function getHistoryView(){
+    public static function getHistoryView($sortBy,$orderby){
         $id = 0;
         if(Auth::check()){
             $id = Auth::id();
         }
         $viewed= Session::get('history_view_'.$id);
+        if(isset($sortBy)&&!empty($viewed))
+            $products = Product::find($viewed)->orderBy($sortBy,$orderby);
         $products=Product::find($viewed);
         return $products;
         

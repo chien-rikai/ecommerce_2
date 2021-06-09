@@ -183,5 +183,12 @@ return [
     'dear' => 'Chào bạn,',
     'thanks' => 'Cảm ơn bạn đã đặt hàng của chúng tôi.',
     'links' =>'Nếu muốn kiểm tra đơn đặt hàng vui lòng nhấn vào link ở đây:',
+    'normal'=>'Bình thường',
+    'name'=>'Tên sản phẩm',
+    'price'=>'Giá',
+    'rating'=>'Đánh giá',
+    'view'=>'Lượt xem',
+    'asc'=>'Tăng dần',
+    'desc'=>'Giảm dần'
 ]
 ?>

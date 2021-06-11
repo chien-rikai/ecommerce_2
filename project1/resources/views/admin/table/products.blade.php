@@ -1,10 +1,10 @@
-
-<table class="table-view table table-bordered">
+<?php $stt = 1 ?>
+<table class="table table-bordered">
 @include('common.success')
 @include('common.fail')
   <thead>
     <tr>
-      <th>Id</th>
+      <th>Stt</th>
       <th>{{__('lang.img')}}</th>
       <th>{{__('lang.name-product')}}</th>
       <th>{{__('lang.product-type')}}</th>
@@ -14,9 +14,10 @@
     </tr>
   </thead>
   <tbody id="productData">
+    @if(!blank($products))
     @foreach($products as $product)
     <tr id="product-id-{{$product->id}}">
-      <td><a class="btn btn-default btn-circle">{{$product->id}}</a></td>
+      <td><a class="btn btn-default btn-circle">{{$stt++}}</a></td>
       <td><img class="admin-product-img" id="img-product" src="/images/{{$product->url_img}}" alt="Img"></img></td>
       <td>{{$product->name}}</td>
       <td>{{$product->category->name}}</td>
@@ -28,6 +29,10 @@
         <i class="glyphicon glyphicon-pencil"></i>{{__('lang.delete')}}</a></td>
     </tr>
     @endforeach
+    @else
+      <div class="t-center">{{__('lang.no-results')}}</div>
+      <br>
+    @endif
   </tbody>
 </table>
 <div>

@@ -32,4 +32,11 @@ class Product extends Model
             ProductCsvUpload::dispatch($file);
         }
     }
+
+    public static function productSearch($name, $id){
+        if($id == 0){
+            return Product::where('name','like', "%$name%")->paginate(12);
+        }
+        return Product::where('name','like', "%$name%")->where('category_id','=',$id)->paginate(12);
+    }
 }

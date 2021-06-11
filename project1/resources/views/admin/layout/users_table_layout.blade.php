@@ -1,47 +1,36 @@
 @extends('admin.layout.layout')
 @section('content')
+
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
-                <h2>{{__('lang.user')}}</h2>
-            </div>
-            <div class="col-sm-6">
-                <label>Status</label>
-                <div>
-                    <label class="radio-inline">
-                        <input type="radio" class="status" value="all" checked="true">
-                        All
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" class="status" value="active" class="required" title="*">
-                        Active
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" class="status" value="block" class="required">
-                        Block
-                    </label>
-                </div>
+            <div class="col-xs-6 col-xs-offset-2">
+                <form role="search">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span id="srch-status">Status</span> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="mnu-status">
+                                <li><a href="all">All</a></li>
+                                <li><a href="active">Active</a></li>
+                                <li><a href="blocked">Blocked</a></li>
+                            </ul>
+                        </div>
+                        @include('admin.shared.search_option')
+                        <input type="text" id="txt-search" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn" id="search">
+                            <a data-toggle="tab" class="btn btn-default">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </a>
+                        </span>
+                    </div>
+                </form>
             </div>
         </div>
-        <table class="table-view table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>{{__('lang.user')}}</th>
-                    <th>{{__('lang.customer-name')}}</th>
-                    <th>{{__('lang.email')}}</th>
-                    <th>{{__('lang.phone')}}</th>
-                    <th>{{__('lang.address')}}</th>
-                    <th>{{__('lang.user-status')}}</th>
-                    <th>{{__('lang.feature')}}</th>
-                </tr>
-            </thead>
-            <tbody class="data-content">
-                @include('admin.users_view')
-            </tbody>
-        </table>
-    </div>
+        <div class="data-content">
+            @include('admin.users_view')
+        </div>
 </body>
 @include('admin.script.user_script')
 @endsection

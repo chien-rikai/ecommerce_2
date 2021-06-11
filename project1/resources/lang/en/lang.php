@@ -190,6 +190,8 @@ return [
     'rating'=>'Rating',
     'view'=>'View',
     'asc'=>'Ascending',
-    'desc'=>'Descending'
+    'desc'=>'Descending',
+    'update-status-success'=>'Update status order successfully!',
+    'update-status-fail'=>'Update status order fail!'
 ]   
 ?>

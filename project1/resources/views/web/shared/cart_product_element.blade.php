@@ -11,7 +11,7 @@
     <!--product name-->
     <td class="li-product-name"><a href="#">{{$item['name']}}</a></td>
     <!--product price-->
-    <td class="li-product-price"><span id="base_price_{{$key}}">{{$item['base_price']}}</span></td>
+    <td class="li-product-price"><span id="base_price_{{$key}}">{{number_format($item['base_price'])}}</span></td>
     <!--product order quantity-->
     <td class="quantity">
         <label>{{__('lang.quantity')}}</label>
@@ -24,7 +24,7 @@
         </div>
     </td>
     <!--script code for changing subtotal when quantity change!!!-->
-    <td class="product-subtotal"><span id="amount_{{$key}}">{{$item['total']}}</span></td>
+    <td class="product-subtotal"><span id="amount_{{$key}}">{{number_format($item['total'])}}</span></td>
 </tr>
 @endif
 @endforeach

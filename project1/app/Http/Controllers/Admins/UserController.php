@@ -14,25 +14,20 @@ class UserController extends Controller
      * @param  $block (0/1)
      * @return \Illuminate\Http\Response
      */
-    public function index($block=null){
-        
-        if($block!=null){
-            $users = User::where('block',$block)->paginate(10);
-        }
-        else
-            $users = User::paginate(10);
-            
+    public function index(){
+        $users = User::paginate(10);     
         return view('admin.layout.users_table_layout',compact(["users"]));
     }
     public function show(Request $request,$status){
-        if($status=='all')
-            $users = User::paginate(10);
-        else{
+        if($status!='all'){
             $status_id= UserStatus::getValue($status);
-            $users = User::where('block',$status_id)->paginate(10);
+            $users = User::where([['block','=',$status_id],[$request->field,'like','%'.$request->key.'%']])->paginate(10);
+        }
+        else{
+            $users = User::where([[$request->field,'like','%'.$request->key.'%']])->paginate(10);
         }    
         if($request->ajax()){
-            return view('admin.users_view',compact(["users"]))->render();
+            return response()->json(['view'=>view('admin.users_view',compact(["users"]))->render()]);
         }    
         return view('admin.layout.users_table_layout',compact(["users"]));
     }

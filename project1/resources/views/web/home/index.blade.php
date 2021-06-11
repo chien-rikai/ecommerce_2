@@ -16,12 +16,12 @@
                         <ul class="nav shop-item-filter-list" role="tablist">
                             <li role="presentation"><a aria-selected="true" class="active show"
                                     aria-controls="grid-view" href="#" data-toggle="tab" id="all"><i
-                                        class="fa fa-th">{{ __('lang.all')}}</i></a></li>
+                                        class="fa fa-th">&nbsp;{{__('lang.all')}}</i></a></li>
                             <li><a aria-selected="true" class="show" aria-controls="grid-view" href="#"
-                                    data-toggle="tab" id="popular"><i class="fa fa-fire">{{ __('lang.popular')}}</i></a>
+                                    data-toggle="tab" id="popular"><i class="fa fa-fire">&nbsp;{{ __('lang.popular')}}</i></a>
                             </li>
                             <li><a aria-selected="true" class="show" data-toggle="tab" aria-controls="grid-view"
-                                    href="#" id="history"><i class="fa fa-history">{{ __('lang.history')}}</i></a></li>
+                                    href="#" id="history"><i class="fa fa-history">&nbsp;{{ __('lang.history')}}</i></a></li>
                         </ul>
                         <!-- shop-item-filter-list end -->
                     </div>
@@ -63,7 +63,6 @@
         </div>
     </div>
 </div>
-<script src="/js/add_to_cart.js"></script>
 <script src="/js/sort.js"></script>
 
 @endsection

@@ -36,12 +36,12 @@ $(document).ready(function () {
                 sortBy:sortBy
             },
             success: function(data) {
-                $('.tab-content').html(data.responseText);
+                $('.tab-content').html(data.view);
             }
         }).done(function(res){
           console.log(res);
         }).fail(function (res) {
-            $('.tab-content').html(res.responseText);
+            console.log(res.view);
          });
          }
 });

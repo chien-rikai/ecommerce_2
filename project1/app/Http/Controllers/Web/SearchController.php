@@ -17,6 +17,6 @@ class SearchController extends Controller
         if(blank($products)){
             return back();
         }
-        return view('web.page.search',compact('products'));
+        return view('web.home.index',compact(['products']));
     }
 }

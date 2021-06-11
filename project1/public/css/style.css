@@ -1782,7 +1782,7 @@ textarea:focus {
 .hb-menu nav > ul > li:hover > a::after {
 		color: #ffffff;
 }
-.hb-menu nav > ul > li > a::after {
+/* .hb-menu nav > ul > li > a::after {
 	content: "\f107";
 	position: absolute;
 	top: 8px;
@@ -1791,7 +1791,7 @@ textarea:focus {
 	font-size: 18px;
 	transition: all 0.3s ease-in-out;
 	color: #242424;
-}
+} */
 .hb-menu nav > ul > li:nth-child(n+5) > a::after {
 	content: none;
 }

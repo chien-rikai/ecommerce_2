@@ -25,7 +25,12 @@ class HomeController extends Controller
      */
     public function index(){
         $products = Product::paginate(18);
-        $type='all';
+        $type ="all";
+        return view('web.home.index',compact(['products','type']));
+    }
+    public function show($category){
+        $products=Product::where('category_id',$category)->paginate(18); 
+        $type ="all";
         return view('web.home.index',compact(['products','type']));
     }
     /**
@@ -36,7 +41,7 @@ class HomeController extends Controller
     public function fetch(Request $request,$type){
         if($request->ajax()){
             $products = SortService::fetch($type,$request->sortBy,$request->orderBy);
-            return view('web.shared.product_element',compact(['products','type']))->render();
+            return response()->json(['view'=>view('web.shared.product_element',compact(['products','type']))->render()]);
         }
         $products = Product::paginate(18);
         return view('web.shared.product_element',compact(['products','type']));

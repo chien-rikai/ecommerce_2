@@ -19,7 +19,7 @@ class OrderController extends Controller
      */
     public function index(){
         //Pagination
-        $orders = Order::paginate(20);
+        $orders = Order::paginate(10);
         
         $status = $this->getStatus();
 
@@ -53,8 +53,12 @@ class OrderController extends Controller
         $update = $order->save();
         //check update action success
         if($update){
+            if($request->ajax())
+                return response()->json(['message'=>__('lang.update-status-success')]);
             return back()->with('success', __('lang.edit-success'));
         }else{
+            if($request->ajax())
+                return response()->json(['message'=>__('lang.update-status-fail')]);
             return back()->with('fail', __('lang.edit-fail'));
         }
     }
@@ -84,13 +88,16 @@ class OrderController extends Controller
      */
     public function filter(Request $request,$status){
         if($status=='all'){
-            $orders = Order::paginate(10);
+            $orders = Order::where($request->field,'like','%'.$request->key.'%'
+                        )->paginate(10);
         }
         else
-        $orders = Order::where('status_id',OrderStatusEnum::values()[$status])->paginate(10);
+        $orders = Order::where([['status_id','=',OrderStatusEnum::values()[$status]],
+                               [$request->field,'like','%'.$request->key.'%']
+                        ])->paginate(10);
         $status = $this->getStatus();
         if($request->ajax()){
-            return view('admin.orders_view',compact(['orders','status']))->render();
+            return response()->json(['view'=>view('admin.orders_view',compact(['orders','status']))->render()]);
         }
         return view('admin.layout.orders_table_layout',compact(['orders','status']));
     }

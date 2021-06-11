@@ -24,10 +24,10 @@
             console.log(quantity + " " + id);
             addToCart(id, quantity);
         });
-
-        $(".add-to-cart a").on("click", function () {
+        $(document).on("click",'.add', function () {
+            console.log('hello');
             var $button = $(this);
-            var id = $button.parent().children('.id_product').val();
+            var id = $button.children('.id_product').val();
             addToCart(id, 1);
             console.log(id);
         });

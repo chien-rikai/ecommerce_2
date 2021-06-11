@@ -29,15 +29,21 @@ class HistoryService{
         }
         Session::put('history_view_'.$id,$viewed);
     }
-    public static function getHistoryView($sortBy,$orderby){
+    public static function getHistoryView($sortBy,$orderBy){
         $id = 0;
         if(Auth::check()){
             $id = Auth::id();
         }
         $viewed= Session::get('history_view_'.$id);
-        if(isset($sortBy)&&!empty($viewed))
-            $products = Product::find($viewed)->orderBy($sortBy,$orderby);
-        $products=Product::find($viewed);
+        $products = Product::find($viewed);
+        if(isset($sortBy)&&!empty($viewed)){
+            $products =$products->sortBy(function($product) use ($sortBy){
+                return $product[$sortBy];
+            });
+            if($orderBy=='desc')
+                $products = $products->reverse();
+        }
+        
         return $products;
         
     } 

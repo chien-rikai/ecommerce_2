@@ -41,6 +41,7 @@ Route::group(['middleware' => 'locale'], function () {
         *  Route for home page
         *  */
         Route::resource('home', HomeController::class);
+        Route::get('home/{category}/',[HomeController::class,'show'])->name('home.show');
         Route::get('home/fetch/{type}/',[HomeController::class,'fetch'])->name('home.fetch');
         /*
      *  Route for product page
@@ -108,12 +109,12 @@ Route::group(['middleware' => 'locale'], function () {
                 'index' => 'user.view'
             ]
         ])->except(['show']);
-        Route::get('user/{status}',[UserController::class,'show ']);
+        Route::get('user/{status}',[UserController::class,'show']);
         /**
          * Manage all order
          * show, update, destroy
          */
-        Route::resource('order', OrderController::class)->except('filter');
+        Route::resource('order', OrderController::class);
         /**
          * Filter order by status of order
          */

@@ -189,6 +189,8 @@ return [
     'rating'=>'Đánh giá',
     'view'=>'Lượt xem',
     'asc'=>'Tăng dần',
-    'desc'=>'Giảm dần'
+    'desc'=>'Giảm dần',
+    'update-status-success'=>'Cập nhật trạng thái thành công!',
+    'update-status-fail'=>'Cập nhật trạng thái thất bại!'
 ]
 ?>

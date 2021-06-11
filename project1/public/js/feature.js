@@ -32,8 +32,12 @@ $(document).ready(function () {
                     style: 'currency',
                     currency: 'VND'
                 });
+                var amount = res.cart[id].total.toLocaleString('it-IT', {
+                    style: 'currency',
+                    currency: 'VND'
+                });
                 $('#cart-total').text(total);
-                $('#amount_' + id).text(res.cart[id].total);
+                $('#amount_' + id).text(amount);
                 $('#totals').text(total);
             } else {
                 var msg = alertify.message(res.message);

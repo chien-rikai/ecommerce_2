@@ -113,11 +113,13 @@ Route::group(['middleware' => 'locale'], function () {
             ]
         ])->except(['show']);
         Route::get('user/{status}',[UserController::class,'show']);
+        Route::put('user/restore/{id}',[UserController::class,'restore'])->name('user.restore');
         /**
          * Manage all order
          * show, update, destroy
          */
-        Route::resource('order', OrderController::class)->except('filter');
+        Route::resource('order', OrderController::class);
+        Route::put('order/restore/{id}',[OrderController::class,'restore'])->name('order.restore');
         /**
          * Filter order by status of order
          */

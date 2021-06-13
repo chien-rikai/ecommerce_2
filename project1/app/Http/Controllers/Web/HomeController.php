@@ -25,12 +25,12 @@ class HomeController extends Controller
      */
     public function index(){
         $products = Product::paginate(18);
-        $type='all';
+        $type ="all";
         return view('web.home.index',compact(['products','type']));
     }
     public function show($category){
         $products=Product::where('category_id',$category)->paginate(18); 
-        $type='all';
+        $type ="all";
         return view('web.home.index',compact(['products','type']));
     }
     /**

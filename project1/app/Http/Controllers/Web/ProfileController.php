@@ -19,12 +19,4 @@ class ProfileController extends Controller
         $orders = Order::where('user_id',Auth::id())->orderBy('created_at','desc')->get();
         return view('web.page.profile',compact(['status','orders']));
     }
-    public function show($status){
-        // $status_id = OrderStatusEnum::values()[$status];
-        // if(blank($status_id)){
-        //     return response()->json(['hasFilter'=>false,'message'=>__('lang.status-not-found')]);
-        // }
-        $orders = Order::where('user_id',Auth::id())->where('status_id',$status)->get();
-        return response()->json(['orders'=>$orders],200);
-    }
 }

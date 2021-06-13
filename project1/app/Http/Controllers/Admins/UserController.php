@@ -14,25 +14,24 @@ class UserController extends Controller
      * @param  $block (0/1)
      * @return \Illuminate\Http\Response
      */
-    public function index($block=null){
-        
-        if($block!=null){
-            $users = User::where('block',$block)->paginate(10);
-        }
-        else
-            $users = User::paginate(10);
-            
+    public function index(){
+        $users = User::paginate(10);     
         return view('admin.layout.users_table_layout',compact(["users"]));
     }
     public function show(Request $request,$status){
-        if($status=='all')
-            $users = User::paginate(10);
-        else{
+        if($status==UserStatus::types()['trashed']){
+            $users= User::onlyTrashed()->where([[$request->field,'like','%'.$request->key.'%']])->paginate(10);
+            return response()->json(['view'=>view('admin.users_trashed',compact(["users"]))->render()]);
+        }
+        if($status!=UserStatus::types()['all']){
             $status_id= UserStatus::getValue($status);
-            $users = User::where('block',$status_id)->paginate(10);
+            $users = User::where([['block','=',$status_id],[$request->field,'like','%'.$request->key.'%']])->paginate(10);
+        }
+        else{
+            $users = User::where([[$request->field,'like','%'.$request->key.'%']])->paginate(10);
         }    
         if($request->ajax()){
-            return view('admin.users_view',compact(["users"]))->render();
+            return response()->json(['view'=>view('admin.users_view',compact(["users"]))->render()]);
         }    
         return view('admin.layout.users_table_layout',compact(["users"]));
     }
@@ -60,15 +59,23 @@ class UserController extends Controller
     }
     public function destroy($id){
         //call func to find user by id
-        $user = $this->find($id);
-        //delete user
-        $delete = $user->delete();
+        $user = User::withTrashed()->find($id);
+        if($user->trashed()){
+            $delete = $user->forceDelete();
+        }
+        else
+            $delete = $user->delete();
         //check delete action success
         if($delete){
             return response()->json(['message'=>__('lang.user-remove-success'),'hasRemove'=>true]);
         }else{
             return response()->json(['message'=>__('lang.user-remove-fail'),'hasRemove'=>false]);
         }
+    }
+    public function restore(Request $request,$id){
+        $user=User::withTrashed()->find($id);
+        $user->restore();
+        return response()->json(['message'=>__('lang.user-restore-success'),'hasRemove'=>true]);
     }
     public function find($id){
         return User::find($id);

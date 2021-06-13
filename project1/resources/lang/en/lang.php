@@ -197,6 +197,16 @@ return [
     'desc'=>'Descending',
     'no-results' => 'No results were found',
     'update-status-success'=>'Update status order successfully!',
-    'update-status-fail'=>'Update status order fail!'
+    'update-status-fail'=>'Update status order fail!',
+    'blocked'=>'Block',
+    'active'=>'Active',
+    'trashed'=>'Trashed',
+    'restore'=>'Restore',
+    'hard-delete'=>'Hard delete',
+    'hard-delete-user-confirm'=>'Are you sure to delete this user forever?',
+    'restore-user'=>'Are you sure to restore this user?',
+    'hard_delete_order_confirmation'=>'Are you sure to delete this order forever?',
+    'restore-order'=>'Are you sure to restore this order?',
+    'order-restore-success'=>'Order restore successfully!'
 ]   
 ?>

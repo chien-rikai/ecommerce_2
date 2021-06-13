@@ -19,4 +19,11 @@ final class UserStatus extends Enum
             return 0;
         else return 1;    
     }
+    public static function types():array
+    {
+        return [
+            'all'=>'all',
+            'trashed'=>'trashed'
+        ];
+    }
 }

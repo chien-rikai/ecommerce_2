@@ -189,6 +189,7 @@ return [
     'rating'=>'Đánh giá',
     'view'=>'Lượt xem',
     'asc'=>'Tăng dần',
-    'desc'=>'Giảm dần'
+    'desc'=>'Giảm dần',
+    'no-results' => 'không tìm thấy kết quả',
 ]
 ?>

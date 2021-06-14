@@ -190,6 +190,7 @@ return [
     'rating'=>'Rating',
     'view'=>'View',
     'asc'=>'Ascending',
-    'desc'=>'Descending'
+    'desc'=>'Descending',
+    'no-results' => 'No results were found',
 ]   
 ?>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admins\CategoryController;
 use App\Http\Controllers\Admins\OrderController;
 use App\Http\Controllers\Admins\ProductController;
+use App\Http\Controllers\Admins\SearchController as AdminsSearchController;
 use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\HomeController;
@@ -86,6 +87,7 @@ Route::group(['middleware' => 'locale'], function () {
         Route::resource('product', ProductController::class, [
             'except' => ['show']
         ]);
+        Route::get('product/search', [AdminsSearchController::class, 'productSearch'])->name('product.search');
         /**
          * Manage all category:
          * include: show list categories,

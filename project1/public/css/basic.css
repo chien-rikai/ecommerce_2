@@ -281,3 +281,59 @@
     .search{
         width: 85%;
     }
+
+    .products-add-btn{
+        margin-right: 20%;
+        height: 45px;
+        width: 80px;
+        text-align: center;
+        background-color: #fed700;
+        font-size: 14px;
+        padding-top: 10px;
+        float: right;
+    }
+    .select-products {
+        width: 20%;
+        background: #eceff8;
+        border: 2px solid #eceff8;
+        height: 45px;
+        padding-left: 10px;
+        box-shadow: none;
+        font-size: 14px;
+        color: #626262;
+    }
+
+    .input-products-search {
+        background: #eceff8;
+        border: 2px solid #eceff8;
+        height: 45px;
+        box-shadow: none;
+        padding-left: 10px;
+        font-size: 14px;
+        color: #626262;
+        width: 70%;
+    }
+
+    button.li-btn {
+        border: none;
+        background: #fed700;
+        color: #242424;
+        font-size: 20px;
+        width: 45px;
+        border-radius: 0 2px 2px 0;
+        height: 45px;
+        line-height: 45px;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+    button.li-btn:hover {
+        background: #333333;
+        color: #ffffff;
+    }
+
+    .t-center {
+        text-align: center;
+    }

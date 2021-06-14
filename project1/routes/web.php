@@ -88,17 +88,18 @@ Route::group(['middleware' => 'locale'], function () {
             'except' => ['show']
         ]);
         Route::get('product/search', [AdminsSearchController::class, 'productSearch'])->name('product.search');
+        Route::get('product/filter/{status}', [ProductController::class, 'filter'])->name('product.filter');
+        Route::put('product/restore/{id}',[ProductController::class, 'restore'])->name('product.restore');
         /**
          * Manage all category:
          * include: show list categories,
          * create new, update and destroy
          */
         Route::resource('category', CategoryController::class, [
-            'names' => [
-                'store' => 'category.add',
-                'destroy' => 'category.delete'
-            ]
+            'except' => ['show']
         ]);
+        Route::get('category/filter/{status}', [CategoryController::class, 'filter'])->name('category.filter');
+        Route::put('category/restore/{id}',[CategoryController::class, 'restore'])->name('category.restore');
         /**
          * Manage all users:
          *  show list users,

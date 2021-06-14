@@ -20,13 +20,27 @@
       <td><a class="btn btn-default btn-circle">{{$stt++}}</a></td>
       <td><img class="admin-product-img" id="img-product" src="/images/{{$product->url_img}}" alt="Img"></img></td>
       <td>{{$product->name}}</td>
+      @if($product->deleted_at == null)
       <td>{{$product->category->name}}</td>
+      @else
+      <td></td>
+      @endif
       <td>{{number_format($product->view)}}</td>
       <td>{{number_format($product->price)}}</td>
-      <td><a class="btn-default btn-xs" href="/admin/product/{{$product->id}}/edit/">
+      <td>
+      @if($product->deleted_at == null)
+        <a class="btn-default btn-xs" href="/admin/product/{{$product->id}}/edit/">
         <i class="glyphicon glyphicon-pencil"></i>{{__('lang.edit')}}</a>
+        <input type="hidden" id="delete-value" value="{{__('lang.soft-delete-product')}}">
         <a class="btn-default btn-xs" onclick="DeleteProduct('{{$product->id}}')">
-        <i class="glyphicon glyphicon-pencil"></i>{{__('lang.delete')}}</a></td>
+        <i class="glyphicon glyphicon-trash"></i>{{__('lang.delete')}}</a></td>
+      @else
+        <a class="btn-default btn-xs" onclick="RestoreProduct('{{$product->id}}')">
+          <i class="glyphicon glyphicon-pencil"></i>{{__('lang.restore')}}</a>
+          <input type="hidden" id="delete-value" value="{{__('lang.delete-product')}}">
+          <a class="btn-default btn-xs" onclick="DeleteProduct('{{$product->id}}')">
+        <i class="glyphicon glyphicon-trash"></i>{{__('lang.delete')}}</a></td>
+        @endif
     </tr>
     @endforeach
     @else

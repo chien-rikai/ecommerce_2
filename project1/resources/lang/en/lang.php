@@ -30,8 +30,12 @@ return [
     'edit-cate' => 'Edit category',
     'feature' => 'Feature',
     'delete' => 'Delete',
+    'soft-delete-cate' => 'Are you sure to delete this category in the trash??',
     'delete-cate' => 'Are you sure to delete this category?
-                        If you delete this category, the related products will also be deleted.',
+    If you delete this category, the related products will also be deleted.',
+    'restore' => 'Restore',
+    'restore-success' => 'Restore success',
+    'restore-fail' => 'Restore failed',
     
     //I18n layout staus
     'add-success' => 'Add success',

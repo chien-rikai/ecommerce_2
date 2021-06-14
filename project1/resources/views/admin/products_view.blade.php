@@ -23,10 +23,23 @@
       </div>
     </div>
     <br>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <label>Status</label>
+        <div>
+          <label class="radio-inline">
+            <input type="radio" class="status" value="all" checked="true">
+            All
+          </label>
+          <label class="radio-inline">
+            <input type="radio" class="status" value="trashed" class="required" title="*">
+            Trashed
+          </label>
+        </div>
+      </div>
     <div class="col-sm-10" id="table-products">
       @include('admin.table.products')
     </div>
-    <input type="hidden" id="delete-value" value="{{__('lang.delete-product')}}">
   </div>
   @include('admin.layout.footer')
 </body>

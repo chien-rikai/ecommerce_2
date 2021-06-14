@@ -7,7 +7,7 @@
     @include('common.fail')
     @include('common.error')
     <h2>{{__('lang.add-cate')}}</h2>
-    <form method="post" action="{{route('category.add')}}" class="table-view">
+    <form method="post" action="{{route('category.store')}}" class="table-view">
       @csrf
       <div class="form-group">
         <label>{{__('lang.name-cate')}}</label>

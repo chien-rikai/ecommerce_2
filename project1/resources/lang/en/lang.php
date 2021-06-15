@@ -196,5 +196,7 @@ return [
     'asc'=>'Ascending',
     'desc'=>'Descending',
     'no-results' => 'No results were found',
+    'update-status-success'=>'Update status order successfully!',
+    'update-status-fail'=>'Update status order fail!'
 ]   
 ?>

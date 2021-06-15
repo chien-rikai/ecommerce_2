@@ -27,7 +27,6 @@
             event.preventDefault();
             //var page = $(this).attr('href').split('page=')[1];
             var id = $(this).attr('href').substring($(this).attr('href').lastIndexOf('/') + 1);
-            console.log(id);
             if (confirm("{{__('lang.delete-user')}}")) {
         $.ajax({
           url: "/admin/user/" + id,
@@ -39,9 +38,9 @@
         }).done(function(response) {
           if (response.hasDelete) {
             $("#user_" + id).remove();
-            alertify.success(response.success);
+            alertify.success(response.message);
           } else {
-            alertify.error(response.fail);
+            alertify.error(response.message);
             $("#user_" + id).remove();
           }
 
@@ -53,7 +52,6 @@
             event.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
             var status = $(this).attr('href').substring($(this).attr('href').lastIndexOf('/') + 1).split('?page=')[0];
-            console.log(status);
             fetch_data(status, page);
         });
 

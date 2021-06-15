@@ -7,7 +7,6 @@ $(document).ready(function () {
     });
     $(".sort-by").on("change", function () {
         var type= $('.view-types').val();
-        console.log(type);
         fetch_data(1,type);
     });
     $(".order-by").on("change", function () {
@@ -19,12 +18,10 @@ $(document).ready(function () {
         var page = $(this).attr('href').split('page=')[1];
         var type = $(this).attr('href').substring($(this).attr('href').lastIndexOf('/') + 1).split('?page=')[0];
         //var type= $('.view-types').val();
-        console.log(type);
         fetch_data(page,type);
       });
     function fetch_data(page,type) {
         var sortBy = $('.sort-by').val();
-        console.log(sortBy);
         var orderBy = $('.order-by').val();
         $.ajax({
             url: "/web.com/home/fetch/" + type,
@@ -36,12 +33,10 @@ $(document).ready(function () {
                 sortBy:sortBy
             },
             success: function(data) {
-                $('.tab-content').html(data.responseText);
+                $('.tab-content').html(data.view);
             }
         }).done(function(res){
-          console.log(res);
         }).fail(function (res) {
-            $('.tab-content').html(res.responseText);
          });
          }
 });

@@ -27,7 +27,7 @@
                         <div class="cart-page-total">
                             <h2>{{__('lang.total')}}</h2>
                             <ul>
-                             <li>{{__('lang.total')}} <span id="totals">{{$cart['total']}}</span></li>
+                             <li>{{__('lang.total')}} <span id="totals">{{number_format($cart['total'])}}(VND)</span></li>
                             </ul>
                             <a href="{{route('payment.index')}}">{{__('lang.checkout')}}</a>
                         </div>

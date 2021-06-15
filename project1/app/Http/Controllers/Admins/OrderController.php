@@ -53,8 +53,12 @@ class OrderController extends Controller
         $update = $order->save();
         //check update action success
         if($update){
+            if($request->ajax())
+                return response()->json(['message'=>__('lang.update-status-success')]);
             return back()->with('success', __('lang.edit-success'));
         }else{
+            if($request->ajax())
+                return response()->json(['message'=>__('lang.update-status-fail')]);
             return back()->with('fail', __('lang.edit-fail'));
         }
     }

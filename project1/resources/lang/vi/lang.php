@@ -195,5 +195,7 @@ return [
     'asc'=>'Tăng dần',
     'desc'=>'Giảm dần',
     'no-results' => 'không tìm thấy kết quả',
+    'update-status-success'=>'Cập nhật trạng thái thành công!',
+    'update-status-fail'=>'Cập nhật trạng thái thất bại!'
 ]
 ?>

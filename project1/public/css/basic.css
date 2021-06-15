@@ -56,7 +56,7 @@
         width: 300px;
       }
       
-      .switch-toggle input {
+    .switch-toggle input {
           width: 0px;
           visibility: hidden;
       }

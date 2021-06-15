@@ -71,7 +71,6 @@ class ProductController extends Controller
             return back()->with('fail', __('lang.add-fail'));
         }
     }
-
     public function productImport(ProductImportRequest $request){
         $file = file($request->file->getRealPath());
         $data = array_slice($file, 1);

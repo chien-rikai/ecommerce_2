@@ -19,7 +19,6 @@
             var $button = $(this);
             var quantity = $button.parent().children().children('#quantity').val();
             var id = $button.parent().children().children('.id').val();
-            console.log(quantity + " " + id);
             addToCart(id, quantity);
         });
         $(document).on("click",'.add', function () {

@@ -19,7 +19,7 @@ class OrderController extends Controller
      */
     public function index(){
         //Pagination
-        $orders = Order::paginate(20);
+        $orders = Order::paginate(10);
         
         $status = $this->getStatus();
 
@@ -32,7 +32,7 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        $order = $this->find($id);
+        $order = Order::withTrashed()->find($id);
         $status = $this->getStatus();
         return view('admin.order_detail',compact(['order','status']));
     }
@@ -70,9 +70,12 @@ class OrderController extends Controller
      */
     public function destroy($id){
         //call func find to find order by id
-        $order = $this->find($id);
+        $order = Order::withTrashed()->find($id);
         //delete order
-        $delete = $order->delete();
+        if($order->trashed())
+            $delete = $order->forceDelete();
+        else
+            $delete = $order->delete();
         //check delete action success
         if($delete){
             return response()->json(['message'=>__('lang.delete-success'),'hasRemove'=>true]);
@@ -87,16 +90,29 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function filter(Request $request,$status){
-        if($status=='all'){
-            $orders = Order::paginate(10);
+        if($status==OrderStatusEnum::types()['trashed']){
+            $orders = Order::onlyTrashed()->where($request->field,'like','%'.$request->key.'%'
+                        )->paginate(10);
+                return response()->json(['view'=>view('admin.orders_trashed',compact(['orders','status']))->render()]);
+        }
+        elseif($status==OrderStatusEnum::types()['all']){
+            $orders = Order::where($request->field,'like','%'.$request->key.'%'
+                        )->paginate(10);
         }
         else
-        $orders = Order::where('status_id',OrderStatusEnum::values()[$status])->paginate(10);
+        $orders = Order::where([['status_id','=',OrderStatusEnum::values()[$status]],
+                               [$request->field,'like','%'.$request->key.'%']
+                        ])->paginate(10);
         $status = $this->getStatus();
         if($request->ajax()){
-            return view('admin.orders_view',compact(['orders','status']))->render();
+            return response()->json(['view'=>view('admin.orders_view',compact(['orders','status']))->render()]);
         }
         return view('admin.layout.orders_table_layout',compact(['orders','status']));
+    }
+    public function restore(Request $request,$id){
+        $order=Order::withTrashed()->find($id);
+        $order->restore();
+        return response()->json(['message'=>__('lang.order-restore-success'),'hasRemove'=>true]);
     }
     /**
      * Function find order by id

@@ -27,4 +27,11 @@ final class OrderStatusEnum extends Enum
             'cancelled' => 4,
         ];
     }
+    public static function types():array
+    {
+        return [
+            'all'=>'all',
+            'trashed'=>'trashed'
+        ];
+    }
 }

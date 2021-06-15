@@ -53,7 +53,7 @@ class PaymentController extends Controller
             return back()->with('error',__('lang.order-fail'));
         }
         $sendMail = SendMail::dispatch($params)->delay(now()->addMinute(1));
-        $request->session()->forget('cart_'.$request->user_id);
+        $request->session()->put('cart_'.$request->user_id,['total'=>0]);
         
         return back()->with('success',__('lang.order-success'));
     }

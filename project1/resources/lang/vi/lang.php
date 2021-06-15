@@ -183,7 +183,7 @@ return [
     'all'=>'Tất cả',
     'user-remove-success'=>'Xóa người dùng thành công!',
     'user-remove-fail'=>'Xóa người dùng thất bại!',
-    'delete-user'=>'Bạn có chắc muốn xóa vĩnh viễn người dùng này không?',
+    'delete-user'=>'Bạn có chắc muốn xóa người dùng này không?',
     'dear' => 'Chào bạn,',
     'thanks' => 'Cảm ơn bạn đã đặt hàng của chúng tôi.',
     'links' =>'Nếu muốn kiểm tra đơn đặt hàng vui lòng nhấn vào link ở đây:',
@@ -196,6 +196,16 @@ return [
     'desc'=>'Giảm dần',
     'no-results' => 'không tìm thấy kết quả',
     'update-status-success'=>'Cập nhật trạng thái thành công!',
-    'update-status-fail'=>'Cập nhật trạng thái thất bại!'
+    'update-status-fail'=>'Cập nhật trạng thái thất bại!',
+    'blocked'=>'Khoá',
+    'active'=>'Đang hoạt động',
+    'trashed'=>'Thùng rác',
+    'restore'=>'Khôi phục',
+    'hard-delete'=>'Xóa vĩnh viễn',
+    'hard-delete-user-confirm'=>'Bạn có muốn xóa vĩnh viễn người dùng này?',
+    'restore-user'=>'Bạn có muốn khôi phục người dùng này?',
+    'hard_delete_order_confirmation'=>'Bạn có muốn xóa vĩnh viễn đơn hàng này?',
+    'restore-order'=>'Bạn có muốn khôi phục đơn hàng này?',
+    'order-restore-success'=>'Khôi phục đơn hàng thành công!'
 ]
 ?>

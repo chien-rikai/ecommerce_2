@@ -1,13 +1,12 @@
-<div class="sidebar-categores-box mt-sm-30 mt-xs-30">
+<div class="sidebar-categores-box mb-sm-0">
     <div class="sidebar-title">
         <h2>{{__('lang.cate')}}</h2>
     </div>
-    <!-- category-sub-menu start -->
-    <div class="category-sub-menu">
+    <div class="category-tags">
         <ul>
-            @foreach($categories as $category)
+        @foreach($categories as $category)
             <li><a href="{{route('home.show',[$category->id])}}">{{$category->name}}</a></li>
-            @endforeach
+        @endforeach
         </ul>
     </div>
     <!-- category-sub-menu end -->

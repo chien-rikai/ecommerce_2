@@ -9,14 +9,8 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
     public function search(Request $request){
-        if($request->category_id == 0){
-            $products = Product::where('name','like', "%$request->name%")->paginate(12);
-        }else{
-            $products = Product::where('name','like', "%$request->name%")->where('category_id','=',$request->category_id)->paginate(12);
-        }
-        if(blank($products)){
-            return back();
-        }
-        return view('web.home.index',compact(['products']));
+        $products = Product::productSearch($request->name, $request->category_id);
+        
+        return view('web.page.search',compact('products'));
     }
 }

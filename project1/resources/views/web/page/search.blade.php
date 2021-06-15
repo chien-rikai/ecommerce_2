@@ -47,10 +47,12 @@
               @include('common.success')
               @include('common.fail')
               @if(!blank($products))
-              @include('web.shared.product_element')
-              <div class="mp50 pull-right">
-                {{$products->appends(Request::all())->links()}}
-              </div>
+                @include('web.shared.product_element')
+                <div class="mp50 pull-right">
+                  {{$products->appends(Request::all())->links()}}
+                </div>
+              @else
+                <div class="t-center">{{__('lang.no-results')}}</div>
               @endif
               <!--CODE -->
             </div>

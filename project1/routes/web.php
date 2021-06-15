@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admins\CategoryController;
+use App\Http\Controllers\Admins\LoginController as AdminsLoginController;
 use App\Http\Controllers\Admins\OrderController;
 use App\Http\Controllers\Admins\ProductController;
 use App\Http\Controllers\Admins\SearchController as AdminsSearchController;
@@ -78,7 +79,7 @@ Route::group(['middleware' => 'locale'], function () {
     /*
      *  Route for admin page
      *  */
-    Route::prefix('admin')->group(function () {
+    Route::group(['prefix' => 'admin', 'middleware' => ['auth.admin']], function () {
         /**
          * Manage all products:
          * include: show list products,
@@ -123,4 +124,13 @@ Route::group(['middleware' => 'locale'], function () {
          */
         Route::get('order/filter/{status}', [OrderController::class, 'filter'])->name('order.filter');
     });
+    /**
+     * Login admin
+     */
+    Route::resource('login', AdminsLoginController::class, [
+        'as' => 'admin',
+        'only' => 'index',
+    ],);
+    Route::post('login', [AdminsLoginController::class, 'postLogin'])->name('admin.login.post');
+    Route::get('logout', [AdminsLoginController::class, 'logout'])->name('admin.logout');
 });

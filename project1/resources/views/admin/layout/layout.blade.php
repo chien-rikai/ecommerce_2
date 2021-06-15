@@ -71,6 +71,9 @@
                     <li>
                         <a href="{{route('user.view')}}"><i class="fa fa-user-o"></i>{{ __('lang.user')}}</a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.logout') }}"><i class="fa fa-sign-in "></i>{{ __('lang.logout')}}</a>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -47,7 +47,7 @@ class Product extends Model
             $delete = Product::where('category_id','=',$id)->chunkById(100, function($products){
                 foreach($products as $product){
                     $delete = $product->delete();
-                    $delete = DetailOrder::deleteCategory($delete,$product->id);
+                    $delete = DetailOrder::deleteProduct($delete,$product->id);
                 }
             });
         }

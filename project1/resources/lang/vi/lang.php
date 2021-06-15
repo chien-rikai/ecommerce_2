@@ -30,8 +30,12 @@ return [
     'edit-cate' => 'Sửa danh mục',
     'feature' => 'Chức năng',
     'delete' => 'Xóa',
+    'soft-delete-cate' => 'bạn có chắc xóa danh mục này vào thùng rác không?',
     'delete-cate' => 'bạn có chắc xóa danh mục này không?
-                        Nếu xóa danh mục này các sản phẩm liên quan cũng bị xóa.',
+    Nếu xóa danh mục này các sản phẩm liên quan cũng bị xóa.',
+    'restore' => 'Lấy lại',
+    'restore-success' => 'Lấy lại thành công',
+    'restore-fail' => 'Lấy lại thất bại',
 
     
      //I18n layout status

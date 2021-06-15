@@ -10,6 +10,7 @@ use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
@@ -139,22 +140,30 @@ class ProductController extends Controller
     }
 
     
-    public function destroy($id){
-        $product = $this->find($id);
-        if(blank($product)){
-            return back()->with('fail' , __('lang.delete-fail'));
-        }
-
-        $urlImg = $product->url_img;
-        $delete = $product->delete();
-        $products = Product::with('category')->paginate(30);
+    public function destroy(Request $request,$id){
+        $delete = Product::destroyProduct($id);
+        $products =  Product::checkStatus('all');
         if($delete){
-            //unlink(public_path(('images/'.$urlImg))); 
             Session::put('success',__('lang.delete-success'));
-            return view('admin.table.products',compact('products'));
         }else{
             Session::put('fail' , __('lang.delete-success'));
-            return view('admin.table.products',compact('products'));
         }
+        return view('admin.table.products',compact('products'));
+    }
+
+    public function filter(Request $request,$status){
+        $products = Product::checkStatus($status);
+        return view('admin.table.products',compact('products'));
+    }
+
+    public function restore(Request $request,$id){
+        $update = Product::restoreProduct($id);
+        $products = Product::checkStatus('trashed');
+        if($update){
+            Session::put('success' , __('lang.restore-success'));
+        }else{
+            Session::put('fail' , __('lang.restore-fail'));
+        }
+        return view('admin.table.products',compact('products'));
     }
 }

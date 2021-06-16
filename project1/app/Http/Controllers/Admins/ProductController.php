@@ -43,10 +43,8 @@ class ProductController extends Controller
 
     }
 
-    public function create(){
-        $categories = Category::get();
-        
-        return view('admin.product_created',['categories' => $categories]);
+    public function create(){    
+        return view('admin.product_created');
     }
 
     

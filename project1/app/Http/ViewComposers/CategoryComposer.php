@@ -13,8 +13,8 @@ class CategoryComposer
      */
     public function compose(View $view)
     { 
-        $categoies = Category::all();
-        $view->with('categories',$categoies);
+        $categories = Category::all();
+        $view->with('categories',$categories);
     }
 }
 ?>

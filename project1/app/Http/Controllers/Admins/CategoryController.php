@@ -48,11 +48,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryRequest $request){
-        $category = new Category;
-
-        $category->name = $request->category;
-        $insert = $category->save();
-        if($insert){
+        $params['name'] = $request->category;
+        $category= Category::store($params);
+        if($category){
             return back()->with('success', __('lang.add-success'));
         }else{
             return back()->with('fail', __('lang.add-fail'));
@@ -92,10 +90,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(CategoryRequest $request){
-        $category = $this->find($request->id);
-
-        $category->name = $request->category;
-        $update = $category->save();
+        $update = Category::updateCategory($request);
         if($update){
             return back()->with('success', __('lang.edit-success'));
         }else{

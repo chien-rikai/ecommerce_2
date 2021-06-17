@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\ViewComposers\CategoryComposer;
 use App\Models\Category;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
@@ -26,8 +27,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $categories = Category::get();
-        View::share('categories',$categories);
+        View::composer(
+            ['web.*',
+            'admin.product_created',
+            'admin.product_edit',
+            'admin.products_view'], 
+                CategoryComposer::class,
+        );
         Paginator::useBootstrap();
     }
 }

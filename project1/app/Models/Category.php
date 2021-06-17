@@ -11,11 +11,19 @@ class Category extends Model
     use HasFactory, SoftDeletes;
     protected $table ="categories";
     protected $dates = ['deleted_at'];
-
+    protected $fillable=['name'];
     public function products(){
         return $this->hasMany(Product::class);
     }
-
+    public static function store($params){
+        $category = Category::create($params);
+        return $category;
+    }
+    public static function updateCategory($request){
+        $category = Category::find($request->id);
+        $category->name = $request->category;
+        return $category->save();
+    }
     public static function checkStatus($status){
         if($status == 'trashed'){
             return $categories = Category::onlyTrashed()->get();

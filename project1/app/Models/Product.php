@@ -79,7 +79,6 @@ class Product extends Model
         $update = false;
         $product = Product::withTrashed()->find($id);
         $category = Category::withTrashed()->find($product->category_id);
-        // dd($category->trashed());
         if($category->trashed()){
             return $update;
         }

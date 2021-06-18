@@ -43,5 +43,5 @@
   </div>
   @include('admin.layout.footer')
 </body>
-<script src="/js/product-search.js"></script>
+
 @endsection

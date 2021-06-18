@@ -10,6 +10,7 @@ use App\Models\Product;
 use Tests\TestCase;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
@@ -25,6 +26,12 @@ class ProductControllerTest extends TestCase
         'price' => '1000000',
         'discount' => 10,
         'category_id' => 1,
+    ];
+    
+    private $param = [
+        'name' => 'iphone',
+        'category_id' => 1,
+        'status' => 'all',
     ];
 
     public function setUp(): void{
@@ -70,7 +77,10 @@ class ProductControllerTest extends TestCase
 
     public function test_destroy_product(){
         $product = Product::create($this->params);
-        $request = new Request();
+
+        $request = new HttpRequest();
+        $request->headers->set('content-type', 'application/json');
+        $request->setJson(new ParameterBag($this->param));
         $this->assertEquals('admin.table.products', $this->controller->destroy($request,$product->id)->getName());
     }
 

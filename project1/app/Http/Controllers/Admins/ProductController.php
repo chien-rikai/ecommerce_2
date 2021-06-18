@@ -10,7 +10,7 @@ use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
@@ -139,7 +139,8 @@ class ProductController extends Controller
     
     public function destroy(Request $request,$id){
         $delete = Product::destroyProduct($id);
-        $products =  Product::checkStatus('all');
+        $products =  Product::checkStatus($request->status);
+        $products = Product::productSearch($request->name,$request->category_id,$products);
         if($delete){
             Session::put('success',__('lang.delete-success'));
         }else{
@@ -150,12 +151,14 @@ class ProductController extends Controller
 
     public function filter(Request $request,$status){
         $products = Product::checkStatus($status);
+        $products = Product::productSearch($request->name,$request->id,$products);
         return view('admin.table.products',compact('products'));
     }
 
     public function restore(Request $request,$id){
         $update = Product::restoreProduct($id);
-        $products = Product::checkStatus('trashed');
+        $products = Product::checkStatus($request->status);
+        $products = Product::productSearch($request->name,$request->category_id,$products);
         if($update){
             Session::put('success' , __('lang.restore-success'));
         }else{

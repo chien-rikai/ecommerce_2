@@ -14,16 +14,16 @@
     </tr>
   </thead>
   <tbody id="productData">
-    @if(!blank($products))
+    @if(!empty($products))
     @foreach($products as $product)
     <tr id="product-id-{{$product->id}}">
       <td><a class="btn btn-default btn-circle">{{$stt++}}</a></td>
       <td><img class="admin-product-img" id="img-product" src="/images/{{$product->url_img}}" alt="Img"></img></td>
       <td>{{$product->name}}</td>
-      @if($product->deleted_at == null)
-      <td>{{$product->category->name}}</td>
-      @else
+      @if($product->category == null)
       <td></td>
+      @else
+      <td>{{$product->category->name}}</td>
       @endif
       <td>{{number_format($product->view)}}</td>
       <td>{{number_format($product->price)}}</td>

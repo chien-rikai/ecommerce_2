@@ -41,4 +41,10 @@ class ProductTest extends TestCase
         $check = Product::checkStatus($status);
         $this->assertNotNull($check); 
     }
+
+    public function test_product_search(){
+        $products = new Product();
+        $check = Product::productSearch('iphone',1,$products);
+        $this->assertNotNull($check);
+    }
 }

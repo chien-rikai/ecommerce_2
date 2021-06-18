@@ -35,11 +35,11 @@ class Product extends Model
         }
     }
 
-    public static function productSearch($name, $id){
+    public static function productSearch($name, $id,$products){
         if($id == 0){
-            return Product::where('name','like', "%$name%")->paginate(12);
+            return $products->where('name','like', "%$name%")->orderBy('created_at','desc')->paginate(12);
         }
-        return Product::where('name','like', "%$name%")->where('category_id','=',$id)->paginate(12);
+        return $products->where('name','like', "%$name%")->where('category_id','=',$id)->orderBy('created_at','desc')->paginate(12);
     }
 
     public static function deleteCategory($delete,$id){
@@ -91,8 +91,10 @@ class Product extends Model
 
     public static function checkStatus($status){
         if($status == 'trashed'){
-            return $products = Product::onlyTrashed()->with('category')->orderBy('deleted_at','desc')->paginate(30);;
-        }
-        return $products = Product::with('category')->orderBy('created_at','desc')->paginate(30);
+            $products = Product::onlyTrashed()->with('category');
+        }else{
+            $products = Product::with('category');
+        }      
+        return $products;
     }
 }

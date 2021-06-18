@@ -1,3 +1,4 @@
+<?php $stt = 1 ?>
 <table class="table-view table table-bordered">
   @include('common.success')
   @include('common.fail')
@@ -13,7 +14,7 @@
     @foreach($categories as $row)
     <tr>
       <td>
-        <a class="btn btn-default btn-circle">{{$row->id}}</a>
+        <a class="btn btn-default btn-circle">{{$stt++}}</a>
       </td>
       <td>
         {{$row->name}}

@@ -89,7 +89,6 @@ Route::group(['middleware' => 'locale'], function () {
         Route::resource('product', ProductController::class, [
             'except' => ['show']
         ]);
-        Route::get('product/search', [AdminsSearchController::class, 'productSearch'])->name('product.search');
         Route::get('product/filter/{status}', [ProductController::class, 'filter'])->name('product.filter');
         Route::put('product/restore/{id}',[ProductController::class, 'restore'])->name('product.restore');
         /**

@@ -13,7 +13,7 @@ class CategoryComposer
      */
     public function compose(View $view)
     { 
-        $categories = Category::all();
+        $categories = Category::where('parent_id','=',null)->get();
         $view->with('categories',$categories);
     }
 }

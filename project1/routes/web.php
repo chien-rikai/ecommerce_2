@@ -42,7 +42,9 @@ Route::group(['middleware' => 'locale'], function () {
         /*
         *  Route for home page
         *  */
-        Route::resource('home', HomeController::class);
+        Route::resource('home', HomeController::class, [
+            'except' => ['show']
+        ]);
         Route::get('home/{category}/',[HomeController::class,'show'])->name('home.show');
         Route::get('home/fetch/{type}/',[HomeController::class,'fetch'])->name('home.fetch');
         /*
@@ -99,6 +101,7 @@ Route::group(['middleware' => 'locale'], function () {
         Route::resource('category', CategoryController::class, [
             'except' => ['show']
         ]);
+        Route::get('category/multi-level',[CategoryController::class, 'multiLevel'])->name('category.multi.level');
         Route::get('category/filter/{status}', [CategoryController::class, 'filter'])->name('category.filter');
         Route::put('category/restore/{id}',[CategoryController::class, 'restore'])->name('category.restore');
         /**

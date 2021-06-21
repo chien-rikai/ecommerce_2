@@ -24,15 +24,15 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'category' => 'required|max:50'
+            'name' => 'required|max:50'
         ];
     }
 
     public function messages()
     {
         return [
-            'category.required' => __('requestVali.required-cate'),
-            'category.max' =>  __('requestVali.max-cate'),
+            'name.required' => __('requestVali.required-cate'),
+            'name.max' =>  __('requestVali.max-cate'),
         ];
     }
 }

@@ -31,7 +31,10 @@ class AppServiceProvider extends ServiceProvider
             ['web.*',
             'admin.product_created',
             'admin.product_edit',
-            'admin.products_view'], 
+            'admin.products_view',
+            'admin.category_view',
+            'admin.category_created',
+            'admin.category_edit'], 
                 CategoryComposer::class,
         );
         Paginator::useBootstrap();

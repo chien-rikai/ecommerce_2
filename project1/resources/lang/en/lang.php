@@ -208,5 +208,7 @@ return [
     'hard_delete_order_confirmation'=>'Are you sure to delete this order forever?',
     'restore-order'=>'Are you sure to restore this order?',
     'order-restore-success'=>'Order restore successfully!',
+    'parent' => 'Parent directory',
+    'multi-level' => 'Multi level',
 ]   
 ?>

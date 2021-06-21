@@ -48,7 +48,11 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryRequest $request){
-        $params['name'] = $request->category;
+        if($request->parent_id_1 == null){
+            $params = $request->only(['name','parent_id']);
+        }else{
+            $params = ['name'=> $request->name, 'parent_id' => $request->parent_id_1];          
+        }      
         $category= Category::store($params);
         if($category){
             return back()->with('success', __('lang.add-success'));
@@ -80,8 +84,8 @@ class CategoryController extends Controller
      */
     public function edit($id){
         $category = $this->find($id);
-
-        return view('admin.category_edit',['category'=> $category]);
+        $subcategory = Category::where('parent_id',$id);
+        return view('admin.category_edit',['category'=> $category, 'subcategory' => $subcategory]);
     }
     /**
      * Update a category
@@ -89,7 +93,7 @@ class CategoryController extends Controller
      * @param  CategoryRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request){
+    public function update(CategoryRequest $request){   
         $update = Category::updateCategory($request);
         if($update){
             return back()->with('success', __('lang.edit-success'));
@@ -112,5 +116,12 @@ class CategoryController extends Controller
             Session::put('fail' , __('lang.restore-fail'));
         }
         return view('admin.table.categories',compact('categories'));
+    }
+
+    public function multiLevel(Request $request){
+        if($request->parent_id != null){
+            $categories = Category::where('parent_id','=',$request->parent_id)->get();
+            return view('admin.table.category_created',compact('categories'));
+        }  
     }
 }

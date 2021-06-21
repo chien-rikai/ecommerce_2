@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
@@ -30,6 +31,14 @@ class Order extends Model
             $result= $result.' '.$detail->product->name.' x'.$detail->quantity.',';
         }
         return $result;
+    }
+    public static function countOrders(){
+        $orders = Order::select(DB::raw('count(*) as count'),DB::raw('Date(created_at) as date'))
+                            ->whereYear('created_at',date('Y'))
+                            ->whereMonth('created_at',date('m'))
+                            ->groupBy('date')
+                            ->pluck('count','date');                    
+        return $orders;                    
     }
 
 }

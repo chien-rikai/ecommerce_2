@@ -3,9 +3,10 @@
   {{ method_field('PATCH') }}
   <div class="form-group">
     <label>{{__('lang.img')}}</label>
-    <div class="input-group">
+    <br>
+    <img class="admin-product-edit-img" src="/images/{{$product->url_img}}" alt="ERROR">
+    <div class="input-group img">
       <div class="custom-file">
-        <img class="admin-product-edit-img" src="/images/{{$product->url_img}}" alt="ERROR">
         <input type="file" name="images" class="custom-file-input" value="{{__('lang.add-img')}}">
         </input>
       </div>

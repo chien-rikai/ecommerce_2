@@ -17,7 +17,7 @@ return [
     'enter-cate' => 'Nhập danh mục',
     'add-cate' => 'Thêm danh mục',
     'add' => ' Thêm mới',
-    'statis' => 'Thống kê',
+    'statistic' => 'Thống kê',
     'manage' => 'Quản lý',
     'cate' => 'Danh mục',
     'product' => 'Sản phẩm',
@@ -206,6 +206,12 @@ return [
     'restore-user'=>'Bạn có muốn khôi phục người dùng này?',
     'hard_delete_order_confirmation'=>'Bạn có muốn xóa vĩnh viễn đơn hàng này?',
     'restore-order'=>'Bạn có muốn khôi phục đơn hàng này?',
-    'order-restore-success'=>'Khôi phục đơn hàng thành công!'
+    'order-restore-success'=>'Khôi phục đơn hàng thành công!',
+    'request'=>'Yêu cầu',
+    'analysis'=>'Thống kê',
+    'sales'=>'Đã bán',
+    'total-revenue'=>'Tổng doanh thu',
+    'growth-orders'=>'Thống kê đơn hàng',
+    'number-of-orders'=>'Số lượng đơn hàng'
 ]
 ?>

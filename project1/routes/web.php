@@ -5,6 +5,7 @@ use App\Http\Controllers\Admins\LoginController as AdminsLoginController;
 use App\Http\Controllers\Admins\OrderController;
 use App\Http\Controllers\Admins\ProductController;
 use App\Http\Controllers\Admins\SearchController as AdminsSearchController;
+use App\Http\Controllers\Admins\StatisticController;
 use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\HomeController;
@@ -107,11 +108,7 @@ Route::group(['middleware' => 'locale'], function () {
          *  filter user blocked/non block,
          *  block/unblock a user
          */
-        Route::resource('user', UserController::class, [
-            'names' => [
-                'index' => 'user.view'
-            ]
-        ])->except(['show']);
+        Route::resource('user', UserController::class)->except(['show']);
         Route::get('user/{status}',[UserController::class,'show']);
         Route::put('user/restore/{id}',[UserController::class,'restore'])->name('user.restore');
         /**
@@ -124,6 +121,8 @@ Route::group(['middleware' => 'locale'], function () {
          * Filter order by status of order
          */
         Route::get('order/filter/{status}', [OrderController::class, 'filter'])->name('order.filter');
+
+        Route::resource('statistic',StatisticController::class);
     });
     /**
      * Login admin

@@ -17,7 +17,7 @@ return [
     'enter-cate' => 'Enter category',
     'add-cate' => 'Add category',
     'add' =>  'Add',
-    'statis' => 'Statistical',
+    'statistic' => 'Statistical',
     'manage' => 'Manage',
     'cate' => 'Category',
     'product' => 'Products',
@@ -208,5 +208,11 @@ return [
     'hard_delete_order_confirmation'=>'Are you sure to delete this order forever?',
     'restore-order'=>'Are you sure to restore this order?',
     'order-restore-success'=>'Order restore successfully!',
+    'request'=>'Request',
+    'analysis'=>'Analysis',
+    'sales'=>'Sales',
+    'total-revenue'=>'Total Revenue',
+    'growth-orders'=>'Growth Orders',
+    'number-of-orders'=>'Number of orders'
 ]   
 ?>

@@ -1,6 +1,5 @@
 @extends('admin.layout.layout')
 @section('content')
-
 <body>
     <div class="container">
         <form id="search-form">
@@ -9,26 +8,32 @@
                     <form role="search">
                         <div class="input-group">
                             <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <span id="srch-status">{{__('lang.status')}}</span> <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" id="mnu-status">
-                                    <li><a href="all">{{__('lang.all')}}</a></li>
-                                    @foreach($status as $key=>$st)
-                                    <li><a href="{{$key}}">{{__('lang.'.$key)}}</a></li>
-                                    @endforeach
-                                    <li><a href="trashed">{{__('lang.trashed')}}</a></li>
-                                </ul>
+                                <div class="btn-group dropdown">
+                                    <button type="button" class="btn btn-default dropdown-toggle"
+                                        data-toggle="dropdown">
+                                        <span id="srch-status">{{__('lang.status')}}</span> <span class="caret"></span>
+                                    </button>
+                                    <div class="dropdown-menu" id="mnu-status">
+                                        <a class="dropdown-item" href="all">{{__('lang.all')}}</a>
+                                        @foreach($status as $key=>$st)
+                                        <a class="dropdown-item" href="{{$key}}">{{__('lang.'.$key)}}</a>
+                                        @endforeach
+                                        <a class="dropdown-item" href="trashed">{{__('lang.trashed')}}</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <span id="srch-field">ID</span> <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" id="mnu-field">
-                                    <li><a href="id">ID</a></li>
-                                    <li><a href="name">{{__('lang.customer-name')}}</a></li>
-                                    <li><a href="address">{{__('lang.address')}}</a></li>
-                                </ul>
+                                <div class="btn-group dropdown">
+                                    <button type="button" class="btn btn-default dropdown-toggle"
+                                        data-toggle="dropdown">
+                                        <span id="srch-field">ID</span> <span class="caret"></span>
+                                    </button>
+                                    <div class="dropdown-menu" id="mnu-field">
+                                        <a class="dropdown-item" href="id">ID</a>
+                                        <a class="dropdown-item" href="name">{{__('lang.customer-name')}}</a>
+                                        <a class="dropdown-item" href="address">{{__('lang.address')}}</a>
+                                    </div>
+                                </div>
                             </div>
                             <input type="hidden" id="txt-field" value="id">
                             <input type="hidden" id="field" value="id">
@@ -37,8 +42,8 @@
                             <input type="text" id="txt-search" value="" class="form-control"
                                 placeholder="Search for...">
                             <span class="input-group-btn" id="search">
-                                <a data-toggle="tab" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-search"></span>
+                                <a data-toggle="tab" class="btn btn-primary">
+                                    <span class="fa fa-search"></span>
                                 </a>
                             </span>
                         </div>

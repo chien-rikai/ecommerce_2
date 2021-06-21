@@ -11,18 +11,33 @@ class Category extends Model
     use HasFactory, SoftDeletes;
     protected $table ="categories";
     protected $dates = ['deleted_at'];
-    protected $fillable=['name'];
+    protected $fillable=['name','parent_id'];
     public function products(){
         return $this->hasMany(Product::class);
     }
+
+    public function parentCategory()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+
+    }
+
+    public function subcategory(){
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
     public static function store($params){
         $category = Category::create($params);
         return $category;
     }
     public static function updateCategory($request){
         $category = Category::find($request->id);
-        $category->name = $request->category;
-        return $category->save();
+        if($request->parent_id_1 == null){
+            $params = $request->only(['name','parent_id']);
+        }else{
+            $params = ['name'=> $request->name, 'parent_id' => $request->parent_id_1];          
+        }   
+        return $category->update($params);
     }
     public static function checkStatus($status){
         if($status == 'trashed'){

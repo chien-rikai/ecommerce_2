@@ -206,6 +206,8 @@ return [
     'restore-user'=>'Bạn có muốn khôi phục người dùng này?',
     'hard_delete_order_confirmation'=>'Bạn có muốn xóa vĩnh viễn đơn hàng này?',
     'restore-order'=>'Bạn có muốn khôi phục đơn hàng này?',
-    'order-restore-success'=>'Khôi phục đơn hàng thành công!'
+    'order-restore-success'=>'Khôi phục đơn hàng thành công!',
+    'parent' => 'Danh mục cha',
+    'multi-level' => 'Phân cấp',
 ]
 ?>

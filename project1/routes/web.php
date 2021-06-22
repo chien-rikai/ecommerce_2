@@ -93,6 +93,7 @@ Route::group(['middleware' => 'locale'], function () {
         ]);
         Route::get('product/filter/{status}', [ProductController::class, 'filter'])->name('product.filter');
         Route::put('product/restore/{id}',[ProductController::class, 'restore'])->name('product.restore');
+        Route::get('product/category',[ProductController::class, 'productCategory'])->name('product.category');
         /**
          * Manage all category:
          * include: show list categories,

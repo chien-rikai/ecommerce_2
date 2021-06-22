@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductCategory;
 use App\Services\HistoryService;
 use App\Services\SortService;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class HomeController extends Controller
         return view('web.home.index',compact(['products','type']));
     }
     public function show($category){
-        $products=Product::where('category_id',$category)->paginate(18); 
+        $products = ProductCategory::with('product')->where('category_id',$category)->paginate(18);
         $type ="all";
         return view('web.home.index',compact(['products','type']));
     }

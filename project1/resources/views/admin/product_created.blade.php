@@ -15,4 +15,5 @@
     @include('admin.form.product_import')
   </div>
 </body>
+<script src="/js/product_category.js"></script>
 @endsection

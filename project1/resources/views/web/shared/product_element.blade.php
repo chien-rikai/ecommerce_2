@@ -3,6 +3,9 @@
         @if(!blank($products))
         <div class="row">
             @foreach($products as $product)
+            @if(!blank($product->product))
+            <?php $product = $product->product?>
+            @endif
             <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
                 <!-- single-product-wrap start -->
                 <div class="single-product-wrap">

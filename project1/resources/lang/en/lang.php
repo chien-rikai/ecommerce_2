@@ -210,5 +210,7 @@ return [
     'order-restore-success'=>'Order restore successfully!',
     'parent' => 'Parent directory',
     'multi-level' => 'Multi level',
+    'subcategory' => 'Subcaetgory',
+    'type' => 'Type',
 ]   
 ?>

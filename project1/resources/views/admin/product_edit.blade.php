@@ -10,4 +10,5 @@
     @include('admin.form.product_edit')
   </div>
 </body>
+<script src="/js/product_category.js"></script>
 @endsection

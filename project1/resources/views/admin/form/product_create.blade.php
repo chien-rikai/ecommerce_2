@@ -23,11 +23,14 @@
   </div>
   <div class="form-group ">
     <label for="">{{__('lang.cate')}}</label>
-    <select name="category_id" class="form-control">
+    <select name="category_id" id="category-id-1" class="form-control">
       @foreach($categories as $row)
       <option value="{{$row->id}}">{{$row->name}}</option>
       @endforeach
     </select>
+  </div>
+  <div class="select-category">
+    @include('admin.table.product_category',['categories'=> $categories[0]->subcategory, 'productCategory' => null])
   </div>
   <div class="form-group">
     <label>{{__('lang.sale')}}</label>

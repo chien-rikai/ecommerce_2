@@ -39,7 +39,7 @@ class CartController extends Controller
             return response()->json(['hasAdd'=>false,'message'=>__('lang.must-login-to-add')]);
         }
         $product = Product::find($request->id);
-        if($product->status==ProductStatus::OutOfStock){
+        if($product->quantity < $request->quantity){
             return response()->json(['hasAdd'=>false,'message'=>__('lang.out-stock')]);
         }
         $cart = $this->findCart();
@@ -55,10 +55,9 @@ class CartController extends Controller
     public function update(Request $request,$id){
         $cart = $this->findCart();
         $product = Product::find($id);
-        if($product->status==ProductStatus::OutOfStock){
-            return response()->json(['hasUpdate'=>false,'message'=>__('lang.out-stock')]);
+        if($product->quantity < $request->quantity){
+            return response()->json(['hasUpdate'=>false,'message'=>__('lang.quantity-out-stock')]);
         }
-        
         $cart = $this->updateCart($cart,$product,$request->quantity);
 
         Session::put('cart_'.Auth::user()->id,$cart);

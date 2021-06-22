@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -39,6 +40,32 @@ class Order extends Model
                             ->groupBy('date')
                             ->pluck('count','date');                    
         return $orders;                    
+    }
+    public static function storeOrder($params,$cart){
+        try{
+            DB::beginTransaction();
+            $order = Order::create($params);
+            if(!$order){
+                throw new Exception(__('lang.order-fail'));
+            }
+            $details=$order->detailOrders()->saveMany($cart);
+            if(!$details){
+                throw new Exception(__('lang.order-fail'));
+            }
+            foreach($details as $detail){
+                $product=Product::find($detail->product_id);
+                if($product->quantity<$detail->quantity){
+                    throw new Exception(__('lang.has-product-out-stock'));
+                }
+                $product->update(['quantity'=>$product->quantity-$detail->quantity,
+                                      'sold'=>$detail->quantity]);
+            }
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollBack();
+            return ['status'=>false,'message'=>$e->getMessage()];
+        }
+        return ['status'=>true,'message'=>__('lang.order-success')];;
     }
 
 }

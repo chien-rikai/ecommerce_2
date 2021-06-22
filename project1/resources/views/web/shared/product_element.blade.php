@@ -10,7 +10,13 @@
                         <a href="">
                             <img class='product-img-home' src="/images/{{$product->url_img}}" alt="Product Image">
                         </a>
-                        <span class="sticker">{{__('lang.new')}}</span>
+                        <span class="sticker">
+                            @if($product->quantity==0)
+                                {{__('lang.out-stock')}}
+                            @else
+                                {{__('lang.new')}}
+                            @endif    
+                        </span>
                     </div>
                     <div class="product_desc">
                         <div class="product_desc_info">
@@ -38,7 +44,7 @@
                         </div>
                         <div class="add-actions">
                             <ul class="add-actions-link">
-                                <li class="add-cart active add">
+                                <li class="add-cart active add" @if($product->quantity==0) hidden @endif>
                                   {{__('lang.add-to-cart')}}
                                   <input type="hidden" class="id_product" value="{{$product->id}}">
                                   <!-- <button class="add">{{__('lang.add-to-cart')}}</button> -->

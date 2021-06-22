@@ -28,13 +28,9 @@
     <label>{{__('lang.price')}}</label>
     <input type="text" class="form-control" name="price" placeholder="{{__('lang.enter-price')}}" value="{{number_format($product->price)}}" />
   </div>
-  <div class="form-group">
-    <label>{{__('lang.sale-price')}}</label>
-    {{number_format($product->sale_price)}}
-  </div>
   <div class="form-group ">
     <label for="">{{__('lang.cate')}}</label>
-    <select name="category_id" class="form-control">
+    <select name="category_id">
       @foreach($categories as $row)
       @if($row->id == $product->category_id)
       <option value="{{$row->id}}" selected>{{$row->name}}</option>
@@ -45,22 +41,25 @@
     </select>
   </div>
   <div class="form-group">
+    <label>{{__('lang.quantity')}}</label>
+    <input type="number" class="form-control" name="quantity" value="{{$product->quantity}}"/>
+  </div>
+  <div class="form-group">
+    <label>{{__('lang.sale-price')}}</label>
+    {{number_format($product->sale_price)}}
+  </div>
+  <div class="form-group">
     <label>{{__('lang.view')}} :</label>
     {{number_format($product->view)}}
+  </div>
+  <div class="form-group">
+    <label>{{__('lang.sold')}} :</label>
+    {{$product->sold}}
   </div>
   <div class="form-group">
     <label>{{__('lang.star-rating')}}</label>
     {{$product->star_rating}}
   </div>
-  <div class="form-group">
-    <label>{{__('lang.status')}}</label>
-    @if($product->status === $status['instock'])
-    <input type="radio" name="status" value="{{$status['instock']}}" checked>{{__('lang.in-stock')}}
-    <input type="radio" name="status" value="{{$status['outofstock']}}">{{__('lang.out-stock')}}<br>
-    @else
-    <input type="radio" name="status" value="{{$status['instock']}}">{{__('lang.in-stock')}}
-    <input type="radio" name="status" value="{{$status['outofstock']}}" checked>{{__('lang.out-stock')}}<br>
-    @endif
-  </div>
+
   <button type="submit" class="btn btn-success px-4 float-right"><i class="glyphicon glyphicon-plus"></i>{{__('lang.edit')}}</button>
 </form>

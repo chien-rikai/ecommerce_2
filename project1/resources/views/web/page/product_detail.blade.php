@@ -27,7 +27,10 @@
             <span class="new-price new-price-2">{{number_format($product->new_price)}}{{__('lang.vnd')}}</span>
             <span class="new-price-1"><del>{{number_format($product->price)}}{{__('lang.vnd')}}</del></span>
           </div>
-
+          <div class="product-desc">
+              <span>{{__('lang.quantity')}}: {{$product->quantity}}
+              </span>
+          </div>
           <div class="single-add-to-cart">
             <div class="cart-quantity">
               <div class="quantity">
@@ -35,10 +38,19 @@
                 <div class="cart-plus-minus">
                  <input type="hidden" class="id" name="id" value="{{$product->id}}">
                   <input class="cart-plus-minus-box" id="quantity" value="1" type="text">
+                  <input type="hidden" id="product-quantity" value="{{$product->quantity}}" type="text">
                   <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                   <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                 </div>
-                <button class="add-to-cart">{{__('lang.add-to-cart')}}</button>
+                <button  
+                    @if($product->quantity==0)
+                      class="out-stock" 
+                      disabled
+                    @else
+                      class="add-to-cart"
+                    @endif>
+                    {{__('lang.add-to-cart')}}
+                </button>
               </div>
             </div>
           </div>

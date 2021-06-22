@@ -150,7 +150,6 @@ return [
     //I18n layout cart page
     'remove'=>'Remove',
     'image' =>'Image',
-    'product'=>'Product',
     'unit-price'=>'Unit Price',
     'quantity'=>'Quantity',
     'billing-detail'=>'Billing Detail',
@@ -213,6 +212,9 @@ return [
     'sales'=>'Sales',
     'total-revenue'=>'Total Revenue',
     'growth-orders'=>'Growth Orders',
-    'number-of-orders'=>'Number of orders'
+    'number-of-orders'=>'Number of orders',
+    'sold'=>'Sold',
+    'has-product-out-stock'=>'Sorry, your order exists product out of stock!',
+    'quantity-out-stock'=>'Your selected quantity is higher than current quantity!'
 ]   
 ?>

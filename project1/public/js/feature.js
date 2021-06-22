@@ -3,17 +3,17 @@ $(document).ready(function () {
         var $button = $(this);
         var oldValue = $button.parent().children("#quantity").val();
         var id = $button.parent().children('.id').val();
-        if ($button.hasClass('inc')) {
-            var newVal = parseFloat(oldValue) + 1;
-        } else {
-            // Don't allow decrementing below zero
-            if (oldValue > 1) {
-                var newVal = parseFloat(oldValue) - 1;
+        var newVal = parseFloat(oldValue);
+            if ($button.hasClass('inc')) {
+                    newVal +=1;
             } else {
-                newVal = 1;
-            }
+                // Don't allow decrementing below zero
+                if (oldValue > 1) {
+                    newVal -= 1;
+                } else {
+                    newVal = 1;
+                }
         }
-        $button.parent().children("#quantity").val(newVal);
         $.ajax({
             url: '/web.com/cart/' + id,
             type: 'PUT',

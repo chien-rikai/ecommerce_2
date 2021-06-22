@@ -37,6 +37,9 @@ return [
     'required-password-old' => 'You have not entered your password old',
     'max-name' => 'Name no more than 100 characters',
     'required-address'=>'Please enter receiver\'s address',
-    'max-address'=>'Receiver\'s address no more than 500 character'
+    'max-address'=>'Receiver\'s address no more than 500 character',
+    'required-pro-quantity'=>'Please enter product quantity',
+    'numeric-pro-quantity'=>'Quantity must be entered as number',
+    'min-pro-quantity'=>'The product quantity must have at least one'
 ]
 ?>

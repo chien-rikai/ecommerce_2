@@ -149,7 +149,6 @@ return [
 
     'remove'=>'Xóa',
     'image' =>'Ảnh',
-    'product'=>'Tên sản phẩm',
     'unit-price'=>'Đơn giá',
     'quantity'=>'Số lượng',
     'billing-detail'=>'Chi tiết hóa đơn',
@@ -212,6 +211,10 @@ return [
     'sales'=>'Đã bán',
     'total-revenue'=>'Tổng doanh thu',
     'growth-orders'=>'Thống kê đơn hàng',
-    'number-of-orders'=>'Số lượng đơn hàng'
+    'number-of-orders'=>'Số lượng đơn hàng',
+    'sold'=>'Đã bán',
+    'has-product-out-stock'=>'Xin lỗi, Đơn hàng của bạn tồn tại sản phẩm không còn hàng!',
+    'quantity-out-stock'=>'Số lượng vượt quá hàng tồn kho!'
+    
 ]
 ?>

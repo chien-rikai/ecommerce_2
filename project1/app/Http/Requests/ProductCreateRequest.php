@@ -28,7 +28,8 @@ class ProductCreateRequest extends FormRequest
             'name' => 'required|max:255',
             'describe' => 'required',
             'price' => 'required|numeric|min:100000',
-            'discount' => 'numeric|between:0,100'
+            'discount' => 'numeric|between:0,100',
+            'quantity' =>'required|numeric|min:1'
         ];
     }
 
@@ -45,7 +46,10 @@ class ProductCreateRequest extends FormRequest
             'price.numeric' => __('requestVali.numeric-pro-price'),
             'price.min' => __('requestVali.min-pro-price'),
             'discount.numeric' => __('requestVali.numeric-pro-dis'),
-            'discount.between' => __('requestVali.between-pro-dis')
+            'discount.between' => __('requestVali.between-pro-dis'),
+            'quantity.required' => __('requestVali.required-quantity-price'),
+            'quantity.numeric' => __('requestVali.numeric-quantity-price'),
+            'quantity.min' => __('requestVali.min-quantity-price'),
         ];
     }
 }

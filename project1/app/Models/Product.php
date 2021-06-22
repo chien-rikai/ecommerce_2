@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ProductStatus;
 use App\Jobs\ProductCsvUpload;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,6 +24,11 @@ class Product extends Model
     }
     public function getNewPriceAttribute(){
         return ceil($this->price*(1-$this->discount*0.01));
+    }
+    public function getStatusProductAtrribute(){
+        if($this->remain_quantity>0)
+            return ProductStatus::InStock;
+        return ProductStatus::OutOfStock;    
     }
     public function productImport(){
         $path = resource_path('file/*.csv');

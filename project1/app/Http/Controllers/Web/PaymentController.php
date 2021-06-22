@@ -10,6 +10,7 @@ use App\Models\DetailOrder;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class PaymentController extends Controller
@@ -39,18 +40,11 @@ class PaymentController extends Controller
         if(blank($cart)){
             return back()->with('fail',__('lang.cart-empty'));
         }
-        $params['status_id'] = OrderStatusEnum::processing;
-        $order = Order::create($params);
-        if(blank($order)){
-            return back()->with('error',__('lang.order-fail'));
-        }
         $cart = $this->covertCartToDetailOrder($cart);
-
-        $result=$order->detailOrders()->saveMany($cart);
- 
-        if(!$result){
-            $order->delete();
-            return back()->with('error',__('lang.order-fail'));
+        $params['status_id'] = OrderStatusEnum::processing;
+        $result= Order::storeOrder($params,$cart);
+        if(!$result['status']){
+            return back()->with('error',$result['message']);
         }
         $sendMail = SendMail::dispatch($params)->delay(now()->addMinute(1));
         $request->session()->put('cart_'.$request->user_id,['total'=>0]);
@@ -65,7 +59,7 @@ class PaymentController extends Controller
     public function update(Request $request,$id){
 
     }
-    public function covertCartToDetailOrder($cart){
+    private function covertCartToDetailOrder($cart){
         $detailOrders = [];
         foreach($cart as $key=>$value){
             if($key=='total') continue;

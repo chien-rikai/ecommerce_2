@@ -1179,6 +1179,19 @@ textarea:focus {
 	border-radius: 2px;
 	transition: all 0.3s ease-in-out;
 }
+.out-stock{
+	border: none;
+	font-size: 14px;
+	color: #242424;
+	position: relative;
+	background: #808080;
+	cursor: pointer;
+	font-weight: 500;
+	text-transform: capitalize;
+	padding: 13px 70px;
+	border-radius: 2px;
+	transition: all 0.3s ease-in-out;
+}
 .cart-quantity .add-to-cart:hover {
   background: #242424;
   color: #ffffff;

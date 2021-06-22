@@ -2,13 +2,16 @@
         $(".qtybutton").on("click", function () {
             var $button = $(this);
             var oldValue = $button.parent().children("#quantity").val();
+            var quantity = $button.parent().children("#product-quantity").val();
             var id = $button.parent().children('.id').val();
+            var newVal = parseFloat(oldValue);
             if ($button.hasClass('inc')) {
-                var newVal = parseFloat(oldValue) + 1;
+                if(parseInt(oldValue)<parseInt(quantity))
+                    newVal +=1;
             } else {
                 // Don't allow decrementing below zero
                 if (oldValue > 1) {
-                    var newVal = parseFloat(oldValue) - 1;
+                    newVal -= 1;
                 } else {
                     newVal = 1;
                 }

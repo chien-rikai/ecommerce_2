@@ -4,6 +4,7 @@ use App\Http\Controllers\Admins\CategoryController;
 use App\Http\Controllers\Admins\LoginController as AdminsLoginController;
 use App\Http\Controllers\Admins\OrderController;
 use App\Http\Controllers\Admins\ProductController;
+use App\Http\Controllers\Admins\ProductRequestController;
 use App\Http\Controllers\Admins\SearchController as AdminsSearchController;
 use App\Http\Controllers\Admins\StatisticController;
 use App\Http\Controllers\Admins\UserController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Web\PaymentController;
 use App\Http\Controllers\Web\ProductController as WebProductController;
 use App\Http\Controllers\Web\SearchController;
 use App\Http\Controllers\Web\ProfileController;
+use App\Models\ProductRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,49 +82,54 @@ Route::group(['middleware' => 'locale'], function () {
     /*
      *  Route for admin page
      *  */
-    Route::group(['prefix' => 'admin', 'middleware' => ['auth.admin']], function () {
-        /**
-         * Manage all products:
-         * include: show list products,
-         * create new, edit and destroy
-         */
-        Route::post('product/productImport', [ProductController::class, 'productImport'])->name('product.import');
-        Route::resource('product', ProductController::class, [
-            'except' => ['show']
-        ]);
-        Route::get('product/filter/{status}', [ProductController::class, 'filter'])->name('product.filter');
-        Route::put('product/restore/{id}',[ProductController::class, 'restore'])->name('product.restore');
-        /**
-         * Manage all category:
-         * include: show list categories,
-         * create new, update and destroy
-         */
-        Route::resource('category', CategoryController::class, [
-            'except' => ['show']
-        ]);
-        Route::get('category/filter/{status}', [CategoryController::class, 'filter'])->name('category.filter');
-        Route::put('category/restore/{id}',[CategoryController::class, 'restore'])->name('category.restore');
-        /**
-         * Manage all users:
-         *  show list users,
-         *  filter user blocked/non block,
-         *  block/unblock a user
-         */
-        Route::resource('user', UserController::class)->except(['show']);
-        Route::get('user/{status}',[UserController::class,'show']);
-        Route::put('user/restore/{id}',[UserController::class,'restore'])->name('user.restore');
-        /**
-         * Manage all order
-         * show, update, destroy
-         */
-        Route::resource('order', OrderController::class);
-        Route::put('order/restore/{id}',[OrderController::class,'restore'])->name('order.restore');
-        /**
-         * Filter order by status of order
-         */
-        Route::get('order/filter/{status}', [OrderController::class, 'filter'])->name('order.filter');
+    Route::group(['prefix' => 'admin'], function () {
+        Route::group(['middleware' => ['auth.admin']], function () {
+            /**
+            * Manage all products:
+            * include: show list products,
+            * create new, edit and destroy
+            */
+            Route::post('product/productImport', [ProductController::class, 'productImport'])->name('product.import');
+            Route::resource('product', ProductController::class, [
+                'except' => ['show']
+            ]);
+            Route::get('product/filter/{status}', [ProductController::class, 'filter'])->name('product.filter');
+            Route::put('product/restore/{id}',[ProductController::class, 'restore'])->name('product.restore');
+            /**
+            * Manage all category:
+            * include: show list categories,
+            * create new, update and destroy
+            */
+            Route::resource('category', CategoryController::class, [
+                'except' => ['show']
+            ]);
+            Route::get('category/filter/{status}', [CategoryController::class, 'filter'])->name('category.filter');
+            Route::put('category/restore/{id}',[CategoryController::class, 'restore'])->name('category.restore');
+            /**
+            * Manage all users:
+            *  show list users,
+            *  filter user blocked/non block,
+            *  block/unblock a user
+            */
+            Route::resource('user', UserController::class)->except(['show']);
+            Route::get('user/{status}',[UserController::class,'show']);
+            Route::put('user/restore/{id}',[UserController::class,'restore'])->name('user.restore');
+            /**
+             * Manage all order
+            * show, update, destroy
+            */
+            Route::resource('order', OrderController::class);
+            Route::put('order/restore/{id}',[OrderController::class,'restore'])->name('order.restore');
+            /**
+            * Filter order by status of order
+            */
+            Route::get('order/filter/{status}', [OrderController::class, 'filter'])->name('order.filter');
 
-        Route::resource('statistic',StatisticController::class);
+            Route::resource('statistic',StatisticController::class);
+        });
+        
+
+        Route::resource('request', ProductRequestController::class);
     });
     /**
      * Login admin

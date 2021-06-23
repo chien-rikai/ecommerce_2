@@ -214,7 +214,12 @@ return [
     'number-of-orders'=>'Số lượng đơn hàng',
     'sold'=>'Đã bán',
     'has-product-out-stock'=>'Xin lỗi, Đơn hàng của bạn tồn tại sản phẩm không còn hàng!',
-    'quantity-out-stock'=>'Số lượng vượt quá hàng tồn kho!'
-    
+    'quantity-out-stock'=>'Số lượng vượt quá hàng tồn kho!',
+    'suggest-more'=>'Yêu cầu hàng',
+    'has-sent-a-request-to-import-new-product'=>'đã gửi một yêu cầu nhập kho sản phẩm ',
+    'has-sent-a-request-to-increment-quantity-of'=>'đã gửi một yêu cầu tăng số lượng sản phẩm ',
+    'manage-request'=>'Quản lý yêu cầu/đề nghị',
+    'send-at'=>'Gửi lúc',
+    'resolve'=>'Giải quyết'
 ]
 ?>

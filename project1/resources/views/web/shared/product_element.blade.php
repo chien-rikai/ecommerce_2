@@ -44,11 +44,16 @@
                         </div>
                         <div class="add-actions">
                             <ul class="add-actions-link">
-                                <li class="add-cart active add" @if($product->quantity==0) hidden @endif>
+                                @if($product->quantity==0)
+                                  <input type="hidden" class="product_id" value="{{$product->id}}">
+                                  <input type="hidden" class="product_name" value="{{$product->name}}">
+                                  <a href="#request_more" data-toggle="modal" class="btn btn-primary suggest-more">{{__('lang.suggest-more')}}</a>
+                                @else
+                                <li class="add-cart active">
                                   {{__('lang.add-to-cart')}}
                                   <input type="hidden" class="id_product" value="{{$product->id}}">
-                                  <!-- <button class="add">{{__('lang.add-to-cart')}}</button> -->
                                 </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -72,4 +77,6 @@
     </div>
 </div>
 @endif
+@include('web.form.request_more_form')
 <script src="/js/add_to_cart.js"></script>
+<script src="/js/suggest_more.js"></script>

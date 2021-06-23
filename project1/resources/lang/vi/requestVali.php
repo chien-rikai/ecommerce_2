@@ -40,6 +40,7 @@ return [
     'max-address'=>'Địa chỉ giao hàng không quá 500 ký tự',
     'required-pro-quantity'=>'Vui lòng nhập số lượng sản phẩm',
     'numeric-pro-quantity'=>'Số lượng sản phẩm phải là số',
-    'min-pro-quantity'=>'Số lượng sản phẩm tối thiểu là một'
+    'min-pro-quantity'=>'Số lượng sản phẩm tối thiểu là một',
+    'note-max'=>'Ghi chú không vượt quá 500 kí tự',
 ]
 ?>

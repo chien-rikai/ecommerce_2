@@ -43,7 +43,7 @@
             </a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{route('request.index')}}">
                 <i class="menu-icon mdi mdi-react"></i>
                 <span class="menu-title">{{__('lang.request')}}</span>
             </a>

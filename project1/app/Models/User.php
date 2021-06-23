@@ -15,6 +15,9 @@ class User extends Authenticatable
     public function orders(){
         return $this->hasMany(Order::class);
     }
+    public function requests(){
+        return $this->hasMany(ProductRequest::class);
+    }
 
     /**
      * The attributes that are mass assignable.

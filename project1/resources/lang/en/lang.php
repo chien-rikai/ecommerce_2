@@ -215,6 +215,12 @@ return [
     'number-of-orders'=>'Number of orders',
     'sold'=>'Sold',
     'has-product-out-stock'=>'Sorry, your order exists product out of stock!',
-    'quantity-out-stock'=>'Your selected quantity is higher than current quantity!'
+    'quantity-out-stock'=>'Your selected quantity is higher than current quantity!',
+    'suggest-more'=>'Suggest more',
+    'has-sent-a-request-to-import-new-product'=>'has sent a request to import ',
+    'has-sent-a-request-to-increment-quantity-of'=>'has sent a request to increment quantity of',
+    'manage-request'=>'Manage requests',
+    'send-at'=>'Send at',
+    'resolve'=>'Resolve'
 ]   
 ?>

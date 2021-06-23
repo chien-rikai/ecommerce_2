@@ -8,6 +8,9 @@
                     <img src="/images/banner.jpg" alt="Banner">
                 </a>
             </div>
+            @include('common.success')
+            @include('common.fail')
+            @include('common.error')
             <!-- shop-top-bar start -->
             <div class="shop-top-bar mt-30">
                 <div class="shop-bar-inner">

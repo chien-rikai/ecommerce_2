@@ -11,11 +11,11 @@
   </div>
   <div class="form-group">
     <label>{{__('lang.name-product')}}</label>
-    <input id="tieude" type="text" class="form-control" name="name" placeholder="{{__('lang.enter-name-pro')}}" value="" />
+    <input id="tieude" type="text" class="form-control" value="@if(isset($info)){{$info->name}} @endif" name="name" placeholder="{{__('lang.enter-name-pro')}}" value="" />
   </div>
   <div class="form-group">
     <label>{{__('lang.description')}}</label>
-    <textarea type="text" class="form-control" name="describe" placeholder="{{__('lang.enter-description')}}" value=""></textarea>
+    <textarea type="text" class="form-control" name="describe" placeholder="{{__('lang.enter-description')}}" value="">@if(isset($info)&&$info->note){{$info->note}} @endif</textarea>
     <!-- <input type="text" class="form-control" name="describe" placeholder="{{__('lang.enter-description')}}" value="" /> -->
   </div>
   <div class="form-group">

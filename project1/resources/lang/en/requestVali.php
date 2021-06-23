@@ -40,6 +40,7 @@ return [
     'max-address'=>'Receiver\'s address no more than 500 character',
     'required-pro-quantity'=>'Please enter product quantity',
     'numeric-pro-quantity'=>'Quantity must be entered as number',
-    'min-pro-quantity'=>'The product quantity must have at least one'
+    'min-pro-quantity'=>'The product quantity must have at least one',
+    'max-note'=>'Note no more than 500 character'
 ]
 ?>

@@ -17,7 +17,7 @@ class CreateProductRequestsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->integer('quantity');
+            $table->integer('quantity')->default(0);
             $table->string('name')->nullable();
             $table->string('note')->nullable();
             $table->boolean('status')->default(false);

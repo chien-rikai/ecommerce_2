@@ -220,6 +220,10 @@ return [
     'has-sent-a-request-to-increment-quantity-of'=>'đã gửi một yêu cầu tăng số lượng sản phẩm ',
     'manage-request'=>'Quản lý yêu cầu/đề nghị',
     'send-at'=>'Gửi lúc',
-    'resolve'=>'Giải quyết'
+    'resolve'=>'Giải quyết',
+    'enter-product-name'=>'Nhập tên sản phẩm',
+    'request-new-product'=>'Yêu cầu sản phẩm mới',
+    'request-success'=>'Yêu cầu thành công!',
+    'request-fail'=>'Yêu cầu thất bại!',
 ]
 ?>

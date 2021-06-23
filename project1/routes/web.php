@@ -17,6 +17,7 @@ use App\Http\Controllers\Web\PaymentController;
 use App\Http\Controllers\Web\ProductController as WebProductController;
 use App\Http\Controllers\Web\SearchController;
 use App\Http\Controllers\Web\ProfileController;
+use App\Http\Controllers\Web\SuggestionController;
 use App\Models\ProductRequest;
 use Illuminate\Support\Facades\Route;
 
@@ -68,6 +69,7 @@ Route::group(['middleware' => 'locale'], function () {
          *  Route for profile page
          *  */
         Route::resource('profile', ProfileController::class);
+        Route::resource('suggestion', SuggestionController::class);
         /*
         * Change language for website 
         * */

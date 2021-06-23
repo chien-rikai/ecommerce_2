@@ -19,4 +19,5 @@ class ProfileController extends Controller
         $orders = Order::where('user_id',Auth::id())->orderBy('created_at','desc')->get();
         return view('web.page.profile',compact(['status','orders']));
     }
+    
 }

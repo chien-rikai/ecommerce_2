@@ -221,6 +221,10 @@ return [
     'has-sent-a-request-to-increment-quantity-of'=>'has sent a request to increment quantity of',
     'manage-request'=>'Manage requests',
     'send-at'=>'Send at',
-    'resolve'=>'Resolve'
+    'resolve'=>'Resolve',
+    'enter-product-name'=>'Enter product name',
+    'request-new-product'=>'Request new product',
+    'request-success'=>'Request successfully!',
+    'request-fail'=>'Request fail!',
 ]   
 ?>

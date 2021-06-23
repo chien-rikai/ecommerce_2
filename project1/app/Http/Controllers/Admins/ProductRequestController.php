@@ -13,8 +13,11 @@ class ProductRequestController extends Controller
     public function __construct() {
         $this->middleware('auth.admin')->except('store');
     }
-    public function index(){
+    public function index(Request $request){
         $requests= ProductRequest::with('user')->paginate(10);
+        if($request->ajax()){
+            return response()->json(['view'=>view('admin.request_view',compact(['requests']))->render()]);
+        }
         return view('admin.layout.requests_view_layout',compact(['requests']));
     }
     public function store(MoreProductRequest $request){

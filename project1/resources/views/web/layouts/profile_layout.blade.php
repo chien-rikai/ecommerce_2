@@ -21,6 +21,9 @@
                         <a class="nav-link" id="orders-tab" href="{{route('profile.index')}}" aria-selected="true"><i class="fa fa-cart-arrow-down"></i>{{__('lang.order')}}</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" id="orders-tab" href="{{route('suggestion.index')}}" aria-selected="true"><i class="fa fa-plus-square-o"></i>{{__('lang.request')}}</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" id="orders-tab" href="{{route('member.index')}}" aria-selected="true"><i class="fa fa-credit-card-alt"></i>{{__('lang.account')}}</a>
                     </li>
                     <li class="nav-item">

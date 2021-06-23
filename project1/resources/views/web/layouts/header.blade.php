@@ -15,7 +15,11 @@
               <!-- Begin Setting Area -->
               @if(Auth::check())
               <li>
+                @if(Auth::user()->first_name == null)
                 <span class="language-selector-wrapper">{{Auth::user()->username}}</span>
+                @else
+                <span class="language-selector-wrapper">{{Auth::user()->first_name}}</span>
+                @endif
                 <div class="ht-language-trigger"><span></span></div>
                 <div class="language ht-language">
                   <ul class="ht-setting-list">

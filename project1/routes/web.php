@@ -34,6 +34,8 @@ Route::group(['middleware' => 'locale'], function () {
             'only' => ['index']
         ]);
         Route::post('login', [LoginController::class, 'postLogin'])->name('login.post');
+        Route::get('login/{provider}', [LoginController::class, 'redirectToFacebook'])->name('login.provider');
+        Route::get('login/{provider}/callback', [LoginController::class, 'handleProviderCallback']);
         Route::get('logout', [LoginController::class, 'logout'])->name('logout');
         Route::post('register', [RegisterController::class, 'store'])->name('register');
 

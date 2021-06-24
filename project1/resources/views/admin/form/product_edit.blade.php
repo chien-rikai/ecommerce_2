@@ -33,7 +33,7 @@
   </div>
   <div class="form-group ">
     <label for="">{{__('lang.cate')}}</label>
-    <select name="category_id" class="form-control">
+    <select name="category_id" id="category-id-1" class="form-control">
       @foreach($categories as $row)
       @if($row->id == $product->category_id)
       <option value="{{$row->id}}" selected>{{$row->name}}</option>
@@ -42,6 +42,17 @@
       @endif
       @endforeach
     </select>
+  </div>
+  <div class="select-category">
+  @foreach($categories as $row)
+  @if($productCategory[0]->category_id == $row->id)
+    @if(!empty($productCategory[1]))
+    @include('admin.table.product_category_created',['categories'=> $row->subcategory,'productCate' => $productCategory[1]])
+    @else
+    @include('admin.table.product_category_created',['categories'=> $row->subcategory])
+    @endif()
+  @endif
+  @endforeach
   </div>
   <div class="form-group">
     <label>{{__('lang.view')}} :</label>

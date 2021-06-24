@@ -9,6 +9,7 @@ use App\Http\Requests\ProductImportRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -56,13 +57,15 @@ class ProductController extends Controller
         }
         
         
-        $params = $request->except(['_token','_method','images']);
+        $params = $request->only(['name','describe','discount','category_id','price']);
         if ($getImg != null) {
             $params['url_img'] = $getImg;
         }
-
+        
         $insert = Product::create($params);
 
+        $data = $this->setDataProductCategory($request,$insert->id);
+        $insert = ProductCategory::store($data,$insert);
         if(isset($insert)){
             return back()->with('success', __('lang.add-success'));
         }else{
@@ -93,11 +96,12 @@ class ProductController extends Controller
         }
 
         $categories = Category::get();
+        $productCategory = ProductCategory::where('product_id',$id)->get();
         $salePrice = $product->price * ((100 - $product->discount)/100);
         $product->setAttribute('sale_price',$salePrice);
         $status = ['outofstock' => ProductStatus::OutOfStock, 'instock' => ProductStatus::InStock];
     
-        return view('admin.product_edit',compact('categories','product','status'));
+        return view('admin.product_edit',compact('categories','product','status','productCategory'));
     }
 
 
@@ -123,12 +127,15 @@ class ProductController extends Controller
         if(blank($product)){
             return back()->with('fail', __('lang.edit-fail'));
         }
-        $params = $request->except(['_token','_method','images']);    
+        $params = $request->only(['name','describe','discount','category_id','price']);    
         if ($getImg != null) {
             $params['url_img'] = $getImg;
         }
         
         $update = $product->update($params);
+        $data = $this->setDataProductCategory($request,$id);
+
+        $update = ProductCategory::updateProductCategory($data,$id,$update);
         if($update){
             return back()->with('success', __('lang.edit-success'));
         }else{
@@ -165,5 +172,23 @@ class ProductController extends Controller
             Session::put('fail' , __('lang.restore-fail'));
         }
         return view('admin.table.products',compact('products'));
+    }
+
+    public function productCategory(Request $request){
+        if($request->parent_id != null){
+            $categories = Category::where('parent_id','=',$request->parent_id)->get();
+            return view('admin.table.product_category',compact('categories'));
+        }elseif($request->parent_id_2 != null){
+            $categories = Category::where('parent_id','=',$request->parent_id_2)->get();
+            return view('admin.table.product_category_2',compact('categories')); 
+        }
+    }
+
+    public function setDataProductCategory($request, $id){
+        $data = [ 0 => ['category_id' => $request->category_id,'product_id' => $id],
+                1 => ['category_id' => $request->category_id_1,'product_id' => $id],
+                2 => ['category_id' => $request->category_id_2,'product_id' => $id]];
+
+        return $data;
     }
 }

@@ -209,5 +209,7 @@ return [
     'order-restore-success'=>'Khôi phục đơn hàng thành công!',
     'parent' => 'Danh mục cha',
     'multi-level' => 'Phân cấp',
+    'subcategory' => 'Danh mục con',
+    'type' => 'Kiểu',
 ]
 ?>

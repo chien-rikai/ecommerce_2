@@ -120,16 +120,7 @@
       <div class="row">
         <div class="col-lg-12">
           <!-- Begin Header Bottom Menu Area -->
-          <div class="hb-menu">
-            <nav>
-              <ul>
-                <li><a href="{{ route('home.index')}}">{{__('lang.Home')}}</a></li>
-                @foreach($categories as $category)
-                <li><a href="{{ route('home.show',[$category->id])}}">{{$category->name}}</a></li>
-                @endforeach
-              </ul>
-            </nav>
-          </div>
+          @include('web.list.categories')
           <!-- Header Bottom Menu Area End Here -->
         </div>
       </div>

@@ -226,5 +226,7 @@ return [
     'request-new-product'=>'Request new product',
     'request-success'=>'Request successfully!',
     'request-fail'=>'Request fail!',
+    'login-with-google'=>'Sign in with google',
+    'login-with-facebook'=>'Sign in with facebook',
 ]   
 ?>

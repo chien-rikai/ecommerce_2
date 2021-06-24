@@ -225,5 +225,7 @@ return [
     'request-new-product'=>'Yêu cầu sản phẩm mới',
     'request-success'=>'Yêu cầu thành công!',
     'request-fail'=>'Yêu cầu thất bại!',
+    'login-with-google'=>'Đăng nhập bằng google',
+    'login-with-facebook'=>'Đăng nhập bằng facebook'
 ]
 ?>

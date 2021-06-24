@@ -15,5 +15,12 @@
         <button class="register-button mt-0">{{__('lang.login')}}</button>
       </div>
     </div>
+    <br>
+    OR
+    <br>
+    <a class="social-button btn btn-lg btn-danger btn-block" href="/web.com/login/google/">
+      <i class="fa fa-google-plus-square"></i>&nbsp;{{__('lang.login-with-google')}}</a>
+    <a class="social-button btn btn-lg btn-primary btn-block social-button" href="/web.com/login/facebook/">
+      <i class="fa fa-facebook-official"></i>&nbsp;{{__('lang.login-with-facebook')}}</a>
   </div>
 </form>

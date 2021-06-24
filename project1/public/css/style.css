@@ -3914,6 +3914,9 @@ thead {
 /*----------------------------------------*/
 /* 6.5 Li's Login Register
 /*----------------------------------------*/
+.social-button{
+	color: #ffffff !important;
+}
 .login-title {
 	font-size: 20px;
 	line-height: 23px;

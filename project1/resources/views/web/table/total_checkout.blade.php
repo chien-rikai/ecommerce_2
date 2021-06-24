@@ -22,6 +22,8 @@
         <tr class="order-total">
             <th>{{__('lang.total')}}</th>
             <td><strong><span class="amount">{{number_format($cart['total'])}}</span></strong></td>
+            <input type="hidden" id="cart-total-price" value="{{$cart['total']}}">
+            <input type="hidden" id="thanks-comment" value="{{__('lang.thanks-comment')}}">
         </tr>
     </tfoot>
 </table>

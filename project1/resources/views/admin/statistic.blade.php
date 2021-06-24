@@ -12,9 +12,9 @@
             <i class="mdi mdi-cube text-danger icon-lg"></i>
           </div>
           <div class="float-right">
-            <p class="mb-0 text-right">{{__('lang.total-revenue')}}</p>
+            <p class="mb-0 text-right">{{__('lang.total-revenue')}}(vnd)</p>
             <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">$65,650</h3>
+              <h3 class="font-weight-medium text-right mb-0">{{number_format($data['total'])}}</h3>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
           <div class="float-right">
             <p class="mb-0 text-right">{{__('lang.order')}}</p>
             <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">100</h3>
+              <h3 class="font-weight-medium text-right mb-0">{{$data['order_count']}}</h3>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
           <div class="float-right">
             <p class="mb-0 text-right">{{__('lang.sales')}}</p>
             <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">30</h3>
+              <h3 class="font-weight-medium text-right mb-0">{{$data['sales']}}</h3>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
           <div class="float-right">
             <p class="mb-0 text-right">{{__('lang.user')}}</p>
             <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">20</h3>
+              <h3 class="font-weight-medium text-right mb-0">{{$data['users']}}</h3>
             </div>
           </div>
         </div>
@@ -87,16 +87,23 @@
       <div class="card-body">
         <div class="d-sm-flex justify-content-between align-items-center mb-4">
           <h2 class="card-title mb-0">{{__('lang.analysis')}}</h2>
-          <!-- <div class="wrapper d-flex">
+          <div class="wrapper d-flex">
             <div class="d-flex align-items-center mr-3">
-              <span class="dot-indicator bg-success"></span>
-              <p class="mb-0 ml-2 text-muted">{{__('lang.order')}}</p>
+            <div class="btn-group dropdown">
+            <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">{{__('lang.month')}}</button>
+              <?php $months=getMonthsAgo();?>  
+              <div class="dropdown-menu select-month">
+              @foreach($months as $m)
+                <a class="dropdown-item" href="{{route('statistic.show',[$m])}}">{{$m}}</a>
+              @endforeach
+              </div>
+              </div>
             </div>
             <div class="d-flex align-items-center">
-              <span class="dot-indicator bg-primary"></span>
-              <p class="mb-0 ml-2 text-muted">{{__('lang.view')}}</p>
+              <a class="btn btn-primary" href="{{route('statistic.export',[$month])}}">{{__('lang.export')}}</a>
             </div>
-          </div> -->
+          </div>
         </div>
         <div id="chart-container">
         </div>

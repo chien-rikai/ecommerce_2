@@ -129,7 +129,8 @@ Route::group(['middleware' => 'locale'], function () {
             */
             Route::get('order/filter/{status}', [OrderController::class, 'filter'])->name('order.filter');
 
-            Route::resource('statistic',StatisticController::class);
+            Route::resource('statistic',StatisticController::class)->except(['export']);
+            Route::get('statistic/export/{monthYear}',[StatisticController::class,'export'])->name('statistic.export');
         });
         
 

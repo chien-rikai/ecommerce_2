@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\OrderStatusEnum;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -33,10 +34,22 @@ class Order extends Model
         }
         return $result;
     }
-    public static function countOrders(){
+    public static function calcTotal($month,$year){
+        $result=['total'=>0,'sales'=>0];        
+        $sales = Order::where('status_id',OrderStatusEnum::completed)
+                            ->whereYear('created_at',$year)
+                            ->whereMonth('created_at',$month)
+                            ->get();
+        foreach($sales as $order){
+            $result['total'] += $order->total_cost;
+            $result['sales']++;
+        }
+        return $result;
+    }
+    public static function countOrders($month,$year){
         $orders = Order::select(DB::raw('count(*) as count'),DB::raw('Date(created_at) as date'))
-                            ->whereYear('created_at',date('Y'))
-                            ->whereMonth('created_at',date('m'))
+                            ->whereYear('created_at',$year)
+                            ->whereMonth('created_at',$month)
                             ->groupBy('date')
                             ->pluck('count','date');                    
         return $orders;                    

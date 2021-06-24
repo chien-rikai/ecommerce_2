@@ -229,5 +229,9 @@ return [
     'login-with-facebook'=>'Đăng nhập bằng facebook',
     'parent'=>'Nhãn cha',
     'view-tree'=>'Xem chi tiết',
+    'export'=>'Xuất',
+    'report'=>'Báo cáo thống kê trong ',
+    'send-mail-body'=>'Tệp đính kèm bên dưới là thống kê trong tháng ',
+    'month'=>'Tháng',
 ]
 ?>

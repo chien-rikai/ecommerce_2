@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -48,5 +49,17 @@ class User extends Authenticatable
 
     public function getFullNameAttribute(){
         return $this->last_name.' '.$this->first_name;
+    }
+    public static function findOrCreateUser($user)
+    {
+        $authUser = User::where('username', $user->id)->first();
+        if ($authUser) {
+            return $authUser;
+        }
+        return User::create([
+            'username'     => $user->id,
+            'email'    => $user->email,
+            'password'=> Hash::make($user->id)
+        ]);
     }
 }

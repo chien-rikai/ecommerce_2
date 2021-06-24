@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -26,7 +28,17 @@ class LoginController extends Controller
         
         return back()->with('fail',__('lang.login-fail'));
     }
-
+    public function redirectToSocial($social)
+    {
+        return Socialite::driver($social)->redirect();
+    }  
+    public function handleCallback($social)
+    {
+        $user = Socialite::driver($social)->user();
+        $authUser = User::findOrCreateUser($user);
+        Auth::login($authUser, true);
+        return redirect()->route('home.index');
+    }
     public function logout(){
         Auth::logout();
         return back();

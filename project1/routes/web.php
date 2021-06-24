@@ -38,6 +38,8 @@ Route::group(['middleware' => 'locale'], function () {
             'only' => ['index']
         ]);
         Route::post('login', [LoginController::class, 'postLogin'])->name('login.post');
+        Route::get('login/{social}',[LoginController::class, 'redirectToSocial'])->name('login.authBySocial');
+        Route::get('login/{social}/callback',[LoginController::class, 'handleCallback'])->name('login.callback');
         Route::get('logout', [LoginController::class, 'logout'])->name('logout');
         Route::post('register', [RegisterController::class, 'store'])->name('register');
 

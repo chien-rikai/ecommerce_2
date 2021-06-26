@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
     public function search(Request $request){
-        $products = Product::productSearch($request->name, $request->category_id);
-        
-        return view('web.page.search',compact('products'));
+        $product = new Product();
+        $products = $product->fullTextSearch($request->id,$request->keys);
+        $type ="all";
+        return view('web.home.index',compact(['products','type']));
     }
 }

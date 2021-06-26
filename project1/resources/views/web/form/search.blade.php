@@ -7,6 +7,6 @@
     @endforeach
     <!-- code category -->
   </select>
-  <input type="text" name="name" placeholder="{{__('lang.enter-search')}}">
+  <input type="text" name="keys" placeholder="{{__('lang.enter-search')}}">
   <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
 </form>

@@ -228,5 +228,7 @@ return [
     'request-fail'=>'Request fail!',
     'login-with-google'=>'Sign in with google',
     'login-with-facebook'=>'Sign in with facebook',
+    'parent'=>'Parent',
+    'view-tree'=>'View tree',
 ]   
 ?>

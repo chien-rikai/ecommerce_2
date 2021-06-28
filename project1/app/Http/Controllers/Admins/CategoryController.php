@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
+    protected $children;
     /**
      * function get category by id.
      *
@@ -30,7 +31,8 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        return view('admin/category_created');
+        $categories= Category::get();
+        return view('admin/category_created',compact(['categories']));
     }
     /**
      * Get all categories
@@ -39,7 +41,7 @@ class CategoryController extends Controller
      */
     public function index(){
         $categories = Category::get();
-        return view('admin.category_view',['categories' => $categories]);
+        return view('admin.category_view',compact(['categories']));
     }
     /**
      * Save a category
@@ -48,7 +50,10 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryRequest $request){
-        $params['name'] = $request->category;
+        $params= $request->except(['_token','_method']);
+        if($params['parent_id']=='none'){
+            $params['parent_id']=null;
+        }
         $category= Category::store($params);
         if($category){
             return back()->with('success', __('lang.add-success'));
@@ -80,8 +85,9 @@ class CategoryController extends Controller
      */
     public function edit($id){
         $category = $this->find($id);
-
-        return view('admin.category_edit',['category'=> $category]);
+        $categories = Category::get();
+        $categories = $this->findAllChildCategory($categories,$id);
+        return view('admin.category_edit',compact(['category','categories']));
     }
     /**
      * Update a category
@@ -90,7 +96,11 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(CategoryRequest $request){
-        $update = Category::updateCategory($request);
+        $params=$request->except(['_token','_method']);
+        if($params['parent_id']=='none'){
+            $params['parent_id']=null;
+        }
+        $update = Category::updateCategory($request->id,$params);
         if($update){
             return back()->with('success', __('lang.edit-success'));
         }else{
@@ -112,5 +122,32 @@ class CategoryController extends Controller
             Session::put('fail' , __('lang.restore-fail'));
         }
         return view('admin.table.categories',compact('categories'));
+    }
+    private function findAllChildCategory($categories,$id){
+        $this->children=collect([]);
+        if($categories)
+        foreach($categories as $category){
+            if($category->parent_id)
+                continue;
+            if($category->id==$id){
+                break;
+            }    
+            $this->setData($category,$id);
+        }
+        return $this->children;
+    }
+    
+    private function loopInChilds($categories,$id){
+        foreach($categories as $category){
+            if($category->id==$id){
+                continue;
+            }
+            $this->setData($category,$id);
+        }
+    }
+    private function setData($category,$id){
+        if($category->subcategories)    
+           $this->loopInChilds($category->subcategories,$id);
+        $this->children->push($category);
     }
 }

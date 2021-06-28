@@ -226,6 +226,8 @@ return [
     'request-success'=>'Yêu cầu thành công!',
     'request-fail'=>'Yêu cầu thất bại!',
     'login-with-google'=>'Đăng nhập bằng google',
-    'login-with-facebook'=>'Đăng nhập bằng facebook'
+    'login-with-facebook'=>'Đăng nhập bằng facebook',
+    'parent'=>'Nhãn cha',
+    'view-tree'=>'Xem chi tiết',
 ]
 ?>

@@ -13,4 +13,9 @@ class SearchController extends Controller
         
         return view('web.page.search',compact('products'));
     }
+
+    public function fulltextsearch(Request $request){
+        $products = Product::search($request->get('search'))->paginate(18);
+        return view('web.page.search',compact('products'));
+    }
 }

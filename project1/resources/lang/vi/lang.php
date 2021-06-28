@@ -211,5 +211,6 @@ return [
     'multi-level' => 'Phân cấp',
     'subcategory' => 'Danh mục con',
     'type' => 'Kiểu',
+    'fulltextsearch' => 'Tìm kiếm',
 ]
 ?>

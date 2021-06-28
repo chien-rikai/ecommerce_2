@@ -1,0 +1,5 @@
+{
+    "require": {
+        "nicolaslopezj/searchable": "^1.13"
+    }
+}

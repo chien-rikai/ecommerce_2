@@ -15,7 +15,11 @@
               <!-- Begin Setting Area -->
               @if(Auth::check())
               <li>
+                @if(Auth::user()->first_name == null)
                 <span class="language-selector-wrapper">{{Auth::user()->username}}</span>
+                @else
+                <span class="language-selector-wrapper">{{Auth::user()->first_name}}</span>
+                @endif
                 <div class="ht-language-trigger"><span></span></div>
                 <div class="language ht-language">
                   <ul class="ht-setting-list">
@@ -69,6 +73,10 @@
         <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
           <!-- Begin Header Middle Searchbox Area -->
           @include('web.form.search')
+          <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15 mt-70">
+          @include('web.form.fulltextsearch')
+          </div>
+          
           <!-- Header Middle Searchbox Area End Here -->
           <!-- Begin Header Middle Right Area -->
           <div class="header-middle-right">

@@ -11,8 +11,23 @@
         <label>{{__('lang.password')}}</label>
         <input class="mb-0" name="password" type="password" placeholder="{{__('lang.enter-password')}}">
       </div>
-      <div class="col-md-12">
+      <div class="col-md-4 mb-20">
         <button class="register-button mt-0">{{__('lang.login')}}</button>
+      </div>
+
+      <div class="col-sm-4 mb-20">
+        <a href="{{ route('login.provider', ['facebook']) }}">
+          <button type="button" class="register-button mt-0 facebook-btn">
+            <i class="fa fa-facebook mr-2"></i>Facebook
+          </button>
+        </a>
+      </div>
+      <div class="col-sm-4 mb-20">
+        <a href="{{ route('login.provider',['google']) }}">
+          <button type="button" class="register-button mt-0 google-btn">
+            <i class="fa fa-google mr-2"></i>Google
+          </button>
+        </a>
       </div>
     </div>
   </div>

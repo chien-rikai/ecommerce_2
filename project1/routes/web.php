@@ -34,6 +34,8 @@ Route::group(['middleware' => 'locale'], function () {
             'only' => ['index']
         ]);
         Route::post('login', [LoginController::class, 'postLogin'])->name('login.post');
+        Route::get('login/{provider}', [LoginController::class, 'redirectToFacebook'])->name('login.provider');
+        Route::get('login/{provider}/callback', [LoginController::class, 'handleProviderCallback']);
         Route::get('logout', [LoginController::class, 'logout'])->name('logout');
         Route::post('register', [RegisterController::class, 'store'])->name('register');
 
@@ -54,6 +56,7 @@ Route::group(['middleware' => 'locale'], function () {
     Route::post('review/{id}', [WebProductController::class, 'review'])->name('review')->middleware('auth');
     Route::get('review/{star}', [WebProductController::class, 'reviewStar'])->name('review.star');
     Route::get('search',[SearchController::class, 'search'])->name('search');
+    Route::get('full-text-search',[SearchController::class, 'fulltextsearch'])->name('full.text.search');
     /*
      *  Route for cart page
      *  */  

@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     public function index(){
         if(Auth::check()){
-            return redirect()->route('product.index');
+            return redirect()->route('statistic.index');
         }
         return view('admin.login.index');
     }
@@ -22,7 +22,7 @@ class LoginController extends Controller
         $login['block'] = 0;
         $login['role'] = UserRole::admin;
         if(Auth::attempt($login)){
-            return redirect()->route('product.index');
+            return redirect()->route('statistic.index');
         }         
         return back()->with('fail',__('lang.login-fail'));
     }

@@ -212,5 +212,11 @@ return [
     'subcategory' => 'Danh mục con',
     'type' => 'Kiểu',
     'fulltextsearch' => 'Tìm kiếm',
+    'type' => 'Kiểu',  
+    'analysis'=>'Thống kê',
+    'sales'=>'Đã bán',
+    'total-revenue'=>'Tổng doanh thu',
+    'growth-orders'=>'Thống kê đơn hàng',
+    'number-of-orders'=>'Số lượng đơn hàng',
 ]
 ?>

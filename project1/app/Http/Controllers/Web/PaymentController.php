@@ -54,8 +54,12 @@ class PaymentController extends Controller
         }
         $sendMail = SendMail::dispatch($params)->delay(now()->addMinute(1));
         $request->session()->put('cart_'.$request->user_id,['total'=>0]);
-        
+        $cart = CartController::findCart();
+        if($request->ajax()){
+            return view('web.table.total_checkout',compact('cart'));
+        }
         return back()->with('success',__('lang.order-success'));
+       
     }
     /**
      * Update checkout info.

@@ -212,5 +212,6 @@ return [
     'multi-level' => 'Multi level',
     'subcategory' => 'Subcaetgory',
     'type' => 'Type',
+    'fulltextsearch' => 'Full text search',
 ]   
 ?>

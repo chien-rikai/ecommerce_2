@@ -6,10 +6,18 @@ use App\Jobs\ProductCsvUpload;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Product extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,SoftDeletes,SearchableTrait;
+
+    protected $searchable = [
+        'columns' => [
+            'products.name' => 10,
+            'products.describe' => 10,
+        ]
+    ];
 
     protected $dates = ['deleted_at'];
     protected $guarded =[];

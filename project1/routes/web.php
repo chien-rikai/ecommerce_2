@@ -56,6 +56,7 @@ Route::group(['middleware' => 'locale'], function () {
     Route::post('review/{id}', [WebProductController::class, 'review'])->name('review')->middleware('auth');
     Route::get('review/{star}', [WebProductController::class, 'reviewStar'])->name('review.star');
     Route::get('search',[SearchController::class, 'search'])->name('search');
+    Route::get('full-text-search',[SearchController::class, 'fulltextsearch'])->name('full.text.search');
     /*
      *  Route for cart page
      *  */  

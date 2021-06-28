@@ -73,6 +73,10 @@
         <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
           <!-- Begin Header Middle Searchbox Area -->
           @include('web.form.search')
+          <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15 mt-70">
+          @include('web.form.fulltextsearch')
+          </div>
+          
           <!-- Header Middle Searchbox Area End Here -->
           <!-- Begin Header Middle Right Area -->
           <div class="header-middle-right">

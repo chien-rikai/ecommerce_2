@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\OrderStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -40,6 +41,18 @@ class Order extends Model
             ->groupBy('date')
             ->pluck('count', 'date');
         return $orders;
+    }
+
+    public static function countMonthOrders(){
+        $countorders = Order::whereYear('created_at', date('Y'))->whereMonth('created_at', date('m'))->count();
+        $data=['orders'=>$countorders,'total'=>0,'sales'=>0];        
+        $orders = Order::where('status_id',OrderStatusEnum::completed)->whereYear('updated_at',date('Y'))
+                            ->whereMonth('updated_at',date('m'))->get();
+        foreach($orders as $order){
+            $data['total'] += $order->total_cost;
+            $data['sales']++;
+        }
+        return $data;
     }
 
 }

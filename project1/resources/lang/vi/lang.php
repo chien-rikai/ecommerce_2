@@ -218,5 +218,8 @@ return [
     'total-revenue'=>'Tổng doanh thu',
     'growth-orders'=>'Thống kê đơn hàng',
     'number-of-orders'=>'Số lượng đơn hàng',
+    'report-month, :date' => 'Báo cáo tháng, :date',
+    'report-month-mail, :date' => 'Gửi báo cáo tháng, :date',
+    'export' => 'xuất',
 ]
 ?>

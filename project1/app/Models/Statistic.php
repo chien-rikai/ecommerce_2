@@ -19,4 +19,10 @@ class Statistic extends Model
             }
         return $data;
     }
+
+    public static function statisticMonth(){
+        $data = Order::countMonthOrders();
+        $data['users'] = User::whereYear('created_at', date('Y'))->whereMonth('created_at', date('m'))->count();
+        return $data;
+    }
 }

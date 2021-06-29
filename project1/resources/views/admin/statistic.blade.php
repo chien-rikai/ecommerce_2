@@ -58,6 +58,10 @@
     </div>
   </div>
 </div>
+<div class="d-flex align-items-center pt-20 pb-20">
+  <span class="dot-indicator bg-primary"></span>
+  <a class="btn btn-primary" href="{{route('statistic.export')}}">{{__('lang.export')}}</a>
+</div>
 <div class="row">
   <div class="col-md-12 grid-margin">
     <div class="card">

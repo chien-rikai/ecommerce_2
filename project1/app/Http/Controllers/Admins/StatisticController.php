@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admins;
 
-use App\Enums\OrderStatusEnum;
+
+use App\Exports\StatisticExport;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Statistic;
-use App\Models\User;
-use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StatisticController extends Controller
 {
@@ -16,4 +16,10 @@ class StatisticController extends Controller
         $data = Statistic::statisticAll();
         return view('admin.statistic',compact(['orders', 'data']));
     }
+
+    public function export() 
+    {
+        return Excel::download(new StatisticExport, 'statistic-'.date('d-m-Y').'.xlsx');
+    }
+
 }

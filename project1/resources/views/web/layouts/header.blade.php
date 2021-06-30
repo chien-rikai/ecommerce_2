@@ -124,9 +124,19 @@
             <nav>
               <ul>
                 <li><a href="{{ route('home.index')}}">{{__('lang.Home')}}</a></li>
-                @foreach($categories as $category)
-                <li><a href="{{ route('home.show',[$category->id])}}">{{$category->name}}</a></li>
+                <li class="dropdown-holder"><a>{{__('lang.cate')}}</a>
+                <ul class="hb-dropdown">
+                @foreach($categories as $cate)
+                  @if(!$cate->parent_id)
+                  <li class="sub-dropdown-holder"><a href="{{ route('home.show',[$cate->id])}}">{{$cate->name}}</a>
+                  @if(count($cate->subcategories))                
+                    @include('web.shared.category_dropdown',['cates'=>$cate->subcategories])
+                  @endif
+                  </li>
+                  @endif
                 @endforeach
+                </ul>
+                </li>
               </ul>
             </nav>
           </div>

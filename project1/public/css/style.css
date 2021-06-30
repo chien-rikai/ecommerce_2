@@ -5457,6 +5457,23 @@ span.required {
 	background-color: rgb(201, 14, 14);
 }
 
+.cart-quantity .suggest-more {
+	border: none;
+	font-size: 14px;
+	color: #242424;
+	position: relative;
+	background: #740dd4;
+	cursor: pointer;
+	font-weight: 500;
+	text-transform: capitalize;
+	padding: 13px 70px;
+	border-radius: 2px;
+	transition: all 0.3s ease-in-out;
+}
+.cart-quantity .suggest-more:hover {
+  background: #242424;
+  color: #ffffff;
+}
 /*----------------------------------------------------------------------------------------------------*/
 /*------------------------------------------> The End <-----------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------*/

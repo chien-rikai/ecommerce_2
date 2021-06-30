@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Enums\ProductStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\SuggestMore;
 use App\Services\HistoryService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -64,5 +65,16 @@ class ProductController extends Controller
             return redirect(Session::get('url-back'))->with('fail', __('lang.product-not-found'));
         }
         return $product;
+    }
+
+    public function suggestMore(Request $request){
+        $params = $request->only(['product_id','name','note']);
+        $params['user_id'] = Auth::id();
+
+        $insert = SuggestMore::create($params);
+        if($insert){
+            return back()->with('success',__('lang.request-success'));
+        }
+        return back()->with('fail',__('lang.request-fail'));
     }
 }

@@ -127,7 +127,7 @@ class ProductController extends Controller
         if(blank($product)){
             return back()->with('fail', __('lang.edit-fail'));
         }
-        $params = $request->only(['name','describe','discount','category_id','price']);    
+        $params = $request->only(['name','describe','discount','category_id','price','status']);    
         if ($getImg != null) {
             $params['url_img'] = $getImg;
         }

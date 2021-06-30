@@ -4,6 +4,7 @@ use App\Http\Controllers\Admins\CategoryController;
 use App\Http\Controllers\Admins\LoginController as AdminsLoginController;
 use App\Http\Controllers\Admins\OrderController;
 use App\Http\Controllers\Admins\ProductController;
+use App\Http\Controllers\Admins\Requestcontroller;
 use App\Http\Controllers\Admins\SearchController as AdminsSearchController;
 use App\Http\Controllers\Admins\StatisticController;
 use App\Http\Controllers\Admins\UserController;
@@ -58,6 +59,7 @@ Route::group(['middleware' => 'locale'], function () {
     Route::get('review/{star}', [WebProductController::class, 'reviewStar'])->name('review.star');
     Route::get('search',[SearchController::class, 'search'])->name('search');
     Route::get('full-text-search',[SearchController::class, 'fulltextsearch'])->name('full.text.search');
+    Route::post('suggest-more', [WebProductController::class, 'suggestMore'])->name('suggest.more');
     /*
      *  Route for cart page
      *  */  
@@ -137,6 +139,8 @@ Route::group(['middleware' => 'locale'], function () {
             'only' => 'index'
         ]);
         Route::get('export', [StatisticController::class, 'export'])->name('statistic.export');
+
+        Route::resource('request', Requestcontroller::class)->only(['index','update']);
 
     });
     /**

@@ -221,5 +221,14 @@ return [
     'report-month, :date' => 'Monthly report, :date',
     'report-month-mail, :date' => 'Send monthly report, :date',
     'export' => 'Export',
+    'suggest-more' => 'Suggest More',
+    'request-success' => 'Reuqest success',
+    'request-fail' => 'Request failed',
+    'request' => 'Request',
+    'increment' => 'Increment',
+    'request-increment' => 'Request to increase the number of products',
+    'request-import' => 'Request more products',
+    'created-at' => 'Created at',
+    'request-fail' => 'Request failed',
 ]   
 ?>

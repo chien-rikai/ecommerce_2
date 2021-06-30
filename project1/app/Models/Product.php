@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\ProductStatus;
 use App\Jobs\ProductCsvUpload;
+use App\Traits\FullTextSearch;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,9 +12,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use HasFactory,SoftDeletes;
+    use FullTextSearch;
 
     protected $dates = ['deleted_at'];
     protected $guarded =[];
+    protected $searchable = ['`name`','`describe`'];
 
     public function category(){
         return $this->belongsTo(Category::class);
@@ -47,7 +50,12 @@ class Product extends Model
         }
         return $products->where('name','like', "%$name%")->where('category_id','=',$id)->orderBy('created_at','desc')->paginate(12);
     }
-
+    public function fullTextSearch($id,$keys){
+        $columns = implode(',',$this->searchable);
+        if($id != 0)
+            return Product::where('category_id',$id)->search($keys)->paginate(18);
+        return Product::search($keys)->paginate(18);    
+    }
     public static function deleteCategory($delete,$id){
         if($delete){
             $delete = Product::where('category_id','=',$id)->chunkById(100, function($products){

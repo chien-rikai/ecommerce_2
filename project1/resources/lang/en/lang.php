@@ -218,5 +218,8 @@ return [
     'total-revenue'=>'Total Revenue',
     'chart-orders'=>'Chart Orders',
     'number-of-orders'=>'Number of orders',
+    'report-month, :date' => 'Monthly report, :date',
+    'report-month-mail, :date' => 'Send monthly report, :date',
+    'export' => 'Export',
 ]   
 ?>

@@ -136,6 +136,7 @@ Route::group(['middleware' => 'locale'], function () {
         Route::resource('statistic', StatisticController::class, [
             'only' => 'index'
         ]);
+        Route::get('export', [StatisticController::class, 'export'])->name('statistic.export');
 
     });
     /**

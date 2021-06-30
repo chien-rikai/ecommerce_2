@@ -31,7 +31,7 @@ class ReportMailNotify extends Mailable
     public function build()
     {
         $date = date('m-Y');
-        Excel::store(new StatisticExport,'public/statistic'.$date.'.xlsx');
+        Excel::store(new StatisticExport($date),'public/statistic'.$date.'.xlsx');
         $path = storage_path('app\public\statistic'.$date.'.xlsx');
         return $this->view('admin.table.mail_report_notify',compact('date'))
         ->subject(__('lang.report').''.$date)

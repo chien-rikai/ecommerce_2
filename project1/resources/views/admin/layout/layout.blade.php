@@ -72,6 +72,9 @@
                         <a href="{{route('user.view')}}"><i class="fa fa-user-o"></i>{{ __('lang.user')}}</a>
                     </li>
                     <li>
+                        <a href="{{route('request.index')}}"><i class="fa fa-commenting-o"></i>{{ __('lang.request')}}</a>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.logout') }}"><i class="fa fa-sign-in "></i>{{ __('lang.logout')}}</a>
                     </li>
                 </ul>

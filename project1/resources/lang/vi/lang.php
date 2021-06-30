@@ -221,5 +221,14 @@ return [
     'report-month, :date' => 'Báo cáo tháng, :date',
     'report-month-mail, :date' => 'Gửi báo cáo tháng, :date',
     'export' => 'xuất',
+    'suggest-more' => 'Đề xuất thêm',
+    'request-success' => 'Đề xuất thành công',
+    'request-fail' => 'Đề xuất thất bại',
+    'request' => 'Yêu cầu',
+    'increment' => 'Tăng',
+    'request-increment' => 'Yêu cầu tăng số lượng sản phẩm',
+    'request-import' => 'Yêu cầu thêm sản phẩm',
+    'created-at' => 'Ngày tạo',
+    'request-fail' => 'Xử lý yêu cầu thất bại',
 ]
 ?>

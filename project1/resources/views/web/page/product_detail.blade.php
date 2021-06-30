@@ -9,7 +9,7 @@
       <div class="product-details-left">
         <div class="product-details-images slider-navigation-1">
           <div class="lg-image">
-           <img src="/images/{{$product->url_img}}" alt="product image">
+            <img src="/images/{{$product->url_img}}" alt="product image">
           </div>
         </div>
       </div>
@@ -33,38 +33,52 @@
               <div class="quantity">
                 <label>{{__('lang.quantity')}}</label>
                 <div class="cart-plus-minus">
-                 <input type="hidden" class="id" name="id" value="{{$product->id}}">
+                  <input type="hidden" class="id" name="id" value="{{$product->id}}">
                   <input class="cart-plus-minus-box" id="quantity" value="1" type="text">
                   <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                   <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                 </div>
                 <button class="add-to-cart">{{__('lang.add-to-cart')}}</button>
+                <div class="single-add-to-cart">
+                  <div class="cart-quantity">
+                    <div class="quantity mt-20">
+                      <label>{{__('lang.status')}}
+                      @if($product->status == 1)
+                      {{__('lang.in-stock')}}</label>
+                      @else
+                      {{__('lang.out-stock')}}</label>
+                      <button class="suggest-more" onclick="SuggestMore()">{{__('lang.suggest-more')}}</button>
+                      @endif
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="product-additional-info">
-            <div class="product-social-sharing">
-              <ul>
-                <div class="fb-share-button" data-href="http://web.com/product/{{$product->id}}" data-layout="button_count" data-size="small">{{__('lang.share')}}</div>
-              </ul>
+            <div class="product-additional-info">
+              <div class="product-social-sharing">
+                <ul>
+                  <div class="fb-share-button" data-href="http://web.com/product/{{$product->id}}" data-layout="button_count" data-size="small">{{__('lang.share')}}</div>
+                </ul>
+              </div>
             </div>
-          </div>
-          <div class="product-desc">
-            <p>
-              <span>{{$product->describe}}
-              </span>
-            </p>
+            <div class="product-desc">
+              <p>
+                <span>{{$product->describe}}
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div id="facebook-comments" class="col-md-6">
+      <h3 id="reply-title">{{__('lang.comment')}}</h3>
+      <fb:comments href="http://web.com/product/{{$product->id}}" num_posts="5" width="100%"></fb:comments>
+    </div>
   </div>
-  <div id="facebook-comments" class="col-md-6">
-    <h3 id="reply-title">{{__('lang.comment')}}</h3>
-    <fb:comments href="http://web.com/product/{{$product->id}}" num_posts="5" width="100%"></fb:comments>
-  </div>
-</div>
-<script src="/js/add_to_cart.js"></script>
-@include('web.script.star_rating')
-@include('web.form.review_star')
-@endsection
+  @include('web.form.suggest_more')
+  <script src="/js/suggest_more.js"></script>
+  <script src="/js/add_to_cart.js"></script>
+  @include('web.script.star_rating')
+  @include('web.form.review_star')
+  @endsection

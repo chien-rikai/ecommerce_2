@@ -16,6 +16,10 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function suggestMore(){
+        return $this->hasMany(SuggestMore::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

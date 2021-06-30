@@ -29,7 +29,8 @@ class HomeController extends Controller
         return view('web.home.index',compact(['products','type']));
     }
     public function show($category){
-        $products=Product::where('category_id',$category)->paginate(18); 
+        $list = $this->findCategoryId($category);
+        $products=Product::whereIn('category_id',$list)->paginate(18); 
         $type ="all";
         return view('web.home.index',compact(['products','type']));
     }
@@ -56,6 +57,16 @@ class HomeController extends Controller
         App::setlocale($language);
         Session::put('website_language', $language);
         return redirect()->back();
+    }
+    private function findCategoryId($idCategory){
+        $cate = new Category();
+        $categories = Category::get();
+        $categories = $cate->findChildCategory($categories,$idCategory);
+        $list = [];
+        foreach($categories as $ct){
+            $list[]= $ct->id;
+        }
+        return $list;
     }
     
 }

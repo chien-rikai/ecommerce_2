@@ -3,18 +3,18 @@
     @if(!$category->parent_id)
     <div class="sidebar-categores-box mt-sm-30 mt-xs-30">
         <div class="sidebar-title">
-            <a href="#"><h2>{{$category->name}}</h2></a>
+            <a href="{{ route('home.show',[$category->id])}}"><h2>{{$category->name}}</h2></a>
         </div>
         <!-- category-sub-menu start -->
         @if($category->subcategories)
         <div class="category-sub-menu">
             <ul>
                 @foreach($category->subcategories as $cate)
-                <li class="has-sub"><a href="#">{{$cate->name}}</a>
+                <li class="has-sub"><a href="{{ route('home.show',[$cate->id])}}">{{$cate->name}}</a>
                 @if($cate->subcategories)
                     <ul>
                         @foreach($cate->subcategories as $ct)
-                            <li><a href="#">{{$ct->name}}</a></li>
+                            <li><a href="{{ route('home.show',[$ct->id])}}">{{$ct->name}}</a></li>
                         @endforeach
                     </ul>
                 @endif    

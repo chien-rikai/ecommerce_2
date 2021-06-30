@@ -230,5 +230,9 @@ return [
     'login-with-facebook'=>'Sign in with facebook',
     'parent'=>'Parent',
     'view-tree'=>'View tree',
+    'export'=>'Export excel',
+    'report'=>'Report statistic in',
+    'send-mail-body'=>'Below attach file is report of statistc in',
+    'month'=>'Month',
 ]   
 ?>

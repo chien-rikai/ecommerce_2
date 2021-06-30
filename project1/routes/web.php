@@ -5,6 +5,7 @@ use App\Http\Controllers\Admins\LoginController as AdminsLoginController;
 use App\Http\Controllers\Admins\OrderController;
 use App\Http\Controllers\Admins\ProductController;
 use App\Http\Controllers\Admins\SearchController as AdminsSearchController;
+use App\Http\Controllers\Admins\StatisticController;
 use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\HomeController;
@@ -131,6 +132,11 @@ Route::group(['middleware' => 'locale'], function () {
          * Filter order by status of order
          */
         Route::get('order/filter/{status}', [OrderController::class, 'filter'])->name('order.filter');
+
+        Route::resource('statistic', StatisticController::class, [
+            'only' => 'index'
+        ]);
+
     });
     /**
      * Login admin

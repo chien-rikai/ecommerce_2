@@ -213,5 +213,10 @@ return [
     'subcategory' => 'Subcaetgory',
     'type' => 'Type',
     'fulltextsearch' => 'Full text search',
+    'analysis'=>'Analysis',
+    'sales'=>'Sales',
+    'total-revenue'=>'Total Revenue',
+    'chart-orders'=>'Chart Orders',
+    'number-of-orders'=>'Number of orders',
 ]   
 ?>

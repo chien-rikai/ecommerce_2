@@ -48,7 +48,7 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        <a class="active-menu" href=""><i class="fa fa-dashboard "></i>{{ __('lang.Home')}}</a>
+                        <a href="{{ route('statistic.index')}}"><i class="fa fa-dashboard "></i>{{ __('lang.Home')}}</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-desktop "></i>{{ __('lang.manage')}}<span

@@ -19,6 +19,8 @@
                         <div class="order-button-payment">
                             <input value="Order" type="submit" form="checkout-form">
                         </div>
+                        <input type="hidden" id="amount" value="{{$cart['total']}}">
+                        <!-- <div id="paypal-button" class="mt-20"></div> -->
                     </div>
                 </div>
             </div>

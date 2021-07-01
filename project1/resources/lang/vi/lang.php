@@ -233,5 +233,9 @@ return [
     'report'=>'Báo cáo thống kê trong ',
     'send-mail-body'=>'Tệp đính kèm bên dưới là thống kê trong tháng ',
     'month'=>'Tháng',
+    'thank-you'=>'Cảm ơn đã thanh toán!',
+    'please-check-mail'=>'Hãy kiểm tra đơn hàng của bạn ở gmail!',
+    'payment-later'=>'Thanh toán trực tuyên hoặc!',
+    'later'=>'Thanh toán sau',
 ]
 ?>

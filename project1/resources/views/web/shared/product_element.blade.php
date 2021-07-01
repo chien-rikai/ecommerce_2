@@ -49,7 +49,7 @@
                                   <input type="hidden" class="product_name" value="{{$product->name}}">
                                   <a href="#request_more" data-toggle="modal" class="btn btn-primary suggest-more">{{__('lang.suggest-more')}}</a>
                                 @else
-                                <li class="add-cart active">
+                                <li class="add-cart active add">
                                   {{__('lang.add-to-cart')}}
                                   <input type="hidden" class="id_product" value="{{$product->id}}">
                                 </li>

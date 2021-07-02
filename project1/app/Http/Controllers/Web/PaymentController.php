@@ -8,9 +8,10 @@ use App\Http\Requests\OrderRequest;
 use App\Jobs\SendMail;
 use App\Models\DetailOrder;
 use App\Models\Order;
+use App\Models\User;
+use App\Services\PayPalService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class PaymentController extends Controller
@@ -40,6 +41,7 @@ class PaymentController extends Controller
         if(blank($cart)){
             return back()->with('fail',__('lang.cart-empty'));
         }
+        $temp = $cart;
         $cart = $this->covertCartToDetailOrder($cart);
         $params['status_id'] = OrderStatusEnum::processing;
         $result= Order::storeOrder($params,$cart);
@@ -48,8 +50,8 @@ class PaymentController extends Controller
         }
         $sendMail = SendMail::dispatch($params)->delay(now()->addMinute(1));
         $request->session()->put('cart_'.$request->user_id,['total'=>0]);
-        
-        return back()->with('success',__('lang.order-success'));
+        $request->session()->put('cart_temp_'.$request->user_id,$temp);
+        return redirect()->route('payment.viewPayment');
     }
     /**
      * Update checkout info.
@@ -58,6 +60,30 @@ class PaymentController extends Controller
      */
     public function update(Request $request,$id){
 
+    }
+    public function cancelPay(Request $request){
+        if($request->session()->has('cart_temp_'.Auth::id())){
+            $request->session()->forget('cart_temp_'.Auth::id());
+        }
+        return redirect()->route('payment.index');
+    }
+    public function indexPayment(Request $request){
+        $temp= [];
+        if($request->session()->has('cart_temp_'.Auth::id())){
+            $temp= Session::get('cart_temp_'.Auth::id());
+        }
+        if(empty($temp)) return redirect()->route('payment.index');
+        return view('web.page.order_success',['carts'=>$temp]);
+        
+    }
+    public function pay(Request $request){
+        if($request->session()->has('cart_temp_'.Auth::id())){
+            $request->session()->forget('cart_temp_'.Auth::id());
+        }
+        if($request->ajax()){
+            return response()->json(['success'=>true]);
+        }
+        return redirect()->route('home.index');
     }
     private function covertCartToDetailOrder($cart){
         $detailOrders = [];
@@ -73,4 +99,5 @@ class PaymentController extends Controller
         }
         return $detailOrders;
     }
+
 }

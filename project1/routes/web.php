@@ -66,7 +66,11 @@ Route::group(['middleware' => 'locale'], function () {
     /*
      *  Route for payment page
      *  */
-        Route::resource('payment', PaymentController::class);
+        Route::resource('payment', PaymentController::class)->only(['index','store']);
+
+        Route::get('payment/pay', [PaymentController::class,'indexPayment'])->name('payment.viewPayment');
+        Route::get('payment/cancelPay', [PaymentController::class,'cancelPay'])->name('payment.cancel');
+        Route::post('payment/excecutePay', [PaymentController::class,'pay'])->name('payment.excecute');
         /*
          *  Route for profile page
          *  */

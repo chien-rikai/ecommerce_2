@@ -234,5 +234,9 @@ return [
     'report'=>'Report statistic in',
     'send-mail-body'=>'Below attach file is report of statistc in',
     'month'=>'Month',
+    'thank-you'=>'Thank you for your purchase!',
+    'please-check-mail'=>'Please check your email for view your order status!',
+    'payment-later'=>'You can payment now or later!',
+    'later'=>'Purchase now',
 ]   
 ?>

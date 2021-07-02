@@ -10,25 +10,25 @@
             <div class="col-md-9">
                 <div class="checkout-form-list">
                     <label>{{__('lang.customer-name')}} <span class="required">*</span></label>
-                    <input placeholder="" type="text" name="name" value="{{$user->full_name}}">
+                    <input placeholder="" type="text" name="name" id="name" value="{{$user->full_name}}">
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="checkout-form-list">
                     <label>{{__('lang.address')}} <span class="required">*</span></label>
-                    <input placeholder="Street address" name="address" type="text" value="{{$user->address}}">
+                    <input placeholder="Street address" name="address" id="address" type="text" value="{{$user->address}}">
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="checkout-form-list">
                     <label>{{__('lang.email')}} <span class="required">*</span></label>
-                    <input placeholder="" name="email" type="email" value="{{$user->email}}">
+                    <input placeholder="" name="email" type="email" id="email" value="{{$user->email}}">
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="checkout-form-list">
                     <label>{{__('lang.phone')}} <span class="required">*</span></label>
-                    <input type="text" name="phone" value="{{$user->phone}}">
+                    <input type="text" name="phone" id="phone" value="{{$user->phone}}">
                 </div>
             </div>
         </div>

@@ -43,12 +43,14 @@ class ProductCsvUpload implements ShouldQueue
                     'discount' => $row[3],
                     'category_id' => $row[4],
                     'url_img' => $row[5],
+                    'star_rating' => $row[6],
+                    'review' => $row[7],
+                    'view' => $row[8]
                 ]);
                 if(!isset($insert)){
                     return redirect()->route('product.create')->with('fail',__('lang.stop, :name',['name' => $row[0]]));
                 }
-            }
-            
+            }   
             unlink($this->file);      
     }
 }

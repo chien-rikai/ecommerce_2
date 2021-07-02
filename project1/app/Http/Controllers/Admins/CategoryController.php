@@ -86,7 +86,8 @@ class CategoryController extends Controller
     public function edit($id){
         $category = $this->find($id);
         $categories = Category::get();
-        $categories = $this->findAllChildCategory($categories,$id);
+        $category = new Category();
+        $categories = $category->findAllChildCategory($categories,$id);
         return view('admin.category_edit',compact(['category','categories']));
     }
     /**
@@ -123,31 +124,5 @@ class CategoryController extends Controller
         }
         return view('admin.table.categories',compact('categories'));
     }
-    private function findAllChildCategory($categories,$id){
-        $this->children=collect([]);
-        if($categories)
-        foreach($categories as $category){
-            if($category->parent_id)
-                continue;
-            if($category->id==$id){
-                break;
-            }    
-            $this->setData($category,$id);
-        }
-        return $this->children;
-    }
     
-    private function loopInChilds($categories,$id){
-        foreach($categories as $category){
-            if($category->id==$id){
-                continue;
-            }
-            $this->setData($category,$id);
-        }
-    }
-    private function setData($category,$id){
-        if($category->subcategories)    
-           $this->loopInChilds($category->subcategories,$id);
-        $this->children->push($category);
-    }
 }

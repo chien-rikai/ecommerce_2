@@ -12,6 +12,7 @@ class Category extends Model
     protected $table ="categories";
     protected $dates = ['deleted_at'];
     protected $fillable=['name','parent_id'];
+    protected $children;
     public function products(){
         return $this->hasMany(Product::class);
     }
@@ -57,5 +58,50 @@ class Category extends Model
            $update = Product::restoreCategory($id);
         }
         return $update;
+    }
+    public function findAllChildCategory($categories,$id){
+        $this->children=collect([]);
+        if($categories)
+        foreach($categories as $category){
+            if($category->parent_id)
+                continue;
+            if($category->id==$id){
+                break;
+            }    
+            $this->setData($category,$id);
+        }
+        return $this->children;
+    }
+    public function findChildCategory($categories,$id){
+        $this->children=collect([]);
+        foreach($categories as $category){
+            if($category->id==$id){
+                $this->setChild($category,$id);
+            }   
+        }
+        return $this->children;
+    }
+    private function setChild($category,$id){
+        if($category->subcategories)    
+           $this->loopInChilds($category->subcategories,$id);
+        $this->children->push($category);
+    }
+    private function loop($categories,$id){
+        foreach($categories as $category){
+            $this->setChild($category,$id);
+        }
+    }
+    private function loopInChilds($categories,$id){
+        foreach($categories as $category){
+            if($category->id==$id){
+                continue;
+            }
+            $this->setData($category,$id);
+        }
+    }
+    private function setData($category,$id){
+        if($category->subcategories)    
+           $this->loopInChilds($category->subcategories,$id);
+        $this->children->push($category);
     }
 }

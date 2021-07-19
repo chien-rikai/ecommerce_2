@@ -3,7 +3,11 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Contracts\Validation\Validator;
 
 class OrderRequest extends FormRequest
 {
@@ -34,6 +38,7 @@ class OrderRequest extends FormRequest
     public function messages()
     {
         return [
+            'name.required'=>__('requestVali.required-name'),
             'name.max' => __('requestVali.max-name'),
             'email.required' => __('requestVali.required-email'),
             'email.email' => __('requestVali.email-email'),
@@ -41,5 +46,15 @@ class OrderRequest extends FormRequest
             'address.required' => ('requestVali.required-address'),
             'address.max' => ('requestVali.max-address'),
         ];
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        $errors = (new ValidationException($validator))->errors();
+        throw new HttpResponseException(response()->json(
+            [
+                'error' => $errors,
+                'status_code' => 422,
+            ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY
+        ));
     }
 }

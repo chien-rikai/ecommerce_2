@@ -37,6 +37,7 @@ return [
     'required-password-old' => 'Bạn chưa nhập mật khẩu cũ',
     'max-name' => 'Tên khách hàng không quá 100 ký tự',
     'required-address'=>'Vui lòng nhập địa chỉ nhận hàng',
-    'max-address'=>'Địa chỉ giao hàng không quá 500 ký tự'
+    'max-address'=>'Địa chỉ giao hàng không quá 500 ký tự',
+    'required-name'=>'Vui lòng nhập tên người nhận hàng',
 ]
 ?>

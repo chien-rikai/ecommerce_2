@@ -15,6 +15,7 @@ import {
 var defaultState = {user: [],}
 
 var store = createStore(todoLogin, defaultState);
+import { CartPage } from './pages/web/cart/Cart';
 function App() {
   return (
     <Router>
@@ -28,6 +29,9 @@ function App() {
                 </Route>
                 <Route path="/home" component={Home} />
                 <Route path="/login" component={LoginAndRegisterPage} />
+                <Route path='/cart'>
+                  <CartPage/>
+                </Route>
              </Switch>
           </div>
           <div className="footer">

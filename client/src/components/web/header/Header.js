@@ -1,10 +1,24 @@
 import '../../../style/css/Style.css';
 import logo from '../../../style/images/logo.jpg';
+import {Button,FormControl,MenuItem,InputLabel,Select} from '@material-ui/core';
+import {FaCartPlus} from 'react-icons/fa';
+import {Dropdown} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { loadCartAction } from '../../../redux/actions/CartAction';
+import { calcTotal } from '../../../utils/CartHelper';
+import { formatPrice } from '../../../utils/PriceHelper';
 export const HeaderComponent=()=>{
     function TranslateClick(lang){
       localStorage.setItem('lang', lang);
       window.location.reload();
     }
+    const cart = useSelector((state)=>state.cart);
+    const dispatch = useDispatch();
+    useEffect(()=>{
+      dispatch(loadCartAction())
+    },[])
     return(
         <header>
             <div className="header-top">
@@ -16,15 +30,15 @@ export const HeaderComponent=()=>{
                         <div className="header-top-right">
                           <ul className="ht-menu">
                           <li>
-                            <span className="language-selector-wrapper">hoangduc12</span>
-                            <div className="ht-language-trigger"><span></span></div>
-                              <div className="language ht-language">
-                                <ul className="ht-setting-list">
-                                  <li><a href=""></a>Profile</li>
-                                  <li><a href=""></a>Change password</li>
-                                  <li><a href=""></a>Logout</li>
-                                </ul>
-                              </div>
+                          <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                              hoangduc12
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                              <Dropdown.Item href="">Profile</Dropdown.Item>
+                              <Dropdown.Item href="">Logout</Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
                           </li>
                           {/* <li>
                             <div className=""><span><a href=""></a></span>
@@ -67,7 +81,7 @@ export const HeaderComponent=()=>{
                   <div className="header-middle-right">
                     <ul className="hm-menu">
                       <li className="hm-minicart">
-                        <div className="hm-minicart-trigger">
+                        {/* <div className="hm-minicart-trigger">
                           <span className="item-icon"></span>
                           <span className="item-text" id="cart-total">60000(vnd)
                           <span className="cart-item-count">0</span>
@@ -82,7 +96,18 @@ export const HeaderComponent=()=>{
                               <span></span>
                             </a>
                           </div>
-                        </div>
+                        </div> */}
+                        <Link to='/cart'>
+                        <Button
+                          variant='contained'
+                          color='secondary'
+                          className='cart'
+                          startIcon={<FaCartPlus/>}
+                        >
+                          {formatPrice(calcTotal(cart))}
+                        </Button>
+                        </Link>
+                        
                       </li>  
                     </ul>
                   </div>    
@@ -97,7 +122,7 @@ export const HeaderComponent=()=>{
                     <div className="hb-menu">
                     <nav>
                     <ul>
-                      <li><a href="">Home</a></li>
+                      <li><a href="/">Home</a></li>
                       <li><a href=""></a></li>
                     </ul>
                     </nav>

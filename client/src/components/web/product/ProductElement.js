@@ -1,5 +1,14 @@
 import image from '../../../style/images/img_1.jpg';
+import { Button,Box,Typography } from '@material-ui/core';
+import { FaCartPlus, FaEye } from 'react-icons/fa';
+import {Rating} from '@material-ui/lab';
+import { useDispatch } from 'react-redux';
+import { addToCartAction } from '../../../redux/actions/CartAction';
 export const ProductElement =({product})=>{
+    const dispatch = useDispatch();
+    function add(){
+      dispatch(addToCartAction({...product,quantity:1}));
+    }
     return ( 
             <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
                 <div class="single-product-wrap">
@@ -13,10 +22,12 @@ export const ProductElement =({product})=>{
                         <div class="product_desc_info">
                             <div class="product-review">
                                 <h5 class="manufacturer">
-                                    <a href="">View: 100</a>
+                                    {<FaEye/>} &nbsp; {product.view}
                                 </h5>
                                 <div class="rating-box">
-                                    Rating
+                                <Box mb={2} borderColor="transparent" >
+                                  <Rating name="read-only" size='small' value={product.star_rating} readOnly />
+                                </Box>  
                                 </div>
                             </div>
                             <h4><a class="product_name" href="">
@@ -31,13 +42,12 @@ export const ProductElement =({product})=>{
                             </div>
                         </div>
                         <div class="add-actions">
-                            <ul class="add-actions-link">
-                                <li class="add-cart active add">
-                                  Add to cart
-                                  <input type="hidden" class="id_product" value="{{$product->id}}"/>
-                                  
-                                </li>
-                            </ul>
+                            <Button
+                          variant='contained'
+                          color='primary'
+                          startIcon={<FaCartPlus/>}
+                          onClick={add}
+                        >Add to cart</Button>
                         </div>
                     </div>
                 </div>

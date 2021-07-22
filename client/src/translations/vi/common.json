@@ -1,0 +1,16 @@
+{
+    "lang": {
+        "login": "Đăng nhập",
+        "logout": "Đăng xuất",
+        "english": "Tiếng Anh",
+        "vietnamese": "Tiếng Việt",
+        "register": "Đăng ký",
+        "home": "Trang chủ",
+        "username": "Tên tài khoản",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "confirm-password": "Nhập lại mật khẩu",
+        "success": "Thành công",
+        "failed": "Không thành công"
+    }
+}

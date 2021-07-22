@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import {ApiClient} from '../../../services/Api';
+import { Trans } from 'react-i18next';
 
 class LoginForm extends Component {
   constructor(props){
@@ -59,12 +59,11 @@ class LoginForm extends Component {
         {!this.state.check && <div class="alert alert-danger">{this.state.message}</div>}
         <form onSubmit={(e) => this.onSubmit(e)}>
         <input type="hidden" id="csrf-token" name="csrf-token" value="{{{ csrf_token() }}}" />
-          <p>{this.state.message}</p>
           <div className="login-form">
-            <h4 className="login-title">Login</h4>
+            <h4 className="login-title"><Trans i18nKey='lang.login' /></h4>
             <div className="row">
               <div className="col-md-12 col-12 mb-20">
-                <label>Username</label>
+                <label><Trans i18nKey='lang.username' /></label>
                 <input className="mb-0"
                   onChange={(e) => this.onNameChange(e)}
                   name="username" type="username"
@@ -73,7 +72,7 @@ class LoginForm extends Component {
                 <div className="validation" style={{display: 'block'}}>{errors.username}</div>
               </div>
               <div className="col-12 mb-20">
-                <label>Password</label>
+                <label><Trans i18nKey='lang.password' /></label>
                 <input className="mb-0"
                   onChange={(e) => this.onPasswordChange(e)}
                   name="password" type="password"
@@ -81,7 +80,7 @@ class LoginForm extends Component {
                   <div className="validation" style={{display: 'block'}}>{errors.password}</div>
               </div>
               <div className="col-md-12">
-                <button type="submit" className="register-button mt-0">Login</button>
+                <button type="submit" className="register-button mt-0"><Trans i18nKey='lang.login' /></button>
               </div>
             </div>
           </div>

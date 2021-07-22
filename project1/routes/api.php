@@ -1,10 +1,10 @@
 <?php
 
+
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\Web\LoginController;
 use App\Http\Controllers\Api\Web\RegisterController;
 use App\Http\Controllers\Api\Web\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +26,5 @@ Route::prefix('web.com')->group(function () {
     Route::get('logout/{id}', [LoginController::class, 'logout'])->name('api.logout');
     Route::post('register', [RegisterController::class, 'store'])->name('api.register');
 });
+
 Route::apiResource('products',ProductController::class);
-
-

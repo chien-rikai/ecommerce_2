@@ -1,6 +1,10 @@
 import '../../../style/css/Style.css';
 import logo from '../../../style/images/logo.jpg';
 export const HeaderComponent=()=>{
+    function TranslateClick(lang){
+      localStorage.setItem('lang', lang);
+      window.location.reload();
+    }
     return(
         <header>
             <div className="header-top">
@@ -30,8 +34,8 @@ export const HeaderComponent=()=>{
                           <div className="ht-language-trigger"><span>Language</span></div>
                             <div className="language ht-language">
                             <ul className="ht-setting-list">
-                              <li><a href="">English</a></li>
-                              <li><a href="">Vietnamese</a></li>
+                              <li><a onClick={() => TranslateClick('en')} href="">English</a></li>
+                              <li><a onClick={() => TranslateClick('vi')} href="">Vietnamese</a></li>
                             </ul>
                           </div>
                           </li>

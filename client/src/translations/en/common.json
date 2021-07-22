@@ -1,0 +1,16 @@
+{
+    "lang": {
+        "login": "Login",
+        "logout": "Logout",
+        "english": "English",
+        "vietnamese": "Vietnamese",
+        "register": "Register",
+        "home": "Home",
+        "username": "Username",
+        "email": "Email",
+        "password": "Password",
+        "confirm-password": "Confirm password",
+        "success": "Success",
+        "failed": "Failed"
+    }
+}

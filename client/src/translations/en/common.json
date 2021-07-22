@@ -11,6 +11,27 @@
         "password": "Password",
         "confirm-password": "Confirm password",
         "success": "Success",
-        "failed": "Failed"
+        "failed": "Failed",
+        "enter-username": "Enter user name",
+        "enter-password": "Enter password",
+        "enter-first-name": "Enter frist name",
+        "enter-last-name": "Enter last name",
+        "enter-email": "Enter email",
+        "enter-number-phone": "Enter number phone",
+        "enter-address": "Enter address",
+        "first-name": "First name",
+        "last-name": "Last name",
+        "profile": "Profile",
+        "phone": "Phone",
+        "address": "Address",
+        "birthday": "Birthday",
+        "gender": "Gender",
+        "edit": "Edit",
+        "male": "Male",
+        "female": "Female",
+        "loading": "Loading...",
+        "order": "Order",
+        "account": "Account",
+        "change-password": "Change password"
     }
 }

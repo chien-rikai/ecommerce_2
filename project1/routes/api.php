@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('web.com')->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
-        Route::get('/getusers', [UserController::class, 'getUser'])->name('api.get.user');
+        Route::apiResource('/user', UserController::class, ['as' => 'api'])->only(['index','update']);
     });
     Route::post('login', [LoginController::class, 'postLogin'])->name('api.login.post');
     Route::get('logout/{id}', [LoginController::class, 'logout'])->name('api.logout');

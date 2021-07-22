@@ -11,6 +11,27 @@
         "password": "Mật khẩu",
         "confirm-password": "Nhập lại mật khẩu",
         "success": "Thành công",
-        "failed": "Không thành công"
+        "failed": "Không thành công",
+        "enter-username": "Enter user name",
+        "enter-password": "Enter user name",
+        "enter-first-name": "Enter user name",
+        "enter-last-name": "Enter user name",
+        "enter-email": "Enter user name",
+        "enter-phone": "Enter user name",
+        "enter-address": "Enter user name",
+        "first-name": "Enter user name",
+        "last-name": "Enter user name",
+        "profile": "Enter user name",
+        "phone": "Enter user name",
+        "address": "Enter user name",
+        "birthday": "Enter user name",
+        "gender": "Enter user name",
+        "edit": "Enter user name",
+        "male": "Nam",
+        "female": "Nữ",
+        "loading": "Đang tải...",
+        "order": "Đơn hàng",
+        "account": "Tài khoản",
+        "change-password": "Thay đổi mật khẩu"
     }
 }

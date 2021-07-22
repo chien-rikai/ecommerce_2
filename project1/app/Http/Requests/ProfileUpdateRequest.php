@@ -4,6 +4,10 @@ namespace App\Http\Requests;
 
 use App\Enums\UserGender;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
 
 class ProfileUpdateRequest extends FormRequest
 {
@@ -45,5 +49,16 @@ class ProfileUpdateRequest extends FormRequest
             'birthdat.date' => ('requestVali.date-birthday'),
             'gender.enum_value' => ('requestVali.enum-value-gender'),
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        $errors = (new ValidationException($validator))->errors();
+        throw new HttpResponseException(response()->json(
+            [
+                'error' => $errors,
+                'status_code' => 422,
+            ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY
+        ));
     }
 }

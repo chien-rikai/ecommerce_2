@@ -37,6 +37,7 @@ export default class Home extends Component {
   }
 
   render() {
+    console.log(this.state.user);
     if (this.state.user != null) {
       return (
         <div>

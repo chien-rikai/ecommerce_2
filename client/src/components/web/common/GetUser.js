@@ -6,7 +6,7 @@ export function getusers() {
   if(localStorage.getItem('token') !== ''){
     axios({
       method: 'GET',
-      url: process.env.REACT_APP_BASE_URL+'/web.com/getusers',
+      url: process.env.REACT_APP_BASE_URL+'/web.com/user',
       headers: {
         'Authorization': 'Bearer '+localStorage.getItem('token'),
       }

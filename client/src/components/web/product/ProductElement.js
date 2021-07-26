@@ -4,6 +4,7 @@ import { FaCartPlus, FaEye } from 'react-icons/fa';
 import {Rating} from '@material-ui/lab';
 import { useDispatch } from 'react-redux';
 import { addToCartAction } from '../../../redux/actions/CartAction';
+import { Link } from 'react-router-dom';
 export const ProductElement =({product})=>{
     const dispatch = useDispatch();
     function add(){
@@ -13,9 +14,9 @@ export const ProductElement =({product})=>{
             <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
                 <div class="single-product-wrap">
                     <div class="product-image">
-                        <a href="">
+                        <Link to={'/product/'+product.id}>
                             <img class='product-img-home' src={process.env.REACT_APP_RESOURCE_URL+'/images/'+product.url_img} alt="Product Image"/>
-                        </a>
+                        </Link>
                         <span class="sticker">New</span>
                     </div>
                     <div class="product_desc">

@@ -35,9 +35,13 @@ class ProductController extends Controller
      * @param  \App\Models\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $product = Product::find($id);
+        if($product){
+            return response()->json(['product'=>$product]);
+        }
+        return response()->json(null,404);
     }
 
     /**

@@ -11,11 +11,12 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
+import { CartPage } from './pages/web/cart/Cart';
+import { DetailPage } from './pages/web/detail/Detail';
 var defaultState = {user: [],}
 
 var store = createStore(todoLogin, defaultState);
-import { CartPage } from './pages/web/cart/Cart';
+
 function App() {
   return (
     <Router>
@@ -32,6 +33,7 @@ function App() {
                 <Route path='/cart'>
                   <CartPage/>
                 </Route>
+                <Route path='/product/:id' component={DetailPage}/>
              </Switch>
           </div>
           <div className="footer">

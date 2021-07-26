@@ -45,13 +45,10 @@ export const HeaderComponent=()=>{
                             </div>
                           </li> */}
                           <li>
-                          <div className="ht-language-trigger"><span>Language</span></div>
-                            <div className="language ht-language">
-                            <ul className="ht-setting-list">
-                              <li><a onClick={() => TranslateClick('en')} href="">English</a></li>
-                              <li><a onClick={() => TranslateClick('vi')} href="">Vietnamese</a></li>
-                            </ul>
-                          </div>
+                            <Select value={1}>
+                              <MenuItem value={1} onClick={() => TranslateClick('en')}>Vietnamese</MenuItem>
+                              <MenuItem value={2} onClick={() => TranslateClick('vi')}>English</MenuItem>
+                            </Select>
                           </li>
                           </ul>
                         </div>

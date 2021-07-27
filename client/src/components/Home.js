@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { store } from '../App';
 import { getusers } from './web/common/GetUser';
@@ -40,13 +41,13 @@ export default class Home extends Component {
       return (
         <div>
           <p>{this.state.user[0].data.username}</p>
-          <a onClick={(e) => this.logout(e)}>Logout</a>
+          <a onClick={(e) => this.logout(e)}><Trans i18nKey='lang.logout' /></a>
         </div>
       )
     } else {
       return (
-        <div>home
-          <Link to="/login">Login</Link>
+        <div><Trans i18nKey='lang.home' />
+          <Link to="/login"><Trans i18nKey='lang.login' /></Link>
         </div>
 
       )

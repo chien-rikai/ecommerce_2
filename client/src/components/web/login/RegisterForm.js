@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import SuccessAndFail from "../common/SuccessAndFail";
+import { Trans } from "react-i18next";
 
 
 class RegisterForm extends Component {
@@ -71,10 +72,10 @@ class RegisterForm extends Component {
         <form onSubmit={(e) => this.onSubmit(e)}>
           {this.state.status ? <SuccessAndFail message={this.state.message}></SuccessAndFail>: ''}
           <div className="login-form">
-          <h4 className="login-title">Register</h4>
+          <h4 className="login-title"><Trans i18nKey='lang.register' /></h4>
           <div className="row">
             <div className="col-md-12 col-12 mb-20">
-              <label>Username</label>
+              <label><Trans i18nKey='lang.username' /></label>
               <input className="mb-0" 
                 onChange={(e) => this.onNameChange(e)}
                 name="username"
@@ -84,7 +85,7 @@ class RegisterForm extends Component {
               </input>
               <div className="validation" style={{display: 'block'}}>{errors.username}</div>
             </div><div className="col-md-12 mb-20">
-              <label>Email</label>
+              <label><Trans i18nKey='lang.email' /></label>
               <input className="mb-0" 
                 onChange={(e) => this.onEmailChange(e)}
                 name="email"
@@ -94,7 +95,7 @@ class RegisterForm extends Component {
                 <div className="validation" style={{display: 'block'}}>{errors.email}</div>
             </div>
             <div className="col-md-6 mb-20">
-              <label>Password</label>
+              <label><Trans i18nKey='lang.password' /></label>
               <input className="mb-0"
                 onChange={(e) => this.onPasswordChange(e)}
                 name="password"
@@ -104,7 +105,7 @@ class RegisterForm extends Component {
                 <div className="validation" style={{display: 'block'}}>{errors.password}</div>
             </div>
             <div className="col-md-6 mb-20">
-              <label>Confirm password</label>
+              <label><Trans i18nKey='lang.confirm-password' /></label>
               <input className="mb-0"
                 onChange={(e) => this.onConfirmPasswordChange(e)}
                 name="confirm-password"
@@ -113,7 +114,7 @@ class RegisterForm extends Component {
                 <div className="validation" style={{display: 'block'}}>{errors.confirm_password}</div>
             </div>
             <div className="col-md-12">
-              <button type="submit" className="register-button mt-0">Register</button>
+              <button type="submit" className="register-button mt-0"><Trans i18nKey='lang.register' /></button>
             </div>
           </div>
          </div>

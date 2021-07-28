@@ -2,7 +2,8 @@ import axios from 'axios';
 const ApiClient = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
     headers:{
-        'content-type':'application/json'
+        'content-type':'application/json',
+        'Authorization':'Bearer '+localStorage.getItem('token')
     },
 });
 ApiClient.interceptors.request.use(async(config)=>{

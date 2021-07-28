@@ -4,7 +4,6 @@ import { ProductList } from '../components/web/product/ProductList';
 import { useDispatch } from 'react-redux';
 
 export const HomeContainer= ({products,common})=>{
-    console.log(products.products.data);
     return (
         <>
             <div class="container">
@@ -17,7 +16,7 @@ export const HomeContainer= ({products,common})=>{
             </div>
             <FilterBar />
             {
-                !common.isBusy&&common.isSuccess?<ProductList products={products}/>:<div>Loading</div>
+                common.isLoaded?<ProductList products={products}/>:<div>Loading</div>
             }
         </div>
         <div class="col-lg-3 order-2 order-lg-1">

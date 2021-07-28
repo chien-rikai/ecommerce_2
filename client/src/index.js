@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { rootReducer } from './redux/reducers';
-import rootSaga from './redux/saga/ProductWebSaga';
+import rootSaga from './redux/saga/rootSaga';
 import createSagaMiddleware from '@redux-saga/core';
 import { Provider } from 'react-redux';
 import './index.css';
@@ -10,10 +10,9 @@ import App from './App';
 import {I18nextProvider} from 'react-i18next';
 import i18n from  './translations/i18n';
 
-
 const sagaMiddleware = createSagaMiddleware();
 
-const store=configureStore({
+export const store=configureStore({
   reducer: rootReducer,
   middleware:(getDefaultMiddleware)=>
     getDefaultMiddleware().concat(sagaMiddleware)

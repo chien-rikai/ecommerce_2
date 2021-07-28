@@ -6,6 +6,9 @@ import './profile.css'
 import { store } from '../../../App';
 import { getusers } from '../common/GetUser';
 import { Trans } from 'react-i18next';
+import ChangePassword from './ChangePasswordForm';
+import { CheckLogin } from '../common/CheckLogin';
+import OrderHistoryList from './OrderHistoryList';
 
 
 class ProfilePage extends Component {
@@ -31,6 +34,7 @@ class ProfilePage extends Component {
     const user = Object.assign({},this.state.user);
     return (
       <div className="container">
+        <CheckLogin />
         <div className="row">
           <div className="col-md-3">
             <div className="osahan-account-page-left shadow-sm bg-white h-100">
@@ -48,7 +52,7 @@ class ProfilePage extends Component {
               </div>
               <ul className="nav nav-tabs flex-column border-0 pt-4 pl-4 pb-4" id="myTab" role="tablist">
                 <li className="nav-item">
-                  <a className="nav-link" id="orders-tab" href="/orders" aria-selected="true">
+                  <a className="nav-link" id="orders-tab" href="/order-history" aria-selected="true">
                     <i className="fa fa-cart-arrow-down"></i><Trans i18nKey='lang.order'/>
                   </a>
                 </li>
@@ -73,7 +77,8 @@ class ProfilePage extends Component {
                   </div>
                   {this.state.isLoading ? <div>
                   {this.props.isRole === UpdateUserType.PROFILE ? <ProfileForm user={user}/> : '' }
-                  {this.props.isRole === UpdateUserType.CHANGE_PASSWORD ? 'Change-password' : '' }
+                  {this.props.isRole === UpdateUserType.CHANGE_PASSWORD ? <ChangePassword id={user.id}/> : '' }
+                  {this.props.isRole === UpdateUserType.ORDER_HISTORY ? <OrderHistoryList id={user.id}/> : '' }
                   </div> : <Trans i18nKey='lang.loading' />}      
                 </div>
               </div>

@@ -32,6 +32,11 @@
         "loading": "Đang tải...",
         "order": "Đơn hàng",
         "account": "Tài khoản",
-        "change-password": "Thay đổi mật khẩu"
+        "change-password": "Thay đổi mật khẩu",
+        "no-result": "Không có kết quả",
+        "old-pasword": "Mật khẩu cũ",
+        "new-password": "Mật khẩu mới",
+        "change": "Thay đổi",
+        "total-paid": "Tổng tiền thanh toán"
     }
 }

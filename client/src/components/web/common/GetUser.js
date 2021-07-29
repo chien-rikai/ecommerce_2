@@ -11,7 +11,6 @@ export function getusers() {
         'Authorization': 'Bearer '+localStorage.getItem('token'),
       }
     }).then(res => {  
-      console.log(res.data);
       store.dispatch(login(res.data));
     }).catch(error => console.log(Object.assign({}, error)));
   }

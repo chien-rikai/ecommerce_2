@@ -8,6 +8,7 @@ import { todoLogin } from './redux/reducers/LoginAndRegister';
 import LoginAndRegisterPage from './components/web/login/LoginAndRegisterPage';
 import Home from './components/Home';
 import { UpdateUserType } from './enums/UpdateUserType';
+import './bootstrap.min.css'
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,7 +18,6 @@ import {
 import { CartPage } from './pages/web/cart/Cart';
 import { DetailPage } from './pages/web/detail/Detail';
 import { Checkout } from './pages/web/checkout/Checkout';
-import LoginAndRegisterPage from './components/web/login/LoginAndRegisterPage';
 import { Footer } from './components/web/footer/Footer';
 var defaultState = {user: [], orders: [],}
 
@@ -58,3 +58,4 @@ function App() {
   );
 }
 export default App;
+export {store};

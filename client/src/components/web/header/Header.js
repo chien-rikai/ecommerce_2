@@ -10,6 +10,7 @@ import { loadCartAction } from '../../../redux/actions/CartAction';
 import { calcTotal } from '../../../utils/CartHelper';
 import { formatPrice } from '../../../utils/PriceHelper';
 import { getusers } from '../common/GetUser';
+import axios from 'axios';
 export const HeaderComponent=()=>{
     const cart = useSelector((state)=>state.cart);
     const user = useSelector((state)=>state.user);
@@ -21,6 +22,16 @@ export const HeaderComponent=()=>{
       function TranslateClick(lang){
         localStorage.setItem('lang', lang);
         window.location.reload();
+      }
+      function logout(e) {
+        axios({
+          method: 'GET',
+          url: process.env.REACT_APP_BASE_URL+'/web.com/logout/' + user[0].data.id,
+        }).then(res => {
+          localStorage.setItem('checkLogin', false);
+          localStorage.setItem('token', '');
+          window.location.reload();
+        }).catch(error => {});
       }
     return(
         <header>
@@ -35,11 +46,11 @@ export const HeaderComponent=()=>{
                           <li>
                            {user.length==0?(<Button href='/login'>Login</Button>):(<Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
-                              hoangduc12
+                              {user[0].data.username}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                              <Dropdown.Item href="">Profile</Dropdown.Item>
-                              <Dropdown.Item href="">Logout</Dropdown.Item>
+                              <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+                              <Dropdown.Item onClick={(e) => logout(e)}>Logout</Dropdown.Item>
                             </Dropdown.Menu>
                           </Dropdown>)} 
                           

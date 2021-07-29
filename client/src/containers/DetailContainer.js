@@ -1,5 +1,6 @@
 import { calcNewPrice } from "../utils/CartHelper"
 import { formatPrice } from "../utils/PriceHelper"
+import Review from "../components/web/Rating/ModalReview"
 
 export const DetailContainer =({product})=>{
     return(
@@ -21,6 +22,7 @@ export const DetailContainer =({product})=>{
           <h2>{product.name}</h2>
           <div class="rating-box pt-20">
             <ul class="rating rating-with-review-item" id="starRating">
+              <Review rating={product.star_rating} id={product.id}></Review>
             </ul>
           </div>
           <div class="price-box pt-20">

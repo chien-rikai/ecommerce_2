@@ -3,7 +3,7 @@ import ProfileForm from './ProfileForm';
 import { UpdateUserType } from '../../../enums/UpdateUserType';
 import DefaultAvatar from '../../../style/images/default-avatar.jpg';
 import './profile.css'
-import { store } from '../../../App';
+import { store } from '../../..'; 
 import { getusers } from '../common/GetUser';
 import { Trans } from 'react-i18next';
 import ChangePassword from './ChangePasswordForm';
@@ -25,13 +25,16 @@ class ProfilePage extends Component {
     getusers();
     store.subscribe(() => {
       this.setState({
-        user: store.getState().user[0].data,
+        user: store.getState().user[0],
         isLoading: true,
       });
     });
   }
+
   render() {
     const user = Object.assign({},this.state.user);
+    console.log(user.data == null);
+    console.log(this.state.isLoading);
     return (
       <div className="container">
         <CheckLogin />
@@ -42,11 +45,11 @@ class ProfilePage extends Component {
                 <div className="osahan-user text-center">
                   <div className="osahan-user-media">
                     <img className="mb-3 rounded-pill shadow-sm mt-1" src={DefaultAvatar} alt="gurdeep singh osahan" />
-                    <div className="osahan-user-media-body"> 
-                      <h6 className="mb-2">{user.username}</h6>
-                      <p className="mb-1">{user.phone}</p>
-                      <p>{user.email}</p>
-                    </div>
+                    {this.state.isLoading && user.data != null ?<div className="osahan-user-media-body"> 
+                      <h6 className="mb-2">{user.data.username}</h6>
+                      <p className="mb-1">{user.data.phone}</p>
+                      <p>{user.data.email}</p>
+                    </div> : '' }
                   </div>
                 </div>
               </div>
@@ -75,10 +78,10 @@ class ProfilePage extends Component {
                 <div className="tab-pane active show" id="orders" aria-labelledby="orders-tab">
                   <div className="row">
                   </div>
-                  {this.state.isLoading ? <div>
-                  {this.props.isRole === UpdateUserType.PROFILE ? <ProfileForm user={user}/> : '' }
-                  {this.props.isRole === UpdateUserType.CHANGE_PASSWORD ? <ChangePassword id={user.id}/> : '' }
-                  {this.props.isRole === UpdateUserType.ORDER_HISTORY ? <OrderHistoryList id={user.id}/> : '' }
+                  {this.state.isLoading && user.data != null ? <div>
+                  {this.props.isRole === UpdateUserType.PROFILE ? <ProfileForm user={user.data}/> : '' }
+                  {this.props.isRole === UpdateUserType.CHANGE_PASSWORD ? <ChangePassword id={user.data.id}/> : '' }
+                  {this.props.isRole === UpdateUserType.ORDER_HISTORY ? <OrderHistoryList id={user.data.id}/> : '' }
                   </div> : <Trans i18nKey='lang.loading' />}      
                 </div>
               </div>

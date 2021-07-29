@@ -71,4 +71,15 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function review(Request $request,$id){
+        $product = Product::find($id);
+        $params['star_rating'] = (($product->star_rating*$product->review) + $request->star_rating)/($product->review +1);
+        $params['review'] = $product->review + 1; 
+        $update = $product->update($params);
+        if($update){
+            return response()->json(['message' => __('lang.review-success')]);
+        }
+        return response()->json(['message' => __('lang.review-fail')]);
+    }
 }

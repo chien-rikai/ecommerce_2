@@ -25,6 +25,7 @@ Route::prefix('web.com')->group(function () {
         Route::apiResource('/user', UserController::class, ['as' => 'api'])->only(['index','update']);
         Route::post('user/change-password/{id}', [UserController::class,'changePassword'])->name('api.change.password');
         Route::get('user/get-orders/{id}', [UserController::class,'getOrders'])->name('api.get.orders');
+        Route::post('review/{id}', [ProductController::class, 'review'])->name('api.review');
     });
     Route::post('login', [LoginController::class, 'postLogin'])->name('api.login.post');
     Route::get('logout/{id}', [LoginController::class, 'logout'])->name('api.logout');

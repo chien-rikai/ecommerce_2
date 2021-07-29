@@ -4,6 +4,8 @@ import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { store } from '../App';
 import { getusers } from './web/common/GetUser';
+import Review from './web/Rating/ModalReview';
+
 
 export default class Home extends Component {
   constructor(props) {
@@ -42,14 +44,16 @@ export default class Home extends Component {
         <div>
           <p>{this.state.user[0].data.username}</p>
           <a onClick={(e) => this.logout(e)}><Trans i18nKey='lang.logout' /></a>
+          <Review></Review>
         </div>
       )
     } else {
       return (
         <div><Trans i18nKey='lang.home' />
           <Link to="/login"><Trans i18nKey='lang.login' /></Link>
+          <Review></Review>
         </div>
-
+       
       )
     }
   }

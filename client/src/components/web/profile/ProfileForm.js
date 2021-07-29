@@ -7,20 +7,25 @@ class ProfileForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      first_name: this.props.user.first_name,
-      last_name: this.props.user.last_name,
-      email: this.props.user.email,
-      phone: this.props.user.phone,
-      address: this.props.user.address,
-      birthday: this.props.user.birthday,
-      gender: this.props.user.gender,
+      first_name: Object.assign({},this.props.user).first_name ,
+      last_name:  Object.assign({},this.props.user).last_name,
+      email:  Object.assign({},this.props.user).email,
+      phone:  Object.assign({},this.props.user).phone,
+      address:  Object.assign({},this.props.user).address,
+      birthday:  Object.assign({},this.props.user).birthday,
+      gender:  Object.assign({},this.props.user).gender,
       error_first_name: '',
       error_last_name: '',
       error_email: '',
       error_phone: '',
       error_birthday: '',
       error_gender: '',
+      isLoading: false,
     }
+  }
+
+  componentDidMount(){
+    this.setState({isLoading: true,})
   }
 
   onSubmit(e) {
@@ -55,10 +60,11 @@ class ProfileForm extends Component {
   }
 
   render() {
+    console.log(1) ;
     const { t } = this.props;
     return (
       <form onSubmit={(e) => this.onSubmit(e)}>
-        <div className="login-form">
+        {this.props.user ?    <div className="login-form">
           <h4 className="login-title"><Trans i18nKey='lang.profile' /></h4>
           <div className="row">
             <div className="col-md-6 mb-20">
@@ -131,7 +137,8 @@ class ProfileForm extends Component {
           <div className="col-12">
             <button type="submit" className="register-button mt-0"><Trans i18nKey='lang.edit' /></button>
           </div>
-        </div>
+        </div> : 'Loading'}
+    
       </form>
     )
   }

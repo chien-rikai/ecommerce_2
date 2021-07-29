@@ -7,7 +7,7 @@ export const ProductList=({products})=>{
                         <div class="product-area shop-product-area">
                             <div class="row">
                                 {
-                                    products.products.data.map((e)=>{
+                                    products.map((e)=>{
                                         return <ProductElement key={e.id} product={e}/>
                                     })
                                 }

@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Services\SortService;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +15,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::paginate(18);
+        return Category::all();
     }
     public function fetch(Request $request,$type){
-        $products = SortService::fetch($type,$request->sortBy,$request->orderBy);
-        return response()->json(['products'=>$products]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,16 +33,11 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Models\Product  $product
+     * @param  \App\Models\Models\Category $category
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        if($product){
-            return response()->json(['product'=>$product]);
-        }
-        return response()->json(null,404);
     }
 
     /**
@@ -56,7 +47,7 @@ class ProductController extends Controller
      * @param  \App\Models\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -67,7 +58,7 @@ class ProductController extends Controller
      * @param  \App\Models\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Category $category)
     {
         //
     }

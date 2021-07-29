@@ -18,6 +18,7 @@ import { CartPage } from './pages/web/cart/Cart';
 import { DetailPage } from './pages/web/detail/Detail';
 import { Checkout } from './pages/web/checkout/Checkout';
 import LoginAndRegisterPage from './components/web/login/LoginAndRegisterPage';
+import { Footer } from './components/web/footer/Footer';
 var defaultState = {user: [], orders: [],}
 
 var store = createStore(todoLogin, defaultState);
@@ -50,10 +51,8 @@ function App() {
                 <Route path='/payment' component={Checkout}/>
              </Switch>
           </div>
-          <div className="footer">
-          </div>
           <div class="footer">
-            
+             <Footer/>
           </div>
     </Router>
   );

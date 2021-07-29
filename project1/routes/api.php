@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\Web\LoginController;
 use App\Http\Controllers\Api\Web\RegisterController;
 use App\Http\Controllers\Api\Web\UserController;
@@ -30,5 +31,7 @@ Route::prefix('web.com')->group(function () {
     Route::post('register', [RegisterController::class, 'store'])->name('api.register');
     Route::apiResource('products',ProductController::class);
     Route::post('payment',[PaymentController::class,'store']);
+    Route::get('products/fetch/{type}/',[ProductController::class,'fetch']);
+    Route::apiResource('categories',CategoryController::class);
 });
 

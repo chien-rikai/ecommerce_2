@@ -32,4 +32,19 @@ class Order extends Model
         return $result;
     }
 
+    public function toArray() {
+        $data = parent::toArray();
+        $data['status'] = $this->status->status;
+
+        return $data;
+    }
+
+    public static function setAtt($orders){
+        foreach($orders as $order){
+            $order->setAttribute('total_cost',$order->total_cost);
+            $order->setAttribute('summary',$order->summary);
+        }
+        return $orders;
+    }
+
 }

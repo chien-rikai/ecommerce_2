@@ -17,7 +17,8 @@ import {
 
 
 
-var defaultState = {user: [],}
+var defaultState = {user: [], orders: [],}
+
 
 var store = createStore(todoLogin, defaultState);
 function App() {
@@ -35,6 +36,12 @@ function App() {
                 <Route path="/login" component={LoginAndRegisterPage} />
                 <Route path="/profile" 
                   render={props => <ProfilePage {...props} isRole={UpdateUserType.PROFILE} />}
+                />
+                <Route path="/change-password" 
+                  render={props => <ProfilePage {...props} isRole={UpdateUserType.CHANGE_PASSWORD} />}
+                />
+                <Route path="/order-history" 
+                  render={props => <ProfilePage {...props} isRole={UpdateUserType.ORDER_HISTORY} />}
                 />
              </Switch>
           </div>

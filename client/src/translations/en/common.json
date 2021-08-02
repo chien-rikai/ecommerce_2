@@ -32,6 +32,11 @@
         "loading": "Loading...",
         "order": "Order",
         "account": "Account",
-        "change-password": "Change password"
+        "change-password": "Change password",
+        "no-result": "No result",
+        "old-pasword": "Old password",
+        "new-password": "New password",
+        "change": "Change",
+        "total-paid": "Total paid"
     }
 }

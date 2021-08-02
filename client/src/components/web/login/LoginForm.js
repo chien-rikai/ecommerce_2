@@ -32,6 +32,7 @@ class LoginForm extends Component {
       });
       localStorage.setItem('checkLogin', res.data.checkLogin);
       localStorage.setItem('token', res.data.token);
+      window.location.reload();
     }).catch(error => {
         this.setState({
           errors: Object.assign({}, error).response.data.error,

@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { setState } from "../../services/localStorage";
 const initialState={
     isBusy: false,
     isError: false,
     isSuccess: false,
+    isLoaded:false,
     message: ''
 }
 const commonSlice = createSlice({
@@ -11,6 +13,10 @@ const commonSlice = createSlice({
     reducers:{
         onBusy:(state,action)=>{
             state.isBusy= action.payload;
+        },
+        onLoadedSuccess:(state,action)=>{
+            state.isLoaded= true;
+            state.message = action.payload;
         },
         onError:(state,action)=>{
             state.isError = true;
@@ -22,5 +28,5 @@ const commonSlice = createSlice({
         } 
     }  
 });
-export const {onBusy,onError,onSuccess} = commonSlice.actions;
+export const {onBusy,onLoadedSuccess,onError,onSuccess} = commonSlice.actions;
 export default commonSlice.reducer;

@@ -15,5 +15,6 @@ class VerifyCsrfToken extends Middleware
         'api/web.com/login',
         'api/web.com/register',
         'api/web.com/user/*',
+        'api/web.com/payment'
     ];
 }
